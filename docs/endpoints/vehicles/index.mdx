@@ -1,0 +1,132 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# All Vehicles
+
+Returns a list of all registered vehicles in Jersey.
+
+```jsx
+GET /v1/vehicles
+```
+
+#### Query Params
+|Param|Desription|
+|-----|----------|
+|`page`|The page to show|
+|`limit`|The amount of entries per page|
+
+Example: `https://api.data.glitch.je/v1/vehicles?page=10&limit=500`
+
+* Cache: **1 day**
+* Rate Limit:
+  * Maximum of 600 requests per hour
+
+:::warning Notice
+This dataset is so large that it the response uses pagination. To download the full dataset to include locally in your project,
+click [here](#).
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "page": 6,
+  "limit": 500,
+  "totalPages": 257,
+  "totalItems": 128003,
+  "data": [
+    {
+        "make": "Lancia",
+        "model": "aprilia",
+        "color": "Grey",
+        "cylinderCapacity": 1418,
+        "weight": null,
+        "co2Emissions": null,
+        "fuelType": "PETROL",
+        "firstRegisteredAt": "1969-12-31T23:00:00.000Z",
+        "firstRegisteredInJerseyAt": "1969-12-31T23:00:00.000Z",
+        "hash": "121c70d140b15fc475e4141f9bf3d8a7bf1b9c1754338fd30da982c5a33cb35b"
+    },
+    {
+        "make": "Jaguar",
+        "model": "XK8 COUPE",
+        "color": "Green",
+        "cylinderCapacity": 3996,
+        "weight": null,
+        "co2Emissions": null,
+        "fuelType": "PETROL",
+        "firstRegisteredAt": "1969-12-31T23:00:00.000Z",
+        "firstRegisteredInJerseyAt": "1969-12-31T23:00:00.000Z",
+        "hash": "682e49c172c8e67a3ac09af74dfcf70433dc4da25d16aab6c8f9e421055b818a"
+    }
+  ]
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+Array of `Carpark`s. See example response.
+
+#### Carpark
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent this carpark|
+|`name`|String|The name of the carpark|
+|`surfaceType`|String|See `Surface Types` below|
+|`payByPhoneCode`|Number/null|The PayByPhone code for this carpark. If none exists, `null` is returned|
+|`owner`|Object/null|See `Owner` below|
+|`type`|String|See `Carpark Types` below|
+|`multiStorey`|Boolean|`true` if the carpark has multiple storeys, otherwise `false`|
+|`latitude`|String|The latitude coordinates|
+|`longitude`|Number|The longitude coordinates|
+|`spaces`|Number|The total number of spaces, including disabled, electric and parent & child spaces|
+|`disabledSpaces`|Number|The total number of disabled spaces|
+|`parentChildSpaces`|Number|The total number of parent & child spaces|
+|`electricChargingSpaces`|Number|The total number of electric car spaces|
+|`paymentType`|String|See `Payment Types` below|
+|`paymentMethods`|Array|An array of payment methods. See `Payment Methods` below|
+|`liveTrackingCode`|String/null|If the available spaces are [tracked by the Government][carparkspaces] this will be the `code` parameter from the Gov's API, otherwise null|
+|`notes`|String/null|Any notes about this carpark|
+
+#### Owner
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent the company|
+|`name`|String|The name of the carpark owner|
+
+---
+#### Enums
+---
+
+#### Carpark Types
+| Key | Description |
+|-----|-------------|
+|`LONG_STAY`|A long stay carpark|
+|`SHORT_STAY`|A short stay carpark|
+
+#### Surface Types
+| Key | Description |
+|-----|-------------|
+|`TARMAC`|The carpark has a tarmac surface|
+|`CONCRETE`|The carpark has a concrete surface|
+|`GRAVEL`|The carpark has a gravel surface and likely doesn't have parked bays|
+
+#### Payment Methods
+| Key | Description |
+|-----|-------------|
+|`PAY_BY_PHONE`|PayByPhone can be used|
+|`PAYCARD`|Paycards can be used|
+|`SEASON_TICKET`|Season tickets can be used|
+|`PAY_STATION`|A pay station can be used (e.g. Sand Street carpark)|
+
+</TabItem>
+</Tabs>
+
+[carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx

@@ -1,0 +1,96 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Parking Spaces (Live)
+
+Returns live information about currently available parking spaces in certain multi-storey carparks.
+
+This data is provided by the Government. See a working example: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
+
+```
+GET /v1/carparks/live-spaces
+```
+
+:::info
+The response we provide is slightly different than what the Government endpoint provides. This is done to ensure consistent formatting across our whole API.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "carparks": [
+    {
+      "name": "Green Street",
+      "code": "GREENST",
+      "spaces": 332,
+      "status": "good",
+      "open": true
+    },
+    {
+      "name": "Minden Place",
+      "code": "MINDENPL",
+      "spaces": 47,
+      "status": "good",
+      "open": true
+    }
+  ],
+  "timestamp": "2023-08-29T02:57:26.000Z"
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`carparks`|Array|An array of `Carpark`s|
+|`timestamp`|String|ISO 8601 timestamp of when the data was last updated|
+
+#### Carpark
+| Key | Type | Description |
+|-----|------|-------------|
+|`name`|String|The human readable name of the carpark|
+|`code`|String|A unique code to identify the carpark|
+|`spaces`|Number|The number of empty spaces currently available|
+|`status`|String|__TODO__|
+|`open`|Boolean|`true` if the carpark is open, otherwise `false`|
+
+</TabItem>
+</Tabs>
+
+<br/>
+
+### Differences from Government endpoint
+Here is a sample response from the Multi-Storey carpark spaces page on gov.je:
+
+```json title="http://sojpublicdata.blob.core.windows.net/sojpublicdata/carpark-data.json"
+{
+    "carparkData":{
+        "Jersey":{
+            "carpark":[
+                {
+                    "name":"Green Street",
+                    "code":"GREENST",
+                    "spaces":332,
+                    "type":"Long stay",
+                    "status":"good",
+                    "carparkOpen":true,
+                    "carparkInformation":"",
+                    "numberOfUnusableSpaces":0,
+                    "numberOfSpacesConsideredLow":43
+                }
+            ]
+        },
+        "Timestamp":"This information was updated at 03:32:48 on Tuesday 29 August"
+    }
+}
+```
+
+You can compare this response with the response from our API above.

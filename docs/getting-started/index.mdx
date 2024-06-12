@@ -1,0 +1,27 @@
+# Getting Started
+
+:::caution The API is not currently live
+:::
+
+The base URL for the API is:
+```
+https://api.data.glitch.je
+```
+
+### User-Agent Header
+All API requests must include a valid `User-Agent` header. The `User-Agent` header identifies the user or application that is making the request.
+
+### Caching
+By default, all endpoints that don't require authentication cache the response for 5 minutes. This may differ for certain endpoints, such as those that fetch live data.
+
+### Global Query Parameters
+Here is a list of query parameters that can be used on every endpoint.
+
+|Parameter|Values|Description|
+|---------|------|-----------|
+|`pretty`|`true`, `false`|If specified the resulting JSON will be pretty printed|
+
+### Response
+If a request is successful, the server will return a 200 status code with the data. 
+
+If the request fails, see [Errors](../errors).

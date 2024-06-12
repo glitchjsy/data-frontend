@@ -1,0 +1,110 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# All Carparks
+
+Returns a list of carparks in Jersey along with useful information about them.
+
+```jsx
+GET /v1/carparks
+```
+
+:::info Please Note
+Some data is currenty missing. `Payment Methods`, possibly some `PayByPhone Codes` and `notes`.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+[
+    {
+        "id": "7020f60l-10k1-62c7-ab6a-c288221b962b",
+        "name": "Archirondel café",
+        "surfaceType": "TARMAC",
+        "spaces": 22,
+        "disabledSpaces": 1,
+        "parentChildSpaces": 0,
+        "electricChargingSpaces": 0,
+        "multiStorey": false,
+        "owner": {
+            "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
+            "name": "Government of Jersey"
+        },
+        "paymentMethods": ["PAYCARD", "PAY_BY_PHONE"],
+        "notes": null,
+        "liveTrackingCode": null,
+        "latitude": 49.211577,
+        "longitude": -2.02506,
+        "payByPhoneCode": "59820",
+        "type": "LONG_STAY"
+    }
+]
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+Array of `Carpark`s. See example response.
+
+#### Carpark
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent this carpark|
+|`name`|String|The name of the carpark|
+|`surfaceType`|String|See `Surface Types` below|
+|`payByPhoneCode`|Number/null|The PayByPhone code for this carpark. If none exists, `null` is returned|
+|`owner`|Object/null|See `Owner` below|
+|`type`|String|See `Carpark Types` below|
+|`multiStorey`|Boolean|`true` if the carpark has multiple storeys, otherwise `false`|
+|`latitude`|String|The latitude coordinates|
+|`longitude`|Number|The longitude coordinates|
+|`spaces`|Number|The total number of spaces, including disabled, electric and parent & child spaces|
+|`disabledSpaces`|Number|The total number of disabled spaces|
+|`parentChildSpaces`|Number|The total number of parent & child spaces|
+|`electricChargingSpaces`|Number|The total number of electric car spaces|
+|`paymentType`|String|See `Payment Types` below|
+|`paymentMethods`|Array|An array of payment methods. See `Payment Methods` below|
+|`liveTrackingCode`|String/null|If the available spaces are [tracked by the Government][carparkspaces] this will be the `code` parameter from the Gov's API, otherwise null|
+|`notes`|String/null|Any notes about this carpark|
+
+#### Owner
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent the company|
+|`name`|String|The name of the carpark owner|
+
+---
+#### Enums
+---
+
+#### Carpark Types
+| Key | Description |
+|-----|-------------|
+|`LONG_STAY`|A long stay carpark|
+|`SHORT_STAY`|A short stay carpark|
+
+#### Surface Types
+| Key | Description |
+|-----|-------------|
+|`TARMAC`|The carpark has a tarmac surface|
+|`CONCRETE`|The carpark has a concrete surface|
+|`GRAVEL`|The carpark has a gravel surface and likely doesn't have parked bays|
+
+#### Payment Methods
+| Key | Description |
+|-----|-------------|
+|`PAY_BY_PHONE`|PayByPhone can be used|
+|`PAYCARD`|Paycards can be used|
+|`SEASON_TICKET`|Season tickets can be used|
+|`PAY_STATION`|A pay station can be used (e.g. Sand Street carpark)|
+
+</TabItem>
+</Tabs>
+
+[carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
