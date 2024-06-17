@@ -1,0 +1,53 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Vehicle Colors
+
+Returns a list of all distinct vehicle colours and the total amount of cars with that colour.
+
+```jsx
+GET /v1/vehicles/colors
+```
+
+#### Query Params
+|Param|Desription|
+|-----|----------|
+|`startDate`|Retrieve results after the given date|
+|`endDate`|Retrieve results before the given date|
+|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "results": {
+    "Blue": 18454,
+    "White": 16844,
+    "Silver": 15105,
+    "Red": 12009,
+    "Black": 11858,
+    "Grey": 7414,
+    "Green": 4734,
+    "Yellow": 1753,
+    "Beige": 1036,
+    "Orange": 934,
+    "Gold": 767,
+    "Brown": 613,
+    "Purple": 413,
+    "Cream": 256,
+    "Bronze": 254,
+    "Multi-Coloured": 252,
+    "Maroon": 200,
+    "Pink": 107,
+    "Turquoise": 86,
+    "Not Specified": 49
+  }
+}
+```
+
+</TabItem>
+</Tabs>

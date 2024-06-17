@@ -33,7 +33,10 @@ const sidebars = {
           label: "Vehicles",
           items: [
             "endpoints/vehicles/index",
-            "endpoints/vehicles/lookup"
+            "endpoints/vehicles/lookup",
+            "endpoints/vehicles/colors",
+            "endpoints/vehicles/makes",
+            "endpoints/vehicles/models"
           ]
         }
       ]

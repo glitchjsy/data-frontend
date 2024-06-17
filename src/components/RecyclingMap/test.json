@@ -1,0 +1,466 @@
+[
+  {
+    "location": "Gorey Village Car Park",
+    "parish": "Grouville",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.19797,
+    "longitude": -2.03249,
+    "notes": "Opposite Butchers"
+  },
+  {
+    "location": "Holme Grown",
+    "parish": "Grouville",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.174471,
+    "longitude": -2.040401,
+    "notes": ""
+  },
+  {
+    "location": "Grouville Parish Hall",
+    "parish": "Grouville",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.18437,
+    "longitude": -2.05216,
+    "notes": ""
+  },
+  {
+    "location": "Communicare",
+    "parish": "St Brelade",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.19498,
+    "longitude": -2.19914,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Locale St Brelade",
+    "parish": "St Brelade",
+    "services": "BATTERIES,CARDBOARD,GLASS,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.19109,
+    "longitude": -2.19982,
+    "notes": ""
+  },
+  {
+    "location": "Les Creux Country Park",
+    "parish": "St Brelade",
+    "services": "BATTERIES",
+    "latitude": 49.186714,
+    "longitude": -2.210764,
+    "notes": ""
+  },
+  {
+    "location": "Les Quennevais Precinct",
+    "parish": "St Brelade",
+    "services": "BATTERIES,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.192591,
+    "longitude": -2.198328,
+    "notes": "Lower car park"
+  },
+  {
+    "location": "St Aubin Car Park",
+    "parish": "St Brelade",
+    "services": "BATTERIES,METAL_PACKAGING,MIXED_TEXTILES,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.188103,
+    "longitude": -2.169652,
+    "notes": "Behind the parish hall"
+  },
+  {
+    "location": "Waitrose Red Houses",
+    "parish": "St Brelade",
+    "services": "BATTERIES",
+    "latitude": 49.19031,
+    "longitude": -2.20084,
+    "notes": ""
+  },
+  {
+    "location": "Le Hocq Car Park",
+    "parish": "St Clement",
+    "services": "METAL_PACKAGING,MIXED_TEXTILES,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.168237,
+    "longitude": -2.062683,
+    "notes": "Next to the parish hall"
+  },
+  {
+    "location": "Co-op Locale Pontac",
+    "parish": "St Clement",
+    "services": "BATTERIES",
+    "latitude": 49.16972,
+    "longitude": -2.04886,
+    "notes": ""
+  },
+  {
+    "location": "FB Fields",
+    "parish": "St Clement",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,MIXED_TEXTILES,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.17394,
+    "longitude": -2.08499,
+    "notes": "Inner road car park"
+  },
+  {
+    "location": "Green Island Car Park",
+    "parish": "St Clement",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.1636,
+    "longitude": -2.07396,
+    "notes": ""
+  },
+  {
+    "location": "La Mare Car Park",
+    "parish": "St Clement",
+    "services": "METAL_PACKAGING_DRINK_CANS,MIXED_TEXTILES",
+    "latitude": 49.166,
+    "longitude": -2.08127,
+    "notes": ""
+  },
+  {
+    "location": "Le Marais",
+    "parish": "St Clement",
+    "services": "BATTERIES,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.168219,
+    "longitude": -2.08095,
+    "notes": ""
+  },
+  {
+    "location": "B&Q",
+    "parish": "St Helier",
+    "services": "BATTERIES,MIXED_TEXTILES",
+    "latitude": 49.20092,
+    "longitude": -2.11484,
+    "notes": ""
+  },
+  {
+    "location": "Central Market",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.18509,
+    "longitude": -2.10458,
+    "notes": ""
+  },
+  {
+    "location": "Centrepoint (La Pouquelaye)",
+    "parish": "St Helier",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.19821,
+    "longitude": -2.11095,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Grande Marche St Helier",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.18894,
+    "longitude": -2.09881,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Locale Charing Cross",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.18519,
+    "longitude": -2.10909,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Locale Val Plaisant",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.19184,
+    "longitude": -2.10217,
+    "notes": ""
+  },
+  {
+    "location": "DVS",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.17382,
+    "longitude": -2.11131,
+    "notes": ""
+  },
+  {
+    "location": "Les Jardins Car Park",
+    "parish": "St Helier",
+    "services": "BATTERIES,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.1849,
+    "longitude": -2.11473,
+    "notes": "Cheapside end"
+  },
+  {
+    "location": "The Parade",
+    "parish": "St Helier",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.18776,
+    "longitude": -2.11071,
+    "notes": ""
+  },
+  {
+    "location": "People's Park",
+    "parish": "St Helier",
+    "services": "METAL_PACKAGING_DRINK_CANS,MIXED_TEXTILES",
+    "latitude": 49.18919,
+    "longitude": -2.11589,
+    "notes": ""
+  },
+  {
+    "location": "St Andrew's Park",
+    "parish": "St Helier",
+    "services": "BATTERIES",
+    "latitude": 49.19741,
+    "longitude": -2.13129,
+    "notes": ""
+  },
+  {
+    "location": "Waitrose St Helier",
+    "parish": "St Helier",
+    "services": "BATTERIES,MIXED_TEXTILES",
+    "latitude": 49.19549,
+    "longitude": -2.10207,
+    "notes": ""
+  },
+  {
+    "location": "St John's Primary School",
+    "parish": "St John",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.2394,
+    "longitude": -2.1207,
+    "notes": "Opposite the car park"
+  },
+  {
+    "location": "St Lawrence Community Centre Car Park",
+    "parish": "St Lawrence",
+    "services": "BATTERIES,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.219139,
+    "longitude": -2.13979,
+    "notes": ""
+  },
+  {
+    "location": "Gunsite Cafe",
+    "parish": "St Lawrence",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.19587,
+    "longitude": -2.15803,
+    "notes": ""
+  },
+  {
+    "location": "Millbrook Park",
+    "parish": "St Lawrence",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.19812,
+    "longitude": -2.14138,
+    "notes": ""
+  },
+  {
+    "location": "St Peter's Valley",
+    "parish": "St Lawrence",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.210991,
+    "longitude": -2.160824,
+    "notes": "Opposite Victoria in the Valley"
+  },
+  {
+    "location": "Archirondel Driftwood Cafe",
+    "parish": "St Martin",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.21164,
+    "longitude": -2.02497,
+    "notes": ""
+  },
+  {
+    "location": "Gorey Pier",
+    "parish": "St Martin",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.19879,
+    "longitude": -2.02032,
+    "notes": ""
+  },
+  {
+    "location": "Maufant Youth Club",
+    "parish": "St Martin",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.20976,
+    "longitude": -2.06156,
+    "notes": ""
+  },
+  {
+    "location": "St Martin Public Hall Car Park",
+    "parish": "St Martin",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.219073,
+    "longitude": -2.0539,
+    "notes": ""
+  },
+  {
+    "location": "St Catherine's Breakwater",
+    "parish": "St Martin",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.22457,
+    "longitude": -2.01971,
+    "notes": ""
+  },
+  {
+    "location": "St Mary Community Centre Car Park",
+    "parish": "St Mary",
+    "services": "BATTERIES,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES,MIXED_TEXTILES",
+    "latitude": 49.237413,
+    "longitude": -2.174394,
+    "notes": ""
+  },
+  {
+    "location": "St Ouen Parish Depot",
+    "parish": "St Ouen",
+    "services": "BATTERIES,MIXED_TEXTILES",
+    "latitude": 49.234951,
+    "longitude": -2.203458,
+    "notes": ""
+  },
+  {
+    "location": "St Peter Community Centre",
+    "parish": "St Peter",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.21194,
+    "longitude": -2.18381,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Locale Beaumont",
+    "parish": "St Peter",
+    "services": "BATTERIES",
+    "latitude": 49.19753,
+    "longitude": -2.15922,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Grand Marche St Peter",
+    "parish": "St Peter",
+    "services": "BATTERIES,MIXED_TEXTILES",
+    "latitude": 49.21248,
+    "longitude": -2.1824,
+    "notes": ""
+  },
+  {
+    "location": "El Tico",
+    "parish": "St Peter",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.20466,
+    "longitude": -2.22311,
+    "notes": ""
+  },
+  {
+    "location": "Goose Green Car Park",
+    "parish": "St Peter",
+    "services": "CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.197747,
+    "longitude": -2.158985,
+    "notes": ""
+  },
+  {
+    "location": "Jersey Bowl",
+    "parish": "St Peter",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.20511,
+    "longitude": -2.18302,
+    "notes": ""
+  },
+  {
+    "location": "Clos Gosset",
+    "parish": "St Saviour",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.18124,
+    "longitude": -2.08576,
+    "notes": ""
+  },
+  {
+    "location": "Co-op Locale Georgetown",
+    "parish": "St Saviour",
+    "services": "BATTERIES",
+    "latitude": 49.17909,
+    "longitude": -2.09457,
+    "notes": ""
+  },
+  {
+    "location": "Grainville Playing Fields",
+    "parish": "St Saviour",
+    "services": "BATTERIES,GLASS,METAL_PACKAGING,MIXED_TEXTILES,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.199301,
+    "longitude": -2.0864,
+    "notes": ""
+  },
+  {
+    "location": "St Saviour Parish Depot",
+    "parish": "St Saviour",
+    "services": "BATTERIES,CARDBOARD,GLASS,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.182061,
+    "longitude": -2.079948,
+    "notes": "Rue des Pres trading estate"
+  },
+  {
+    "location": "Rue des Pres",
+    "parish": "St Saviour",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.18289,
+    "longitude": -2.07722,
+    "notes": "At entrance to trading estate"
+  },
+  {
+    "location": "St Luke's Church",
+    "parish": "St Saviour",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.17923,
+    "longitude": -2.09597,
+    "notes": ""
+  },
+  {
+    "location": "Waitrose St Saviour",
+    "parish": "St Saviour",
+    "services": "BATTERIES,MIXED_TEXTILES",
+    "latitude": 49.17967,
+    "longitude": -2.08484,
+    "notes": ""
+  },
+  {
+    "location": "Acorn Enterprises",
+    "parish": "Trinity",
+    "services": "BATTERIES,CARDBOARD,METAL_PACKAGING,PAPER,PLASTIC_BOTTLES",
+    "latitude": 49.233821,
+    "longitude": -2.094823,
+    "notes": ""
+  },
+  {
+    "location": "Durrel Wildlife Conservation Trust Car Park",
+    "parish": "Trinity",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.23007,
+    "longitude": -2.075429,
+    "notes": ""
+  },
+  {
+    "location": "JFTU Retail Outlet Car Park",
+    "parish": "Trinity",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.20554,
+    "longitude": -2.0637,
+    "notes": ""
+  },
+  {
+    "location": "Trinity Parish Hall",
+    "parish": "Trinity",
+    "services": "MIXED_TEXTILES",
+    "latitude": 49.23514,
+    "longitude": -2.0913,
+    "notes": ""
+  },
+  {
+    "location": "Trinity Primary School Car Park",
+    "parish": "Trinity",
+    "services": "PAPER",
+    "latitude": 49.22921,
+    "longitude": -2.0933,
+    "notes": "Field opposite the school"
+  },
+  {
+    "location": "Trinity Youth Club",
+    "parish": "Trinity",
+    "services": "METAL_PACKAGING_DRINK_CANS",
+    "latitude": 49.23508,
+    "longitude": -2.09082,
+    "notes": ""
+  }
+]

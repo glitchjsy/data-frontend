@@ -1,0 +1,77 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Vehicle Models
+
+Returns a list of all distinct vehicle models and the total amount of cars with that model.
+
+```jsx
+GET /v1/vehicles/models
+```
+
+#### Query Params
+|Param|Desription|
+|-----|----------|
+|`page`|The page to show|
+|`limit`|The amount of entries per page|
+|`startDate`|Retrieve results after the given date|
+|`endDate`|Retrieve results before the given date|
+|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "pagination": {
+    "page": 1,
+    "limit": 300,
+    "totalPages": 113,
+    "totalItems": 33707
+  },
+  "results": {
+    "Ford FIESTA ZETEC": 909,
+    "Ford FIESTA ZETEC CLIMATE": 677,
+    "Suzuki CARRY": 452,
+    "Honda JAZZ 1.4": 331,
+    "Ford FIESTA GHIA": 317,
+    "MINI MINI COOPER 1.6": 315,
+    "Ford FIESTA": 291,
+    "Ford FIESTA MCA ZETEC": 284,
+    "Ford FOCUS ZETEC": 278,
+    "Ford FIESTA TITANIUM": 255,
+    "Ford FIESTA LX": 244,
+    "Honda CIVIC": 222,
+    "Ford ESCORT": 201,
+    "Honda JAZZ": 200,
+    "Ford FIESTA FREESTYLE": 200,
+    "Ferguson null": 198,
+    "Massey Ferguson null": 196
+  }
+}
+```
+
+</TabItem>
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+See example JSON response.
+
+| Key | Type | Description |
+|-----|------|-------------|
+|`pagination`|Object|See `Pagination Data` below|
+|`results`|Object|Keys are vehicle models, values are total number of vehicles with that model|
+
+#### Pagination Data
+| Key | Type | Description |
+|-----|------|-------------|
+|`page`|Number|The current page of results|
+|`limit`|Number|The number of results per page|
+|`totalPages`|Number|The total amount of pages based on the total results and results per page|
+|`totalItems`|Number|The total amount of results|
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,55 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Vehicle Makes
+
+Returns a list of all distinct vehicle makes and the total amount of cars with that make.
+
+```jsx
+GET /v1/vehicles/makes
+```
+
+#### Query Params
+|Param|Desription|
+|-----|----------|
+|`startDate`|Retrieve results after the given date|
+|`endDate`|Retrieve results before the given date|
+|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "results": {
+    "Ford": 12447,
+    "Volkswagen": 6249,
+    "Honda": 5939,
+    "Renault": 4115,
+    "Toyota": 3911,
+    "B.M.W.": 3605,
+    "Peugeot": 3519,
+    "Mercedes-Benz": 3375,
+    "Suzuki": 2883,
+    "Audi": 2772,
+    "Nissan": 2495,
+    "Fiat": 2402,
+    "Vauxhall": 2308,
+    "Land Rover": 2204,
+    "Yamaha": 2091,
+    "MINI": 1923,
+    "Citroen": 1759,
+    "Austin": 1669,
+    "Mitsubishi": 1401,
+    "Rover": 1289,
+    "Mazda": 1149,
+    "HYUNDAI": 1130
+  }
+}
+```
+
+</TabItem>
+</Tabs>

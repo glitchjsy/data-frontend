@@ -53,7 +53,7 @@ const config = {
         ({
             image: "img/docusaurus-social-card.jpg",
             navbar: {
-                title: "Glitch Open Data",
+                title: "Open Data",
                 logo: {
                     alt: "My Site Logo",
                     src: "img/logo.svg",

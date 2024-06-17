@@ -14,17 +14,19 @@ GET /v1/vehicles
 |-----|----------|
 |`page`|The page to show|
 |`limit`|The amount of entries per page|
+|`startDate`|Retrieve results after the given date|
+|`endDate`|Retrieve results before the given date|
+|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
+|`make`|Search by the make of the car|
+|`model`|Search by the model of car|
+|`fuelType`|Search by the fuel type of the car. See `Fuel Types` below for enum values.|
+|`color`|Search by the color of the car|
 
 Example: `https://api.data.glitch.je/v1/vehicles?page=10&limit=500`
 
 * Cache: **1 day**
 * Rate Limit:
   * Maximum of 600 requests per hour
-
-:::warning Notice
-This dataset is so large that it the response uses pagination. To download the full dataset to include locally in your project,
-click [here](#).
-:::
 
 ### Response
 <Tabs>
@@ -34,11 +36,13 @@ This is a sample response.
 
 ```json title="Status: 200 (OK)"
 {
-  "page": 6,
-  "limit": 500,
-  "totalPages": 257,
-  "totalItems": 128003,
-  "data": [
+  "pagination": {
+    "page": 6,
+    "limit": 500,
+    "totalPages": 257,
+    "totalItems": 128003
+  },
+  "results": [
     {
         "make": "Lancia",
         "model": "aprilia",
@@ -72,61 +76,52 @@ This is a sample response.
 <TabItem value="res-schema" label="Schema">
 
 #### Root
-Array of `Carpark`s. See example response.
+See example JSON response.
 
-#### Carpark
 | Key | Type | Description |
 |-----|------|-------------|
-|`id`|UUID|A unique ID to represent this carpark|
-|`name`|String|The name of the carpark|
-|`surfaceType`|String|See `Surface Types` below|
-|`payByPhoneCode`|Number/null|The PayByPhone code for this carpark. If none exists, `null` is returned|
-|`owner`|Object/null|See `Owner` below|
-|`type`|String|See `Carpark Types` below|
-|`multiStorey`|Boolean|`true` if the carpark has multiple storeys, otherwise `false`|
-|`latitude`|String|The latitude coordinates|
-|`longitude`|Number|The longitude coordinates|
-|`spaces`|Number|The total number of spaces, including disabled, electric and parent & child spaces|
-|`disabledSpaces`|Number|The total number of disabled spaces|
-|`parentChildSpaces`|Number|The total number of parent & child spaces|
-|`electricChargingSpaces`|Number|The total number of electric car spaces|
-|`paymentType`|String|See `Payment Types` below|
-|`paymentMethods`|Array|An array of payment methods. See `Payment Methods` below|
-|`liveTrackingCode`|String/null|If the available spaces are [tracked by the Government][carparkspaces] this will be the `code` parameter from the Gov's API, otherwise null|
-|`notes`|String/null|Any notes about this carpark|
+|`pagination`|Object|See `Pagination Data` below|
+|`results`|Array|Array of `Vehicle`s.|
 
-#### Owner
+#### Pagination Data
 | Key | Type | Description |
 |-----|------|-------------|
-|`id`|UUID|A unique ID to represent the company|
-|`name`|String|The name of the carpark owner|
+|`page`|Number|The current page of results|
+|`limit`|Number|The number of results per page|
+|`totalPages`|Number|The total amount of pages based on the total results and results per page|
+|`totalItems`|Number|The total amount of results|
+
+#### Vehicle
+| Key | Type | Description |
+|-----|------|-------------|
+|`make`|String|The vehicle make|
+|`model`|String/null|The vehicle model|
+|`type`|String|The vehicle category|
+|`color`|String|The vehicle colour|
+|`cylinderCapacity`|Number/null|The vehicle cylinder capacity|
+|`weight`|String/null|The vehicle weight|
+|`co2Emissions`|Number/null|The CO2 emossions that the vehicle emits|
+|`fuelType`|String|See `Fuel Types` below|
+|`firstRegisteredAt`|String|The date the vehicle was first ever registered|
+|`firstRegisteredInJerseyAt`|String|The date the vehicle was first registered in Jersey|
+|`hash`|String|A SHA-256 hash of multiple properties above. This is used to cross reference vehicle information from the Search API and open data|
 
 ---
 #### Enums
 ---
 
-#### Carpark Types
+#### Fuel Types
 | Key | Description |
 |-----|-------------|
-|`LONG_STAY`|A long stay carpark|
-|`SHORT_STAY`|A short stay carpark|
-
-#### Surface Types
-| Key | Description |
-|-----|-------------|
-|`TARMAC`|The carpark has a tarmac surface|
-|`CONCRETE`|The carpark has a concrete surface|
-|`GRAVEL`|The carpark has a gravel surface and likely doesn't have parked bays|
-
-#### Payment Methods
-| Key | Description |
-|-----|-------------|
-|`PAY_BY_PHONE`|PayByPhone can be used|
-|`PAYCARD`|Paycards can be used|
-|`SEASON_TICKET`|Season tickets can be used|
-|`PAY_STATION`|A pay station can be used (e.g. Sand Street carpark)|
+|`PETROL`|Petrol powered|
+|`HEAVY_OIL`|Diesel powered|
+|`ELECTRIC`|Fully electric|
+|`HYBRID_ELECTRIC`|Hybrid|
+|`GAS`||
+|`DIESEL_ELECTRIC`|Diesel hybrid|
+|`GAS_BI_FUEL`||
+|`STEAM`||
+|`UNKNOWN`|The fuel type is unknown|
 
 </TabItem>
 </Tabs>
-
-[carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
