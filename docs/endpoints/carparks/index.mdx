@@ -1,5 +1,6 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CarparkMap from "@site/src/components/CarparkMap";
 
 # All Carparks
 
@@ -50,7 +51,9 @@ This is a sample response.
 <TabItem value="res-schema" label="Schema">
 
 #### Root
-Array of `Carpark`s. See example response.
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Array|Array of `Carpark`s. See example response.|
 
 #### Carpark
 | Key | Type | Description |
@@ -106,5 +109,10 @@ Array of `Carpark`s. See example response.
 
 </TabItem>
 </Tabs>
+
+### Example Map View
+Here is an example of using the data to display all carparks on a map. Click on a <img src="/img/carpark.png" height="15" width="15" /> icon for more information.
+
+<CarparkMap />
 
 [carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx

@@ -38,7 +38,10 @@ const sidebars = {
             "endpoints/vehicles/makes",
             "endpoints/vehicles/models"
           ]
-        }
+        },
+        "endpoints/recycling/index",
+        "endpoints/defibrillators/index",
+        "endpoints/product-recalls/index"
       ]
     }
   ]
