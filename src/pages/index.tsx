@@ -16,7 +16,7 @@ function HomepageHeader() {
                 <p className={clsx("hero__subtitle", styles.heroSubtitle)}>
                     Providing you with the tools you need to create stunning apps, websites and more using local data.
                 </p>
-               {/* <div className={styles.buttons}>
+                {/* <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg"
                         to="/docs/intro">
@@ -36,6 +36,9 @@ export default function Home(): JSX.Element {
             title={`Hello from ${siteConfig.title}`}
             description="Description will go into a meta tag in <head />"
         >
+            <div style={{ backgroundColor: "#DB240F", padding: "20px" }}>
+                <h4 style={{ color: "white", margin: 0 }}>The API is still in the process of being developed and is not ready for public consumption yet. Contact luke@glitch.je if you have any questions.</h4>
+            </div>
             <HomepageHeader />
             <main>
                 <HomepageFeatures />
