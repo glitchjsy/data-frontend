@@ -1,0 +1,68 @@
+.popup {
+    padding: 0 10px;
+}
+
+.popupName {
+    font-size: 20px;
+    margin: 0;
+}
+
+.popupType {
+    margin: 0;
+}
+
+.popupList {
+    margin-top: 6px;
+    padding: 0;
+}
+
+.popupList > li {
+    font-size: 14px;
+    color: gray;
+    list-style: none;
+    margin: 0 !important;
+    line-height: 18px;
+}
+
+.facilitiesWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.facility {
+    background-color: green;
+    color: white;
+    font-size: 12px;
+    padding: 0 8px;
+    border-radius: 16px;
+    margin: 0;
+}
+
+.popupParish {
+    color: gray;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.toiletGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.toiletItem {
+    font-size: 14px;
+    color: gray;
+    margin: 0;
+    line-height: 18px;
+}
+
+.ownedBy {
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
