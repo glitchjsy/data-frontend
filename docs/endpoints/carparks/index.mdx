@@ -115,4 +115,16 @@ Here is an example of using the data to display all carparks on a map. Click on 
 
 <CarparkMap />
 
+### Sources
+|Data|Source|
+|----|------|
+|Name, Surface Type, Spaces, Disabled Spaces, Electric Charging Spaces, Parent/Child Spaces|[This Freedom of Information request][carparkfoi]|
+|PayByPhone Code, Is Multi Storey|[Car parks (long and short stay) on gov.je][pbf]|
+|Latitude, Longitude|[Locations of Public Facilities on opendata.gov.je][carparkopendata]|
+|Live Tracking Code|[The `code` property from this endpoint][livespacesapi]|
+
 [carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
+[carparkfoi]: https://www.gov.je/government/freedomofinformation/pages/foi.aspx?ReportID=7465
+[pbf]: https://www.gov.je/Travel/Motoring/Parking/pages/carparks.aspx
+[carparkopendata]: https://opendata.gov.je/dataset/public-facilities-locations/resource/2b355b39-295d-4830-88c9-043c54cd8763
+[livespacesapi]: http://sojpublicdata.blob.core.windows.net/sojpublicdata/carpark-data.json
