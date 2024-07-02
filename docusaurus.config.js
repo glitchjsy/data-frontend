@@ -64,6 +64,11 @@ const config = {
                         sidebarId: "mainSidebar",
                         position: "left",
                         label: "API Documentation",
+                    },
+                    {
+                        href: "/visualize",
+                        position: "left",
+                        label: "Visualize The Data",
                     }
                 ]
             },

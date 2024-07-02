@@ -19,6 +19,7 @@ const sidebars = {
     {
       type: "category",
       label: "Endpoints",
+      collapsed: false,
       items: [
         {
           type: "category",
