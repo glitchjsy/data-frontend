@@ -39,6 +39,13 @@ const sidebars = {
             "endpoints/vehicles/models"
           ]
         },
+        {
+          type: "category",
+          label: "Buses",
+          items: [
+            "endpoints/buses/stops",
+          ]
+        },
         "endpoints/recycling/index",
         "endpoints/defibrillators/index",
         "endpoints/product-recalls/index",

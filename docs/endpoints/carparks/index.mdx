@@ -21,29 +21,31 @@ Some data is currenty missing. `Payment Methods`, possibly some `PayByPhone Code
 This is a sample response.
 
 ```json title="Status: 200 (OK)"
-[
-    {
-        "id": "7020f60l-10k1-62c7-ab6a-c288221b962b",
-        "name": "Archirondel café",
-        "surfaceType": "TARMAC",
-        "spaces": 22,
-        "disabledSpaces": 1,
-        "parentChildSpaces": 0,
-        "electricChargingSpaces": 0,
-        "multiStorey": false,
-        "owner": {
-            "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
-            "name": "Government of Jersey"
-        },
-        "paymentMethods": ["PAYCARD", "PAY_BY_PHONE"],
-        "notes": null,
-        "liveTrackingCode": null,
-        "latitude": 49.211577,
-        "longitude": -2.02506,
-        "payByPhoneCode": "59820",
-        "type": "LONG_STAY"
-    }
-]
+{
+    "results": [
+        {
+            "id": "7020f60l-10k1-62c7-ab6a-c288221b962b",
+            "name": "Archirondel café",
+            "surfaceType": "TARMAC",
+            "spaces": 22,
+            "disabledSpaces": 1,
+            "parentChildSpaces": 0,
+            "electricChargingSpaces": 0,
+            "multiStorey": false,
+            "owner": {
+                "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
+                "name": "Government of Jersey"
+            },
+            "paymentMethods": ["PAYCARD", "PAY_BY_PHONE"],
+            "notes": null,
+            "liveTrackingCode": null,
+            "latitude": 49.211577,
+            "longitude": -2.02506,
+            "payByPhoneCode": "59820",
+            "type": "LONG_STAY"
+        }
+    ]
+}
 ```
 
 </TabItem>
@@ -65,7 +67,7 @@ This is a sample response.
 |`owner`|Object/null|See `Owner` below|
 |`type`|String|See `Carpark Types` below|
 |`multiStorey`|Boolean|`true` if the carpark has multiple storeys, otherwise `false`|
-|`latitude`|String|The latitude coordinates|
+|`latitude`|Number|The latitude coordinates|
 |`longitude`|Number|The longitude coordinates|
 |`spaces`|Number|The total number of spaces, including disabled, electric and parent & child spaces|
 |`disabledSpaces`|Number|The total number of disabled spaces|
