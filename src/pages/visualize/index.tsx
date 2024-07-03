@@ -23,6 +23,7 @@ import {
 } from "chart.js";
 import BusStopMap from "@site/src/components/BusStopMap";
 import ToiletMap from "@site/src/components/ToiletMap";
+import EatSafeMap from "@site/src/components/EatSafeMap";
 
 ChartJS.register(
     CategoryScale,
@@ -134,15 +135,15 @@ export default function Charts(): JSX.Element {
 
             <main className={clsx("container", styles.container)}>
 
-            <section>
+                <section>
                     <h2 className={styles.sectionTitle}>Parking spaces over time</h2>
 
                     <p>Click a date below to view the spaces on that day.</p>
 
                     <div className={styles.parkingSpacesDates}>
                         {dates.map(date => (
-                            <div 
-                                key={date} 
+                            <div
+                                key={date}
                                 className={styles.parkingSpaceDateItem}
                                 style={{
                                     backgroundColor: date === selectedDate ? "black" : "#ececec",
@@ -230,6 +231,20 @@ export default function Charts(): JSX.Element {
                     </p>
 
                     <BusStopMap />
+                </section>
+
+                <section style={{ marginTop: "50px" }}>
+                    <h2 className={styles.sectionTitle}>Eatsafe ratings</h2>
+                    <p>
+                        Below is all the businesses with eatsafe ratings around the island.
+                        Click on a rating icon for more information about that location.
+                    </p>
+
+                    <p>
+                        NOTE: Not all businesses have addresses specified and as such are not displayed here.
+                    </p>
+
+                    <EatSafeMap />
                 </section>
             </main>
         </Layout>
