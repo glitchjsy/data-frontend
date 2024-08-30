@@ -1,29 +1,10 @@
 import React from "react";
 import Map from "../Map";
-import styles from "./styles.module.css";
 import locations from "./test.json";
+import DefibMarker from "../../markers/DefibMarker";
+import DefibPopup from "../../popups/DefibPopup";
 
 export default function DefibMap(): JSX.Element {
-    function DefibMarker({ location }: any) {
-        return (
-            <>
-                <img src="/img/defib.png" height="20" width="20" />
-            </>
-        )
-    }
-
-    function DefibPopup({ location }: any) {
-        return (
-            <div className={styles.popup}>
-                <p className={styles.popupAddress}>{location.address}</p>
-                <p className={styles.popupParish}>{location.parish}</p>
-                <p className={styles.popupPadNumber}>{location.padNumber}</p>
-
-                {location.notes && <p className={styles.popupNotes}>{location.notes}</p>}
-            </div>
-        )
-    }
-
     return (
         <Map
             initialViewport={{

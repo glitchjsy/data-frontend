@@ -1,26 +1,10 @@
 import React from "react";
 import Map from "../Map";
-import styles from "./styles.module.css";
 import locations from "./test.json";
+import RecyclingMarker from "../../markers/RecyclingMarker";
+import RecyclingPopup from "../../popups/RecyclingPopup";
 
 export default function RecyclingMap(): JSX.Element {
-    function RecyclingMarker({ location }: any) {
-        return (
-            <>
-                <img src="/img/recycling.png" height="20" width="20" />
-            </>
-        )
-    }
-
-    function RecyclingPopup({ location }: any) {
-        return (
-            <div className={styles.popup}>
-                <p className={styles.popupName}>{location.location}</p>
-              
-            </div>
-        )
-    }
-
     return (
         <Map
             initialViewport={{

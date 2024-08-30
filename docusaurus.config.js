@@ -66,9 +66,14 @@ const config = {
                         label: "API Documentation",
                     },
                     {
-                        href: "/visualize",
+                        href: "/examples",
                         position: "left",
-                        label: "Visualize The Data",
+                        label: "Examples",
+                    },
+                    {
+                        href: "/map",
+                        position: "left",
+                        label: "Map",
                     }
                 ]
             },

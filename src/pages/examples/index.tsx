@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import DefibMap from "@site/src/components/DefibMap";
+import DefibMap from "@site/src/components/maps/DefibMap";
 import Layout from "@theme/Layout";
 import Admonition from "@theme/Admonition";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import CarparkMap from "@site/src/components/CarparkMap";
-import RecyclingMap from "@site/src/components/RecyclingMap";
+import CarparkMap from "@site/src/components/maps/CarparkMap";
+import RecyclingMap from "@site/src/components/maps/RecyclingMap";
 // @ts-ignore
 import { Line } from "react-chartjs-2";
 import {
@@ -21,9 +21,9 @@ import {
     Tooltip,
     // @ts-ignore
 } from "chart.js";
-import BusStopMap from "@site/src/components/BusStopMap";
-import ToiletMap from "@site/src/components/ToiletMap";
-import EatSafeMap from "@site/src/components/EatSafeMap";
+import BusStopMap from "@site/src/components/maps/BusStopMap";
+import ToiletMap from "@site/src/components/maps/ToiletMap";
+import EatSafeMap from "@site/src/components/maps/EatSafeMap";
 
 ChartJS.register(
     CategoryScale,
@@ -56,6 +56,8 @@ export default function Charts(): JSX.Element {
     const [dates, setDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState("");
 
+    const [failedLoadingSpaces, setFailedLoadingSpaces] = useState(false);
+
     useEffect(() => {
         if (selectedDate !== "") {
             fetchData();
@@ -75,20 +77,24 @@ export default function Charts(): JSX.Element {
     }, [dates]);
 
     const fetchData = async () => {
+        setFailedLoadingSpaces(false);
         try {
-            const response = await fetch(`http://localhost:8080/v1/carparks/test-spaces?date=${selectedDate}`);
+            const response = await fetch(`https://api.data.glitch.je/v1/carparks/test-spaces?date=${selectedDate}`);
             setData((await response.json()).reverse());
-        } catch (error) {
-            console.error("Error fetching data:", error);
+        } catch (e) {
+            console.error("Error fetching carpark spaces:", e);
+            setFailedLoadingSpaces(true);
         }
     }
 
     const fetchDates = async () => {
+        setFailedLoadingSpaces(false);
         try {
-            const response = await fetch("http://localhost:8080/v1/carparks/live-spaces/dates");
+            const response = await fetch("https://api.data.glitch.je/v1/carparks/live-spaces/dates");
             setDates((await response.json()).results.reverse());
-        } catch (error) {
-            console.error("Error fetching data:", error);
+        } catch (e) {
+            console.error("Error fetching carpark spaces:", e);
+            setFailedLoadingSpaces(true);
         }
     };
 
@@ -128,11 +134,9 @@ export default function Charts(): JSX.Element {
 
     return (
         <Layout
-            title={"Visualize"}
-            description="Description will go into a meta tag in <head />"
+            title={"Examples"}
+            description="Examples of using the data"
         >
-            {/* <ChartsHeader /> */}
-
             <main className={clsx("container", styles.container)}>
 
                 <section>
@@ -140,6 +144,8 @@ export default function Charts(): JSX.Element {
 
                     <p>Click a date below to view the spaces on that day.</p>
 
+                    {!failedLoadingSpaces ? (
+                        <>
                     <div className={styles.parkingSpacesDates}>
                         {dates.map(date => (
                             <div
@@ -177,6 +183,13 @@ export default function Charts(): JSX.Element {
                             }
                         }}
                     />
+                    </>
+                    ) : (
+                        <div className={styles.failedLoadingSpaces}>
+                            <p>Failed to load carpark spaces</p>
+                            <button onClick={() => fetchDates()}>Retry</button>
+                        </div>
+                    )}
                 </section>
 
                 <section style={{ marginTop: "50px" }}>
