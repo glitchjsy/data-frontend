@@ -74,6 +74,11 @@ const config = {
                         href: "/map",
                         position: "left",
                         label: "Map",
+                    },
+                    {
+                        href: "/about",
+                        position: "left",
+                        label: "About",
                     }
                 ]
             },
