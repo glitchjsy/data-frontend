@@ -55,8 +55,8 @@ const config = {
             navbar: {
                 title: "Open Data",
                 logo: {
-                    alt: "My Site Logo",
-                    src: "img/logo.svg",
+                    alt: "Logo",
+                    src: "img/logo.png",
                 },
                 items: [
                     {
