@@ -1,0 +1,28 @@
+.beta {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(169, 42, 219);
+    color: white;
+    padding: 2px 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.beta p {
+    margin: 0;
+}
+
+.beta a {
+    color: white;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .beta p {
+        line-height: 18px;
+    }
+
+    .beta a {
+        display: none;
+    }
+}

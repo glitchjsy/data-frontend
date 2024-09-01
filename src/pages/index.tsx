@@ -1,4 +1,3 @@
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Layout from "@theme/Layout";
@@ -33,12 +32,9 @@ export default function Home(): JSX.Element {
 
     return (
         <Layout
-            title={`Hello from ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />"
+            title="Home"
+            description="Jersey Open Data"
         >
-            <div style={{ backgroundColor: "#DB240F", padding: "20px" }}>
-                <h4 style={{ color: "white", margin: 0 }}>The API is still in the process of being developed and is not ready for public consumption yet. Contact luke@glitch.je if you have any questions.</h4>
-            </div>
             <HomepageHeader />
             <main>
                 <HomepageFeatures />
