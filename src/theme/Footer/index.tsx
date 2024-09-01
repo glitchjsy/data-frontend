@@ -14,8 +14,8 @@ function Footer() {
                 </div>
                 <ul className={styles.items}>
                     <li className={clsx(styles.item, styles.active)}><a href="https://data.glitch.je">Open Data</a></li>
-                    <li className={styles.item}><a href="https://qrcode.glitch.je">QR Code</a></li>
-                    <li className={styles.item}><a href="https://cls.glitch.je">CLS Queues</a></li>
+                    <li className={styles.item}><a href="https://qrcode.glitch.je">QR Code Generator</a></li>
+                    {/* <li className={styles.item}><a href="https://cls.glitch.je">CLS Queues</a></li> */}
                 </ul>
             </div>
         </div>

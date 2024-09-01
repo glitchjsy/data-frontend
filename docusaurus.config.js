@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import("@docusaurus/types").Config} */
 const config = {
-    title: "Glitch Open Data",
+    title: "Jersey Open Data",
     tagline: "Jersey open data, made easy.",
     favicon: "img/favicon.ico",
 
@@ -51,7 +51,7 @@ const config = {
     themeConfig:
         /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
         ({
-            image: "img/docusaurus-social-card.jpg",
+            image: "img/social-card.png",
             navbar: {
                 title: "Open Data",
                 logo: {
