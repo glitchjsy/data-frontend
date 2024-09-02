@@ -26,6 +26,7 @@ const sidebars = {
           label: "Carparks",
           items: [
             "endpoints/carparks/index",
+            "endpoints/carparks/lookup",
             "endpoints/carparks/parking-spaces"
           ]
         },

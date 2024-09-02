@@ -1,0 +1,120 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CarparkMap from "@site/src/components/maps/CarparkMap";
+
+# Carpark Lookup by ID or Tracking code
+
+Returns information about a carpark.
+
+```jsx
+GET /v1/carparks/{carpark id / live tracking code}
+```
+
+Examples:
+* Carpark ID: `/v1/carparks/f5d18a7b-2de4-44e1-8835-2abf233a596c`
+* Live Tracking Code: `/v1/carparks/MINDENPL`
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "id": "f5d18a7b-2de4-44e1-8835-2abf233a596c",
+    "createdAt": "2024-06-11T10:02:48.000Z",
+    "name": "Minden Place MS",
+    "payByPhoneCode": "59815",
+    "type": "SHORT_STAY",
+    "surfaceType": "CONCRETE",
+    "multiStorey": true,
+    "latitude": 49.186156,
+    "longitude": -2.102991,
+    "spaces": 242,
+    "disabledSpaces": 5,
+    "parentChildSpaces": 4,
+    "electricChargingSpaces": 2,
+    "liveTrackingCode": "MINDENPL",
+    "notes": null,
+    "owner": {
+        "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
+        "name": "Government of Jersey"
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent this carpark|
+|`name`|String|The name of the carpark|
+|`surfaceType`|String|See `Surface Types` below|
+|`payByPhoneCode`|Number/null|The PayByPhone code for this carpark. If none exists, `null` is returned|
+|`owner`|Object/null|See `Owner` below|
+|`type`|String|See `Carpark Types` below|
+|`multiStorey`|Boolean|`true` if the carpark has multiple storeys, otherwise `false`|
+|`latitude`|Number|The latitude coordinates|
+|`longitude`|Number|The longitude coordinates|
+|`spaces`|Number|The total number of spaces, including disabled, electric and parent & child spaces|
+|`disabledSpaces`|Number|The total number of disabled spaces|
+|`parentChildSpaces`|Number|The total number of parent & child spaces|
+|`electricChargingSpaces`|Number|The total number of electric car spaces|
+|`paymentType`|String|See `Payment Types` below|
+|`paymentMethods`|Array|An array of payment methods. See `Payment Methods` below|
+|`liveTrackingCode`|String/null|If the available spaces are [tracked by the Government][carparkspaces] this will be the `code` parameter from the Gov's API, otherwise null|
+|`notes`|String/null|Any notes about this carpark|
+
+#### Owner
+For a list of possible owners, see [Companies](/docs/types/companies).
+
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent the company|
+|`name`|String|The name of the carpark owner|
+
+---
+#### Enums
+---
+
+#### Carpark Types
+| Key | Description |
+|-----|-------------|
+|`LONG_STAY`|A long stay carpark|
+|`SHORT_STAY`|A short stay carpark|
+
+#### Surface Types
+| Key | Description |
+|-----|-------------|
+|`TARMAC`|The carpark has a tarmac surface|
+|`CONCRETE`|The carpark has a concrete surface|
+|`GRAVEL`|The carpark has a gravel surface and likely doesn't have parked bays|
+
+#### Payment Methods
+| Key | Description |
+|-----|-------------|
+|`PAY_BY_PHONE`|PayByPhone can be used|
+|`PAYCARD`|Paycards can be used|
+|`SEASON_TICKET`|Season tickets can be used|
+|`PAY_STATION`|A pay station can be used (e.g. Sand Street carpark)|
+
+</TabItem>
+</Tabs>
+
+### Sources
+|Data|Source|
+|----|------|
+|Name, Surface Type, Spaces, Disabled Spaces, Electric Charging Spaces, Parent/Child Spaces|[This Freedom of Information request][carparkfoi]|
+|PayByPhone Code, Is Multi Storey|[Car parks (long and short stay) on gov.je][pbf]|
+|Latitude, Longitude|[Locations of Public Facilities on opendata.gov.je][carparkopendata]|
+|Live Tracking Code|[The `code` property from this endpoint][livespacesapi]|
+
+[carparkspaces]: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
+[carparkfoi]: https://www.gov.je/government/freedomofinformation/pages/foi.aspx?ReportID=7465
+[pbf]: https://www.gov.je/Travel/Motoring/Parking/pages/carparks.aspx
+[carparkopendata]: https://opendata.gov.je/dataset/public-facilities-locations/resource/2b355b39-295d-4830-88c9-043c54cd8763
+[livespacesapi]: http://sojpublicdata.blob.core.windows.net/sojpublicdata/carpark-data.json

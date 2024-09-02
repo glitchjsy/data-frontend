@@ -10,15 +10,6 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
     {
-        title: "TODO",
-        Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-        description: (
-            <>
-                TODO
-            </>
-        ),
-    },
-    {
         title: "Seamlessly integrate local data",
         Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
         description: (
@@ -28,14 +19,23 @@ const FeatureList: FeatureItem[] = [
         ),
     },
     {
-        title: "TODO",
+        title: "Have data to share?",
         Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
         description: (
             <>
-                TODO
+                Got valuable Jersey-related data? Let us help make it accessible via our API. Get in touch <a href="mailto:luke@glitch.je">by email</a> to collaborate.
             </>
         ),
     },
+    {
+        title: "Want to improve our platform?",
+        Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+        description: (
+            <>
+                Interested in contributing ideas or sponsoring the project? Reach out <a href="mailto:luke@glitch.je">by email</a> to help us enhance Jersey's open data platform.
+            </>
+        ),
+    }
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {

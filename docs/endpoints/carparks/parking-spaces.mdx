@@ -11,6 +11,11 @@ This data is provided by the Government. See a working example: https://www.gov.
 GET /v1/carparks/live-spaces
 ```
 
+#### Query Params
+|Param|Desription|
+|-----|----------|
+|`includeCarparkInfo`|If set to `true` then full Carpark info will be included with the response (see [Carparks schema](/docs/endpoints/carparks))|
+
 :::info
 The response we provide is slightly different than what the Government endpoint provides. This is done to ensure consistent formatting across our whole API.
 :::
@@ -45,6 +50,44 @@ This is a sample response.
 
 </TabItem>
 
+<TabItem value="res-carparkInfo-sample-200" label="With Carpark Info">
+
+This is a sample response. See [Carparks schema](/docs/endpoints/carparks) for `carparkInfo` format.
+
+```json title="Status: 200 (OK)"
+{
+  "results": [
+    {
+      "name": "Green Street",
+      "code": "GREENST",
+      "spaces": 332,
+      "status": "good",
+      "open": true,
+      "carparkInfo": {
+        "id": "b81988b7-d294-4000-a69e-77d99d258b04",
+        "createdAt": "2024-06-11T10:02:48.000Z",
+        "name": "Green Street MS",
+        "payByPhoneCode": "59812",
+        "type": "LONG_STAY",
+        "surfaceType": "CONCRETE",
+        "multiStorey": 1,
+        "latitude": "49.18132100",
+        "longitude": "-2.10214100",
+        "spaces": 576,
+        "disabledSpaces": 8,
+        "parentChildSpaces": 0,
+        "electricChargingSpaces": 2,
+        "liveTrackingCode": "GREENST",
+        "notes": null
+      }
+    }
+  ],
+  "timestamp": "2023-08-29T02:57:26.000Z"
+}
+```
+
+</TabItem>
+
 <TabItem value="res-schema" label="Schema">
 
 #### Root
@@ -61,6 +104,7 @@ This is a sample response.
 |`spaces`|Number|The number of empty spaces currently available|
 |`status`|String|__TODO__|
 |`open`|Boolean|`true` if the carpark is open, otherwise `false`|
+|`carparkInfo`|[Carpark](/docs/endpoints/carparks)/null|**ONLY** included in the response if `includeCarparkInfo=true` query parmeter is set|
 
 </TabItem>
 </Tabs>
