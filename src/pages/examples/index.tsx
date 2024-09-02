@@ -196,7 +196,7 @@ export default function Charts(): JSX.Element {
                     <h2 className={styles.sectionTitle}>Public Access Defibrillators</h2>
                     <p>
                         Below is all the public access defibrillators around the island.
-                        Click on a <img src="/img/docs/defib.png" height="15" width="15" /> icon for more information about that location.
+                        Click on a <img src="/img/maps/defib.png" height="15" width="15" /> icon for more information about that location.
                     </p>
 
                     <DefibMap />
@@ -206,7 +206,7 @@ export default function Charts(): JSX.Element {
                     <h2 className={styles.sectionTitle}>Car parks</h2>
                     <p>
                         Below is all the public carparks around the island.
-                        Click on a <img src="/img/docs/carpark.png" height="15" width="15" /> icon for more information about that location.
+                        Click on a <img src="/img/maps/carpark.png" height="15" width="15" /> icon for more information about that location.
                     </p>
 
                     <CarparkMap />
@@ -216,7 +216,7 @@ export default function Charts(): JSX.Element {
                     <h2 className={styles.sectionTitle}>Recycling centres</h2>
                     <p>
                         Below is all the recycling centres around the island.
-                        Click on a <img src="/img/docs/recycling.png" height="15" width="15" /> icon for more information about that location.
+                        Click on a <img src="/img/maps/recycling.png" height="15" width="15" /> icon for more information about that location.
                     </p>
 
                     <Admonition type="tip" title="Please note">
@@ -230,7 +230,7 @@ export default function Charts(): JSX.Element {
                     <h2 className={styles.sectionTitle}>Public toilets</h2>
                     <p>
                         Below is all the public toilets around the island.
-                        Click on a <img src="/img/docs/toilet.png" height="15" width="15" /> icon for more information about that location.
+                        Click on a <img src="/img/maps/toilet.png" height="15" width="15" /> icon for more information about that location.
                     </p>
 
                     <ToiletMap />
@@ -240,7 +240,7 @@ export default function Charts(): JSX.Element {
                     <h2 className={styles.sectionTitle}>Bus stops</h2>
                     <p>
                         Below is all the bus stops around the island.
-                        Click on a <img src="/img/docs/bus-stop.png" height="15" width="15" /> icon for more information about that location.
+                        Click on a <img src="/img/maps/bus-stop.png" height="15" width="15" /> icon for more information about that location.
                     </p>
 
                     <BusStopMap />

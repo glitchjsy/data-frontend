@@ -24,7 +24,7 @@ export default function ToiletMarker({ location }) {
 
     return (
         <div style={showBorder ? borderStyles : {}}>
-            <img src="/img/docs/toilet.png" height="20" width="20" />
+            <img src="/img/maps/toilet.png" height="20" width="20" />
         </div>
     )
 }
