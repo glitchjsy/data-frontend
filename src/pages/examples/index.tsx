@@ -79,7 +79,7 @@ export default function Charts(): JSX.Element {
     const fetchData = async () => {
         setFailedLoadingSpaces(false);
         try {
-            const response = await fetch(`https://api.data.glitch.je/v1/carparks/test-spaces?date=${selectedDate}`);
+            const response = await fetch(`https://data-api.glitch.je/v1/carparks/test-spaces?date=${selectedDate}`);
             setData((await response.json()).reverse());
         } catch (e) {
             console.error("Error fetching carpark spaces:", e);
@@ -90,7 +90,7 @@ export default function Charts(): JSX.Element {
     const fetchDates = async () => {
         setFailedLoadingSpaces(false);
         try {
-            const response = await fetch("https://api.data.glitch.je/v1/carparks/live-spaces/dates");
+            const response = await fetch("https://data-api.glitch.je/v1/carparks/live-spaces/dates");
             setDates((await response.json()).results.reverse());
         } catch (e) {
             console.error("Error fetching carpark spaces:", e);
