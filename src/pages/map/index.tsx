@@ -70,6 +70,7 @@ export default function Map(): JSX.Element {
                                 <input type="checkbox" checked={showCarparks} onChange={(e) => setShowCarparks(e.target.checked)} />
                                 <span className={styles.checkmark}></span>
                             </label>
+                            hello
                             <label className={styles.checkboxGroup}>
                                 Public toilets
                                 <input type="checkbox" checked={showToilets} onChange={(e) => setShowToilets(e.target.checked)} />

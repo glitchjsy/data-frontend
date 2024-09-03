@@ -51,7 +51,8 @@ const sidebars = {
         "endpoints/recycling/index",
         "endpoints/defibrillators/index",
         "endpoints/product-recalls/index",
-        "endpoints/toilets/index"
+        "endpoints/toilets/index",
+        "endpoints/eatsafe/index"
       ]
     }
   ]

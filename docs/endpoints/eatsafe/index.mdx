@@ -1,0 +1,74 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import EatSafeMap from "@site/src/components/maps/EatSafeMap";
+
+# Eatsafe Ratings
+
+Returns a list of all [eat safe ratings](eatsafe-govje).
+
+```jsx
+GET /v1/eatsafe
+```
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "results": [
+    {
+      "name": "Cheapside Butchers",
+      "rating": 3,
+      "createdAt": "14/10/2022",
+      "address1": "19 Cheapside",
+      "address2": "St. Helier",
+      "address3": null,
+      "postCode": "JE2 3PG",
+      "latitude": 49.18919,
+      "longitude": -2.11299
+    }
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Array|Array of `EatSafeRating`s. See example response.|
+
+#### EatSafeRating
+| Key | Type | Description |
+|-----|------|-------------|
+|`id`|UUID|A unique ID to represent this establishment's rating|
+|`rating`|Number|The 1-5 rating|
+|`createdAt`|String|The date that the establishment was rated|
+|`address1`|String/null|Address line 1|
+|`address2`|String/null|Address line 2|
+|`address3`|String/null|Address line 3|
+|`postCode`|String/null|Post code|
+|`latitude`|Number/null|The latitude of the establishment|
+|`longitude`|Number/null|The longitude of the establishment|
+
+Annoyingly, the Government doesn't provide address information for every entry.
+
+</TabItem>
+</Tabs>
+
+### Example Map View
+Here is an example of using the data to display all establishments that have an address listed on a map. 
+
+<EatSafeMap />
+
+### Sources
+|Source|
+|------|
+|[Open data endpoint][eatsafe-govje-endpoint]|
+
+[eatsafe-govje-endpoint]: https://sojopendata.azurewebsites.net/eatsafe/json
+[eatsafe-govje]: https://www.gov.je/Industry/RetailHospitality/FoodDrink/pages/eatsaferatings.aspx
