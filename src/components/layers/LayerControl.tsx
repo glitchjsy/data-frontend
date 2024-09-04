@@ -30,7 +30,7 @@ export default function LayerControl(props: LayerControlProps) {
                 <span className={styles.checkmark}></span>
             </label>
 
-            {props.isVisible && props.subOptions.length > 0 && (
+            {props.isVisible && props.subOptions?.length > 0 && (
                 <div className={styles.subOptions}>
                     {props.subOptions.map((section) => (
                         <div className={styles.subOptionSection}>
