@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import BusStopMap from "@site/src/components/maps/BusStopMap";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+import { mapItems } from "@site/src/mapUtils";
 
 # Bus Stops
 
@@ -65,6 +66,6 @@ This is a sample response.
 ### Example Map View
 Here is an example of using the data to display all bus stops on a map. Click on a <img src="/img/bus-stop.png" height="15" width="15" /> icon for more information.
 
-<BusStopMap />
+<ExampleMap item={mapItems.busStop} />
 
 Blue (Bus Stop) &bull; Yellow (Bus Stop with Shelter)

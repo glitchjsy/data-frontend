@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import DefibMap from "@site/src/components/maps/DefibMap";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+import { mapItems } from "@site/src/mapUtils";
 
 # Defibrillators
 
@@ -68,7 +69,7 @@ This is a sample response.
 ### Example Map View
 Here is an example of using the data to display all defibrillators on a map. Click on a <img src="/img/defib.png" height="15" width="15" /> icon for more information.
 
-<DefibMap />
+<ExampleMap item={mapItems.defib} />
 
 ### Sources
 |Source|

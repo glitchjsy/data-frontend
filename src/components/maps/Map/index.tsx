@@ -19,7 +19,7 @@ interface Viewport {
     zoom: number;
 }
 
-interface Location {
+export interface Location {
     latitude: number;
     longitude: number;
     // Allow other properties

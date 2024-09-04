@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import CarparkMap from "@site/src/components/maps/CarparkMap";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+import { mapItems } from "@site/src/mapUtils";
 
 # All Carparks
 
@@ -117,7 +118,7 @@ For a list of possible owners, see [Companies](/docs/types/companies).
 ### Example Map View
 Here is an example of using the data to display all carparks on a map. Click on a <img src="/img/carpark.png" height="15" width="15" /> icon for more information.
 
-<CarparkMap />
+<ExampleMap item={mapItems.carpark} />
 
 ### Sources
 |Data|Source|

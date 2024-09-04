@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import RecyclingMap from "@site/src/components/maps/RecyclingMap";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+import { mapItems } from "@site/src/mapUtils";
 
 # Recycling Centres
 
@@ -93,7 +94,7 @@ This is a sample response.
 ### Example Map View
 Here is an example of using the data to display all recycling centres on a map. Click on a <img src="/img/recycling.png" height="15" width="15" /> icon for more information.
 
-<RecyclingMap />
+<ExampleMap item={mapItems.recycling} />
 
 ### Sources
 |Source|

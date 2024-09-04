@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import EatSafeMap from "@site/src/components/maps/EatSafeMap";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+import { mapItems } from "@site/src/mapUtils";
 
 # Eatsafe Ratings
 
@@ -63,7 +64,7 @@ Annoyingly, the Government doesn't provide address information for every entry.
 ### Example Map View
 Here is an example of using the data to display all establishments that have an address listed on a map. 
 
-<EatSafeMap />
+<ExampleMap item={mapItems.eatsafe} />
 
 ### Sources
 |Source|

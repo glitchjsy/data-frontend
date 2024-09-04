@@ -1,22 +1,37 @@
-.grid {
+.subOptions {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.subOptionOptions {
     display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
 }
 
-.drawer {
-    width: 300px;
-    padding: 10px;
-    overflow-y: scroll;
+.subOptionSectionTitle {
+    margin: 0;
+    margin-bottom: 5px;
 }
 
-@media screen and (max-width: 768px) {
-    .drawer {
-        width: 100%;
-    }
-    .grid {
-        flex-direction: column-reverse;
-    }
+.subOptionGroup {
+    font-size: 14px !important;
+    margin-bottom: 5px !important;
+    padding-left: 20px !important;
+    line-height: 16px !important;
 }
 
+.subOptionGroup .checkmark {
+    height: 15px !important;
+    width: 15px !important;
+}
+
+.subOptionGroup .checkmark:after {
+    left: 4px !important;
+    top: 2px !important;
+    width: 3px !important;
+    height: 6px !important;
+}
 
 /* W3C Schools */
 .checkboxGroup {

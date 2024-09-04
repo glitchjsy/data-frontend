@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import DefibMap from "@site/src/components/maps/DefibMap";
 import Layout from "@theme/Layout";
 import Admonition from "@theme/Admonition";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import CarparkMap from "@site/src/components/maps/CarparkMap";
-import RecyclingMap from "@site/src/components/maps/RecyclingMap";
 // @ts-ignore
 import { Line } from "react-chartjs-2";
 import {
@@ -21,9 +18,13 @@ import {
     Tooltip,
     // @ts-ignore
 } from "chart.js";
-import BusStopMap from "@site/src/components/maps/BusStopMap";
-import ToiletMap from "@site/src/components/maps/ToiletMap";
-import EatSafeMap from "@site/src/components/maps/EatSafeMap";
+import { MapItem, mapItems } from "@site/src/mapUtils";
+import ExampleMap from "@site/src/components/maps/ExampleMap";
+
+interface SectionProps {
+    title: string;
+    item: MapItem;
+}
 
 ChartJS.register(
     CategoryScale,
@@ -121,7 +122,7 @@ export default function Charts(): JSX.Element {
             labels: uniqueTimes,
             datasets,
         };
-    };
+    }
 
     const getRandomColor = () => {
         const letters = "0123456789ABCDEF";
@@ -130,7 +131,7 @@ export default function Charts(): JSX.Element {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
-    };
+    }
 
     return (
         <Layout
@@ -146,44 +147,44 @@ export default function Charts(): JSX.Element {
 
                     {!failedLoadingSpaces ? (
                         <>
-                    <div className={styles.parkingSpacesDates}>
-                        {dates.map(date => (
-                            <div
-                                key={date}
-                                className={styles.parkingSpaceDateItem}
-                                style={{
-                                    backgroundColor: date === selectedDate ? "black" : "#ececec",
-                                    color: date === selectedDate ? "white" : "black"
-                                }}
-                                onClick={() => setSelectedDate(date)}
-                            >
-                                <span>{new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "2-digit" })}</span>
+                            <div className={styles.parkingSpacesDates}>
+                                {dates.map(date => (
+                                    <div
+                                        key={date}
+                                        className={styles.parkingSpaceDateItem}
+                                        style={{
+                                            backgroundColor: date === selectedDate ? "black" : "#ececec",
+                                            color: date === selectedDate ? "white" : "black"
+                                        }}
+                                        onClick={() => setSelectedDate(date)}
+                                    >
+                                        <span>{new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "2-digit" })}</span>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
 
-                    {selectedDate ? <p style={{ marginTop: "10px", marginBottom: 0 }}>Showing {new Date(selectedDate).toDateString()}</p> : false}
+                            {selectedDate ? <p style={{ marginTop: "10px", marginBottom: 0 }}>Showing {new Date(selectedDate).toDateString()}</p> : false}
 
-                    <Line
-                        data={formatChartData()}
-                        options={{
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    position: "top"
-                                },
-                                legend: {
-                                    display: true,
-                                    position: "top"
-                                },
-                                tooltip: {
-                                    mode: "point",
-                                    intersect: false
-                                }
-                            }
-                        }}
-                    />
-                    </>
+                            <Line
+                                data={formatChartData()}
+                                options={{
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            position: "top"
+                                        },
+                                        legend: {
+                                            display: true,
+                                            position: "top"
+                                        },
+                                        tooltip: {
+                                            mode: "point",
+                                            intersect: false
+                                        }
+                                    }
+                                }}
+                            />
+                        </>
                     ) : (
                         <div className={styles.failedLoadingSpaces}>
                             <p>Failed to load carpark spaces</p>
@@ -192,28 +193,30 @@ export default function Charts(): JSX.Element {
                     )}
                 </section>
 
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Public Access Defibrillators</h2>
+                <Section
+                    title="Public Access Defibrillators"
+                    item={mapItems.defib}
+                >
                     <p>
                         Below is all the public access defibrillators around the island.
                         Click on a <img src="/img/maps/defib.png" height="15" width="15" /> icon for more information about that location.
                     </p>
+                </Section>
 
-                    <DefibMap />
-                </section>
-
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Car parks</h2>
+                <Section
+                    title="Car parks"
+                    item={mapItems.carpark}
+                >
                     <p>
                         Below is all the public carparks around the island.
                         Click on a <img src="/img/maps/carpark.png" height="15" width="15" /> icon for more information about that location.
                     </p>
+                </Section>
 
-                    <CarparkMap />
-                </section>
-
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Recycling centres</h2>
+                <Section
+                    title="Recycling centres"
+                    item={mapItems.recycling}
+                >
                     <p>
                         Below is all the recycling centres around the island.
                         Click on a <img src="/img/maps/recycling.png" height="15" width="15" /> icon for more information about that location.
@@ -222,32 +225,32 @@ export default function Charts(): JSX.Element {
                     <Admonition type="tip" title="Please note">
                         Locations are approximate and just refer to the general area
                     </Admonition>
+                </Section>
 
-                    <RecyclingMap />
-                </section>
-
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Public toilets</h2>
+                <Section
+                    title="Public toilets"
+                    item={mapItems.toilet}
+                >
                     <p>
                         Below is all the public toilets around the island.
                         Click on a <img src="/img/maps/toilet.png" height="15" width="15" /> icon for more information about that location.
                     </p>
+                </Section>
 
-                    <ToiletMap />
-                </section>
-
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Bus stops</h2>
+                <Section
+                    title="Bus stops"
+                    item={mapItems.busStop}
+                >
                     <p>
                         Below is all the bus stops around the island.
                         Click on a <img src="/img/maps/bus-stop.png" height="15" width="15" /> icon for more information about that location.
                     </p>
+                </Section>
 
-                    <BusStopMap />
-                </section>
-
-                <section style={{ marginTop: "50px" }}>
-                    <h2 className={styles.sectionTitle}>Eatsafe ratings</h2>
+                <Section
+                    title="Eatsafe ratings"
+                    item={mapItems.eatsafe}
+                >
                     <p>
                         Below is all the businesses with eatsafe ratings around the island.
                         Click on a rating icon for more information about that location.
@@ -256,10 +259,20 @@ export default function Charts(): JSX.Element {
                     <p>
                         NOTE: Not all businesses have addresses specified and as such are not displayed here.
                     </p>
-
-                    <EatSafeMap />
-                </section>
+                </Section>
             </main>
         </Layout>
     );
+}
+
+function Section(props: PropsWithChildren<SectionProps>) {
+    return (
+        <section style={{ marginTop: "50px" }}>
+            <h2 className={styles.sectionTitle}>{props.title}</h2>
+
+            {props.children}
+
+            <ExampleMap item={props.item} />
+        </section>
+    )
 }

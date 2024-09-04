@@ -14,40 +14,69 @@ import CarparkPopup from "./components/popups/CarparkPopup";
 
 type MapItems = {
     [type in MapItemType]: MapItem;
-};
+}
 
-interface MapItem {
+export interface MapItem {
+    label: string;
     icon: (item: any) => any;
     popup: (item: any) => any;
+    fetchData: () => Promise<any[]>;
 }
 
 export type MapItemType = "eatsafe" | "recycling" | "toilet" | "defib" | "busStop" | "carpark";
 
-const items: MapItems = {
+export const mapItems: MapItems = {
     eatsafe: {
+        label: "Eatsafe ratings",
         icon: (item) => <EatSafeMarker location={item} />,
-        popup: (item) => <EatSafePopup location={item} />
+        popup: (item) => <EatSafePopup location={item} />,
+        fetchData: () => _fetchData("eatsafe")
     },
     recycling: {
+        label: "Recycling centres",
         icon: (item) => <RecyclingMarker location={item} />,
-        popup: (item) => <RecyclingPopup location={item} />
+        popup: (item) => <RecyclingPopup location={item} />,
+        fetchData: () => _fetchData("recycling")
     },
     toilet: {
+        label: "Public toilets",
         icon: (item) => <ToiletMarker location={item} />,
-        popup: (item) => <ToiletPopup location={item} />
+        popup: (item) => <ToiletPopup location={item} />,
+        fetchData: () => _fetchData("toilets")
     },
     defib: {
+        label: "Defibrillators",
         icon: (item) => <DefibMarker location={item} />,
-        popup: (item) => <DefibPopup location={item} />
+        popup: (item) => <DefibPopup location={item} />,
+        fetchData: () => _fetchData("defibrillators")
     },
     busStop: {
+        label: "Bus stops",
         icon: (item) => <BusStopMarker location={item} />,
-        popup: (item) => <BusStopPopup location={item} />
+        popup: (item) => <BusStopPopup location={item} />,
+        fetchData: () => _fetchData("bus/stops")
     },
     carpark: {
+        label: "Car parks",
         icon: (item) => <CarparkMarker location={item} />,
-        popup: (item) => <CarparkPopup location={item} />
+        popup: (item) => <CarparkPopup location={item} />,
+        fetchData: () => _fetchData("carparks")
     }
 }
 
-export default items;
+async function _fetchData(route: string): Promise<any[]> {
+    try {
+        const baseUrl = "https://data-api.glitch.je/v1";
+        const response = await fetch(`${baseUrl}/${route}`);
+
+        if (!response.ok) {
+            throw new Error("Response was not ok");
+        }
+        
+        const data = await response.json();
+        return data?.results;
+    } catch (e: any) {
+        console.error(`Failed to fetch data for route ${route}: ${e.message}`);
+        throw e;
+    }
+}
