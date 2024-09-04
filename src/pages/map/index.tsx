@@ -1,3 +1,7 @@
+/**
+ * Yes, I know this code is terrible. I wrote it at 3 in the morning.
+ * But lets be honest, it works and its only for an example.
+ */
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import { mapItems, MapItemType } from "@site/src/mapUtils";
@@ -7,6 +11,7 @@ import LayerControl from "@site/src/components/layers/LayerControl";
 import config from "@site/config.json";
 import { CarparkSurfaceType, CarparkType } from "@site/src/models/Carpark";
 import { PublicToiletFacilities } from "@site/src/models/PublicToilet";
+import { RecyclingCentreService } from "@site/src/models/RecyclingCentre";
 
 export default function MapPage(): JSX.Element {
     const [viewport, setViewport] = useState({
@@ -39,9 +44,19 @@ export default function MapPage(): JSX.Element {
     const [includeDisabledToilets, setIncludeDisabledToilets] = useState(true);
     const [includeNoneToilets, setIncludeNoneToilets] = useState(true);
 
+    // Recycling centres
+    const [showRecycling, setShowRecycling] = useState(false);
+    const [includeMixedTextilesRecycling, setIncludedMixedTextilesRecycling] = useState(true);
+    const [includeBatteriesRecycling, setIncludedBatteriesRecycling] = useState(true);
+    const [includeCardboardRecycling, setIncludedCardboardRecycling] = useState(true);
+    const [includeMetalPackagingRecycling, setIncludedMetalPackagingRecycling] = useState(true);
+    const [includeDrinkCansRecycling, setIncludedDrinkCansRecycling] = useState(true);
+    const [includePaperRecycling, setIncludedPaperRecycling] = useState(true);
+    const [includePlasticBottlesRecycling, setIncludedPlasticBottlesRecycling] = useState(true);
+    const [includeGlassRecycling, setIncludedGlassRecycling] = useState(true);
+
     // Others for now
     const [showBusStops, setShowBusStops] = useState(false);
-    const [showRecycling, setShowRecycling] = useState(false);
     const [showDefib, setShowDefib] = useState(false);
     const [showEatsafe, setShowEatsafe] = useState(false);
 
@@ -85,6 +100,20 @@ export default function MapPage(): JSX.Element {
             if (!includeBeachShowerToilets && item.facilities.includes(PublicToiletFacilities.BEACH_SHOWER)) return false;
             if (!includeBabyChangingToilets && item.facilities.includes(PublicToiletFacilities.BABY_CHANGING)) return false;
             if (!includeDisabledToilets && item.facilities.includes(PublicToiletFacilities.DISABLED)) return false;
+            return true;
+        })
+    }
+
+    const filterRecyclingData = () => {
+        return recyclingData.filter((item) => {
+            if (!includeMixedTextilesRecycling && item.services.includes(RecyclingCentreService.MIXED_TEXTILES)) return false;
+            if (!includeBatteriesRecycling && item.services.includes(RecyclingCentreService.BATTERIES)) return false;
+            if (!includeCardboardRecycling && item.services.includes(RecyclingCentreService.CARDBOARD)) return false;
+            if (!includeMetalPackagingRecycling && item.services.includes(RecyclingCentreService.METAL_PACKAGING)) return false;
+            if (!includeDrinkCansRecycling && item.services.includes(RecyclingCentreService.METAL_PACKAGING_DRINK_CANS)) return false;
+            if (!includePaperRecycling && item.services.includes(RecyclingCentreService.PAPER)) return false;
+            if (!includePlasticBottlesRecycling && item.services.includes(RecyclingCentreService.PLASTIC_BOTTLES)) return false;
+            if (!includeGlassRecycling && item.services.includes(RecyclingCentreService.GLASS)) return false;
             return true;
         })
     }
@@ -207,6 +236,61 @@ export default function MapPage(): JSX.Element {
                             label="Recycling centres"
                             isVisible={showRecycling}
                             toggleVisibility={() => setShowRecycling(!showRecycling)}
+                            subOptions={[
+                                {
+                                    title: "Services",
+                                    options: [
+                                        {
+                                            label: "Mixed Textiles",
+                                            value: "includeMixedTextilesRecycling",
+                                            isChecked: includeMixedTextilesRecycling,
+                                            toggle: () => setIncludedMixedTextilesRecycling(!includeMixedTextilesRecycling),
+                                        },
+                                        {
+                                            label: "Batteries",
+                                            value: "includeBatteriesRecycling",
+                                            isChecked: includeBatteriesRecycling,
+                                            toggle: () => setIncludedBatteriesRecycling(!includeBatteriesRecycling),
+                                        },
+                                        {
+                                            label: "Cardboard",
+                                            value: "includeCardboardRecycling",
+                                            isChecked: includeCardboardRecycling,
+                                            toggle: () => setIncludedCardboardRecycling(!includeCardboardRecycling),
+                                        },
+                                        {
+                                            label: "Metal Packaging",
+                                            value: "includeMetalPackagingRecycling",
+                                            isChecked: includeMetalPackagingRecycling,
+                                            toggle: () => setIncludedMetalPackagingRecycling(!includeMetalPackagingRecycling),
+                                        },
+                                        {
+                                            label: "Drink Cans",
+                                            value: "includeDrinkCansRecycling",
+                                            isChecked: includeDrinkCansRecycling,
+                                            toggle: () => setIncludedDrinkCansRecycling(!includeDrinkCansRecycling),
+                                        },
+                                        {
+                                            label: "Paper",
+                                            value: "includePaperRecycling",
+                                            isChecked: includePaperRecycling,
+                                            toggle: () => setIncludedPaperRecycling(!includePaperRecycling),
+                                        },
+                                        {
+                                            label: "Plastic Bottles",
+                                            value: "includePlasticBottlesRecycling",
+                                            isChecked: includePlasticBottlesRecycling,
+                                            toggle: () => setIncludedPlasticBottlesRecycling(!includePlasticBottlesRecycling),
+                                        },
+                                        {
+                                            label: "Glass",
+                                            value: "includeGlassRecycling",
+                                            isChecked: includeGlassRecycling,
+                                            toggle: () => setIncludedGlassRecycling(!includeGlassRecycling),
+                                        }
+                                    ]
+                                }
+                            ]}
                         />
                         <LayerControl
                             label="Defibrillators"
@@ -241,10 +325,10 @@ export default function MapPage(): JSX.Element {
                         {showBusStops && busStopData.map((item, i) => (
                             <MapMarker item={item} type="busStop" onSelect={setSelectedMarker} />
                         ))}
-                         {showRecycling && recyclingData.map((item, i) => (
+                        {showRecycling && filterRecyclingData().map((item, i) => (
                             <MapMarker item={item} type="recycling" onSelect={setSelectedMarker} />
                         ))}
-                         {showDefib && defibData.map((item, i) => (
+                        {showDefib && defibData.map((item, i) => (
                             <MapMarker item={item} type="defib" onSelect={setSelectedMarker} />
                         ))}
                         {showEatsafe && eatsafeData.map((item, i) => (
