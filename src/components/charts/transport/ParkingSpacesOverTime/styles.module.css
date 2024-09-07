@@ -1,0 +1,42 @@
+.parkingSpacesDates {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    overflow: scroll;
+    height: 50px;
+    margin-top: 15px;
+}
+
+.parkingSpaceDateItem {
+    background-color: #ececec;
+    padding: 0 10px;
+    font-size: 12px;
+    border-radius: 16px;
+    min-width: fit-content;
+    height: fit-content;
+}
+
+.parkingSpaceDateItem:hover {
+    cursor: pointer;
+}
+
+.failedLoadingSpaces {
+    border: 1px solid #ececec;
+    padding: 15px;
+}
+
+.failedLoadingSpaces p {
+    margin: 0;
+}
+
+.failedLoadingSpaces button {
+    background-color: rgb(47, 47, 191);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 5px 10px;
+}
+
+.failedLoadingSpaces button:hover {
+    cursor: pointer;
+}

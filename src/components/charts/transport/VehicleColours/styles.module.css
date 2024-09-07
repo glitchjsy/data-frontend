@@ -1,0 +1,20 @@
+.failedLoading {
+    border: 1px solid #ececec;
+    padding: 15px;
+}
+
+.failedLoading p {
+    margin: 0;
+}
+
+.failedLoading button {
+    background-color: rgb(47, 47, 191);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 5px 10px;
+}
+
+.failedLoading button:hover {
+    cursor: pointer;
+}

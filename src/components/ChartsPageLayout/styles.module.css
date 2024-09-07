@@ -1,0 +1,9 @@
+.chartsHeader {
+    padding: 0 20px;
+    width: 100%;
+    background-color: #31356e;
+    color: white;
+    z-index: 100;
+    font-size: 20px;
+    font-weight: bold;
+}

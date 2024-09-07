@@ -1,0 +1,26 @@
+.container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.table {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.viewAllSearch {
+    margin-bottom: 10px;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    padding: 5px;
+}
+
+.pageWidth {
+    max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .pageWidth {
+        max-width: 80%;
+    }
+}

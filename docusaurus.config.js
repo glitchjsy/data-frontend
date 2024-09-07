@@ -66,17 +66,22 @@ const config = {
                         type: "docSidebar",
                         sidebarId: "mainSidebar",
                         position: "left",
-                        label: "API Documentation",
+                        label: "Documentation",
                     },
-                    {
-                        href: "/examples",
-                        position: "left",
-                        label: "Examples",
-                    },
+                    // {
+                    //     href: "/examples",
+                    //     position: "left",
+                    //     label: "Examples",
+                    // },
                     {
                         href: "/map",
                         position: "left",
                         label: "Map",
+                    },
+                    {
+                        href: "/charts",
+                        position: "left",
+                        label: "Charts",
                     },
                     {
                         href: "/about",
