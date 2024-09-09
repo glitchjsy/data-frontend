@@ -1,4 +1,4 @@
 {
     "mapboxToken": "pk.eyJ1IjoibHVrZWVleWRldiIsImEiOiJjbHI4cjV3MGswYjYzMmp0M3lnaGllcHZhIn0.rBFyu08FWcUHQ2S7YSN0zg",
-    "apiUrl": "https://data-api.glitch.je/v1"
+    "apiUrl": "http://localhost:8081/v1"
 }

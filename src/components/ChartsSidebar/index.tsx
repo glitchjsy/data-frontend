@@ -29,6 +29,16 @@ const items = [
                 type: "link",
                 label: "Vehicle Makes",
                 href: "/charts/transport/vehicle-makes"
+            },
+            {
+                type: "link",
+                label: "Bus Passengers Weekly",
+                href: "/charts/transport/bus-passengers-weekly"
+            },
+            {
+                type: "link",
+                label: "Road Traffic",
+                href: "/charts/transport/road-traffic"
             }
         ]
     }
