@@ -8,7 +8,7 @@ export default function Charts() {
         <ChartsPageLayout title="Charts" isChartsPage>
             <Heading as="h1">Charts</Heading>
             <p>
-                This section is currently in development.
+                This section is currently in development, however feel free to browse!
             </p>
         </ChartsPageLayout>
     )

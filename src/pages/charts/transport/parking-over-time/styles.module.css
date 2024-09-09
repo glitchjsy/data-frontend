@@ -1,4 +1,19 @@
-.container {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.chartOptionsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chartOptionsWrapper button {
+    background-color: #ececec;
+    border: none;
+    padding: 5px 10px;
+}
+
+.chartOptionsWrapper button:not(:last-child) {
+    border-right: 1px solid rgb(192, 184, 184);
+}
+
+.chartOptionsWrapper button:hover {
+    cursor: pointer;
 }
