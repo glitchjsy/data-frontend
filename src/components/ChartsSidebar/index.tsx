@@ -39,6 +39,11 @@ const items = [
                 type: "link",
                 label: "Road Traffic",
                 href: "/charts/transport/road-traffic"
+            },
+            {
+                type: "link",
+                label: "Driving Test Results",
+                href: "/charts/transport/driving-test-results"
             }
         ]
     }

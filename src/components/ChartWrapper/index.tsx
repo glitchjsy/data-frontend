@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 }
 
 export default function ChartWrapper(props: PropsWithChildren<Props>) {
+    const [fullscreen, setFullscreen] = useState(false);
+
     if (!props.loaded) {
         return (
             <div className={styles.failedLoading}>
@@ -15,5 +17,17 @@ export default function ChartWrapper(props: PropsWithChildren<Props>) {
             </div>
         )
     }
-    return props.children;
+
+    return (
+        <div className={!fullscreen ? undefined : styles.fullscreen}>
+            <button
+                className={styles.fullscreenButton}
+                onClick={() => setFullscreen(!fullscreen)}
+            >
+                {fullscreen ? "Exit Fullscreen" : "Go Fullscreen"}
+            </button>
+            
+            {props.children}
+        </div>
+    );
 }

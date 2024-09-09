@@ -18,3 +18,29 @@
 .failedLoading button:hover {
     cursor: pointer;
 }
+
+.fullscreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.fullscreenButton {
+    margin-bottom: 5px;
+    background-color: rgb(171, 23, 200);
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: none;
+}
+
+.fullscreenButton:hover {
+    cursor: pointer;
+}
