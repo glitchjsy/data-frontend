@@ -15,6 +15,7 @@
 const sidebars = {
   mainSidebar: [
     "getting-started/index",
+    "changelog/index",
     "errors/index",
     {
       type: "category",

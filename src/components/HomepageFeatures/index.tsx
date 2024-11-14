@@ -61,6 +61,8 @@ export default function HomepageFeatures(): JSX.Element {
                         <Feature key={idx} {...props} />
                     ))}
                 </div>
+
+                <a href="/docs/changelog" className={styles.changelog}>View the changelog</a>
             </div>
         </section>
     );
