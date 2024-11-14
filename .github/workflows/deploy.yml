@@ -29,6 +29,10 @@ jobs:
       - name: Build Docusaurus site
         run: npm run build
 
+      # Copy the CNAME file to the build output directory
+      - name: Add CNAME file
+        run: cp CNAME build/CNAME
+
       # Deploy the built site to the `gh-pages` branch
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
