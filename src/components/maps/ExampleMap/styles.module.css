@@ -4,3 +4,10 @@
     border: 1px solid #ececec;
     padding: 10px;
 }
+
+.error {
+    background-color: darkred;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}

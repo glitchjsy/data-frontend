@@ -17,6 +17,14 @@
     }
 }
 
+.error {
+    width: 100%;
+    background-color: darkred;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 /* W3C Schools */
 .checkboxGroup {

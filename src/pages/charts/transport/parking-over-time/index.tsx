@@ -1,10 +1,9 @@
-import ParkingSpacesOverTime from "@site/src/components/charts/transport/ParkingSpacesOverTime";
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
 import Heading from "@theme/Heading";
-import Layout from "@theme/Layout";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
-import { Line } from "react-chartjs-2";
+import ChartWrapper from "@site/src/components/ChartWrapper";
+import { useColorMode } from "@docusaurus/theme-common";
 import {
     CategoryScale,
     Chart as ChartJS,
@@ -15,11 +14,12 @@ import {
     TimeScale,
     Title,
     Tooltip,
-    // @ts-ignore
 } from "chart.js";
-import styles from "./styles.module.css";
+import { Line } from "react-chartjs-2";
+import DatePicker from "react-datepicker";
 import config from "../../../../../config.json";
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import styles from "./styles.module.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 type FetchState = "loading" | "loaded" | "failed";
 
@@ -35,11 +35,24 @@ ChartJS.register(
 );
 
 export default function ParkingCharts() {
+    return (
+        <ChartsPageLayout
+            title="Parking Spaces Over Time"
+            subCategory="Transport"
+        >
+            <ParkingChartsContent />
+        </ChartsPageLayout>
+    )
+}
+
+function ParkingChartsContent() {
     const [data, setData] = useState([]);
     const [dates, setDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState("");
     const [state, setState] = useState<FetchState>("loading");
     const [selection, setSelection] = useState(0);
+
+    const { isDarkTheme } = useColorMode();
 
     useEffect(() => {
         if (selectedDate !== "") {
@@ -55,7 +68,8 @@ export default function ParkingCharts() {
 
     useEffect(() => {
         if (dates.length !== 0) {
-            setSelectedDate(dates[0]);
+            setSelection(dates.length - 1)
+            setSelectedDate(dates[dates.length - 1]); // Set to todays date
         }
     }, [dates]);
 
@@ -129,10 +143,7 @@ export default function ParkingCharts() {
     }
 
     return (
-        <ChartsPageLayout
-            title="Parking Spaces Over Time"
-            subCategory="Transport"
-        >
+        <>
             <Heading as="h1">Parking Spaces Over Time</Heading>
             <p>
                 Available parking spaces in multi storey carparks, display over time. The information is updated roughly every 5 minutes.
@@ -144,29 +155,42 @@ export default function ParkingCharts() {
             >
                 <div className={styles.chartOptionsWrapper}>
                     <div>
-                        <button onClick={handlePrev} disabled={selection === 0}>
+                        <button
+                            onClick={handlePrev}
+                            disabled={selection === 0}
+                            data-theme={isDarkTheme ? "dark" : "light"}
+                        >
                             {"<"}
                         </button>
                         <button
                             onClick={handleNext}
                             disabled={selection === dates.length - 1}
+                            data-theme={isDarkTheme ? "dark" : "light"}
                         >
                             {">"}
                         </button>
                     </div>
 
-                    <select 
-                        value={selection} 
-                        onChange={(e) => {
-                            setSelection(Number(e.target.value));
-                            setSelectedDate(dates[Number(e.target.value)]);
-                        }}
-                    >
-                        {dates.map((date, i) => <option value={i}>{new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "2-digit" })}</option>)}
-                    </select>
+                    <div>
+                        <DatePicker
+                            className={styles.datePicker}
+                            dateFormat="dd MMM yy"
+                            selected={new Date(selectedDate)}
+                            onChange={(date: Date) => {
+                                const formattedDate = date.toISOString().split("T")[0];
+                                const index = dates.findIndex(d => new Date(d).getTime() === date.getTime());
+
+                                setSelection(index);
+                                setSelectedDate(formattedDate);
+                            }}
+                            includeDates={dates.map(date => new Date(date))}
+                            popperPlacement="bottom-start"
+                            showIcon
+                        />
+                    </div>
                 </div>
 
-                {selectedDate ? <p style={{ marginTop: "10px", marginBottom: 0 }}>Showing {new Date(selectedDate).toDateString()}</p> : false}
+                {selectedDate ? <p style={{ marginTop: "10px", marginBottom: 0 }}><strong>{new Date(selectedDate).toLocaleDateString("en-GB", { weekday: "long", year: "numeric", month: "long", day: "2-digit" })}</strong></p> : false}
 
                 <Line
                     data={formatChartData() as any}
@@ -188,6 +212,6 @@ export default function ParkingCharts() {
                     }}
                 />
             </ChartWrapper>
-        </ChartsPageLayout>
+        </>
     )
 }

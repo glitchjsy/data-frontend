@@ -128,6 +128,7 @@ export default function MapPage(): JSX.Element {
     return (
         <Layout title="Map" description="Interactive map example">
             <main>
+                <div className={styles.error}>The map is currently down as we are experiencing issues with our mapbox account</div>
                 <div className={styles.grid}>
                     <div className={styles.drawer}>
                         <LayerControl

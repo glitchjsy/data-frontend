@@ -1,5 +1,6 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
 import ChartWrapper from "@site/src/components/ChartWrapper";
+import { useColorMode } from "@docusaurus/theme-common";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
@@ -64,6 +65,8 @@ function LineChartDisplay(props: ChartDisplayProps) {
     const [years, setYears] = useState([]);
     const [months, setMonths] = useState([]);
     const [selection, setSelection] = useState(0);
+
+    const { isDarkTheme } = useColorMode();
 
     useEffect(() => {
         if (props.state === "loaded") {
@@ -189,26 +192,27 @@ function LineChartDisplay(props: ChartDisplayProps) {
             onRetry={props.onRetry}
         >
             <div className={styles.chartOptionsWrapper}>
-                <div className={styles.viewTypeWrapper}>
-                    <button onClick={handleViewAll} disabled={viewMode === "all"}>
+                <div className={styles.viewTypeWrapper} data-theme={isDarkTheme ? "dark" : "light"}>
+                    <button onClick={handleViewAll} disabled={viewMode === "all"} data-theme={isDarkTheme ? "dark" : "light"}>
                         All
                     </button>
-                    <button onClick={handleViewMonthly} disabled={viewMode === "monthly"}>
+                    <button onClick={handleViewMonthly} disabled={viewMode === "monthly"} data-theme={isDarkTheme ? "dark" : "light"}>
                         Monthly
                     </button>
-                    <button onClick={handleViewYearly} disabled={viewMode === "yearly"}>
+                    <button onClick={handleViewYearly} disabled={viewMode === "yearly"} data-theme={isDarkTheme ? "dark" : "light"}>
                         Yearly
                     </button>
                 </div>
 
                 {(viewMode === "monthly" || viewMode === "yearly") && (
                     <div>
-                        <button onClick={handlePrev} disabled={selection === 0}>
+                        <button onClick={handlePrev} disabled={selection === 0} data-theme={isDarkTheme ? "dark" : "light"}>
                             {"<"}
                         </button>
                         <button
                             onClick={handleNext}
                             disabled={selection === (viewMode === "monthly" ? months.length - 1 : years.length - 1)}
+                            data-theme={isDarkTheme ? "dark" : "light"}
                         >
                             {">"}
                         </button>

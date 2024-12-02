@@ -10,7 +10,7 @@ function Footer() {
             </div>
             <div className={styles.footerInner}>
                 <div className={styles.title}>
-                    <p className={styles.glitch}>Glitch.je</p>
+                    <a className={styles.glitch} href="https://glitch.je">Glitch.je</a>
                 </div>
                 <ul className={styles.items}>
                     <li className={clsx(styles.item, styles.active)}><a href="https://data.glitch.je">Open Data</a></li>

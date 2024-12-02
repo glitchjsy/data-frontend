@@ -29,7 +29,7 @@ export default function ExampleMap(props: Props) {
             </div>
         )
     }
-    
+
     if (loadingState === "failed") {
         return (
             <div className={styles.loadingWrapper}>
@@ -39,18 +39,21 @@ export default function ExampleMap(props: Props) {
     }
 
     return (
-        <Map
-            initialViewport={{
-                width: "100%",
-                height: "400px",
-                latitude: 49.214198,
-                longitude: -2.132497,
-                zoom: 11
-            }}
-            locations={locations}
-            marker={(location) => props.item.icon(location)}
-            popup={(location) => props.item.popup(location)}
-            {...props}
-        />
+        <>
+            <div className={styles.error}>The map is currently down as we are experiencing issues with our mapbox account</div>
+            <Map
+                initialViewport={{
+                    width: "100%",
+                    height: "400px",
+                    latitude: 49.214198,
+                    longitude: -2.132497,
+                    zoom: 11
+                }}
+                locations={locations}
+                marker={(location) => props.item.icon(location)}
+                popup={(location) => props.item.popup(location)}
+                {...props}
+            />
+        </>
     )
 }
