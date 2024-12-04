@@ -45,6 +45,16 @@ export default function ParkingCharts() {
     )
 }
 
+const colors = {
+    "Les Jardin": "blue",
+    "Green Street": "orange",
+    "Minden Place": "green",
+    "Patriotic Street": "black",
+    "Sand Street": "teal",
+    "Pier Road": "purple",
+    "Charles Street": "red"
+}
+
 function ParkingChartsContent() {
     const [data, setData] = useState([]);
     const [dates, setDates] = useState([]);
@@ -52,7 +62,7 @@ function ParkingChartsContent() {
     const [state, setState] = useState<FetchState>("loading");
     const [selection, setSelection] = useState(0);
 
-    const { isDarkTheme } = useColorMode();
+    const { colorMode } = useColorMode();
 
     useEffect(() => {
         if (selectedDate !== "") {
@@ -102,12 +112,14 @@ function ParkingChartsContent() {
             return acc;
         }, {});
 
-        const datasets = Object.keys(groupedData).map(carParkName => ({
-            label: carParkName,
-            data: groupedData[carParkName].map(item => item.spaces),
-            borderColor: getRandomColor(),
-            backgroundColor: "rgba(0,0,0,0)" // Transparent background
-        }));
+        const datasets = Object.keys(groupedData).map(carParkName => {
+            return {
+                label: carParkName,
+                data: groupedData[carParkName].map(item => item.spaces),
+                borderColor: colors.hasOwnProperty(carParkName) ? colors[carParkName] : getRandomColor(),
+                backgroundColor: "rgba(0,0,0,0)" // Transparent background
+            }
+        });
 
         const uniqueTimes = Array.from(new Set(data.map(item => new Date(item.createdAt).toLocaleTimeString([], { timeStyle: "short" }))));
 
@@ -158,14 +170,14 @@ function ParkingChartsContent() {
                         <button
                             onClick={handlePrev}
                             disabled={selection === 0}
-                            data-theme={isDarkTheme ? "dark" : "light"}
+                            data-theme={colorMode === "dark" ? "dark" : "light"}
                         >
                             {"<"}
                         </button>
                         <button
                             onClick={handleNext}
                             disabled={selection === dates.length - 1}
-                            data-theme={isDarkTheme ? "dark" : "light"}
+                            data-theme={colorMode === "dark" ? "dark" : "light"}
                         >
                             {">"}
                         </button>

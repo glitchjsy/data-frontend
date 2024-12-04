@@ -11,3 +11,6 @@
 * Added banner to Map page to state that the map is currently not working due to mapbox account issues
 * Improve dark theme on chart buttons
 * Make glitch.je text in footer actually clickable
+
+### Wednesday 4th December
+* Added fixed colours for the [Parking Spaces Over Time](http://localhost:3000/charts/transport/parking-over-time) chart (previously it would generate random colours on every request)
