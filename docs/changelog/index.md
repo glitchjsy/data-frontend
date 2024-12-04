@@ -1,8 +1,7 @@
 # Changelog
 
-### Thursday 14th November
-* Changelog has been created!
-* Added GitHub Actions workflow to automatically deploy the site
+### Wednesday 4th December
+* Added fixed colours for the [Parking Spaces Over Time](http://localhost:3000/charts/transport/parking-over-time) chart (previously it would generate random colours on every request)
 
 ### Sunday 1st December
 * Add proper date picker to [Parking Spaces Over Time](http://localhost:3000/charts/transport/parking-over-time) chart
@@ -12,5 +11,6 @@
 * Improve dark theme on chart buttons
 * Make glitch.je text in footer actually clickable
 
-### Wednesday 4th December
-* Added fixed colours for the [Parking Spaces Over Time](http://localhost:3000/charts/transport/parking-over-time) chart (previously it would generate random colours on every request)
+### Thursday 14th November
+* Changelog has been created!
+* Added GitHub Actions workflow to automatically deploy the site
