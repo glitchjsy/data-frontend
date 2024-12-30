@@ -46,7 +46,18 @@ const items = [
                 href: "/charts/transport/driving-test-results"
             }
         ]
-    }
+    },
+    // {
+    //     type: "category",
+    //     label: "Other",
+    //     items: [
+    //         {
+    //             type: "link",
+    //             label: "Customer & Local Services Queues Over Time",
+    //             href: "/charts/other/cls-queues-over-time"
+    //         }
+    //     ]
+    // }
 ] as any[];
 
 export default function ChartsSidebar() {
