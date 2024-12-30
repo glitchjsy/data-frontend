@@ -1,5 +1,8 @@
 # Changelog
 
+### Monday 30th December
+* Added [Clip](https://clip.glitch.je) to the footer
+
 ### Wednesday 4th December
 * Added fixed colours for the [Parking Spaces Over Time](http://localhost:3000/charts/transport/parking-over-time) chart (previously it would generate random colours on every request)
 
