@@ -30,7 +30,7 @@ export default function BusPassengersWeeklyCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts-temp/bus-passengers`);
+            const response = await fetch(`${config.apiUrl}/charts/bus-passengers`);
 
             setData(await response.json());
             setState("loaded");

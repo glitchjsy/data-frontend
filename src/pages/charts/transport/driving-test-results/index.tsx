@@ -29,7 +29,7 @@ export default function DrivingTestResultCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts-temp/driving-test-results`);
+            const response = await fetch(`${config.apiUrl}/charts/driving-test-results`);
 
             setData(await response.json());
             setState("loaded");

@@ -29,7 +29,7 @@ export default function RoadTrafficCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts-temp/road-traffic`);
+            const response = await fetch(`${config.apiUrl}/charts/road-traffic`);
 
             setData(await response.json());
             setState("loaded");
