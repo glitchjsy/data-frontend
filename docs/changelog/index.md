@@ -5,6 +5,8 @@
 * Published rewrite of REST API
 * Changed the following vehicle stats endpoint URLs: `colors`, `makes`, `models`
 * Fixed some changelog links below
+* Add health check endpoint for `data-fetcher` 
+* Changed fetch time for product recalls to every 6 hours
 
 ## 2024
 ### Monday 30th December
