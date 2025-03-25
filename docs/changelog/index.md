@@ -8,6 +8,8 @@
 * Add health check endpoint for `data-fetcher` 
 * Changed fetch time for product recalls to every 6 hours
 * Add new mapbox token (maps are now fixed!)
+* Fix latitude and longitude in bus stops response
+* Add coordinates back to eatsafe data endpoint
 
 ## 2024
 ### Monday 30th December
