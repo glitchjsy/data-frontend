@@ -1,5 +1,5 @@
 /**
- * Yes, I know this code is terrible. I wrote it at 3 in the morning.
+ * Yes, I know this code is terrible. I wrote it at 3 in the morning (and used ChatGPT for help).
  * But lets be honest, it works and its only for an example.
  */
 import React, { useState, useEffect } from "react";
@@ -59,7 +59,6 @@ export default function MapPage(): JSX.Element {
     const [showBusStops, setShowBusStops] = useState(false);
     const [showDefib, setShowDefib] = useState(false);
     const [showEatsafe, setShowEatsafe] = useState(false);
-
 
     const [carparkData, setCarparkData] = useState<any[]>([]);
     const [toiletData, setToiletData] = useState<any[]>([]);
@@ -128,7 +127,6 @@ export default function MapPage(): JSX.Element {
     return (
         <Layout title="Map" description="Interactive map example">
             <main>
-                <div className={styles.error}>The map is currently down as we are experiencing issues with our mapbox account</div>
                 <div className={styles.grid}>
                     <div className={styles.drawer}>
                         <LayerControl

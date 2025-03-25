@@ -74,7 +74,7 @@ async function _fetchData(route: string): Promise<any[]> {
         }
         
         const data = await response.json();
-        return data?.results;
+        return data?.results || data;
     } catch (e: any) {
         console.error(`Failed to fetch data for route ${route}: ${e.message}`);
         throw e;

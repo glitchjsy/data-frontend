@@ -7,6 +7,7 @@
 * Fixed some changelog links below
 * Add health check endpoint for `data-fetcher` 
 * Changed fetch time for product recalls to every 6 hours
+* Add new mapbox token (maps are now fixed!)
 
 ## 2024
 ### Monday 30th December

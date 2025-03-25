@@ -40,7 +40,6 @@ export default function ExampleMap(props: Props) {
 
     return (
         <>
-            <div className={styles.error}>The map is currently down as we are experiencing issues with our mapbox account</div>
             <Map
                 initialViewport={{
                     width: "100%",
