@@ -1,5 +1,5 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
@@ -11,11 +11,11 @@ import styles from "./styles.module.css";
 
 interface ChartDisplayProps {
     data: any;
-    state: FetchState;
+    state: ChartState;
+    setState: (state: ChartState) => void;
+    loaded: boolean;
     onRetry: () => void;
 }
-
-type FetchState = "loading" | "loaded" | "failed";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
 
@@ -44,7 +44,8 @@ const colorHexCodes = {
 
 export default function VehicleColourCharts() {
     const [data, setData] = useState({});
-    const [state, setState] = useState<FetchState>("loading");
+    const [state, setState] = useState(ChartState.Loading);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -52,11 +53,13 @@ export default function VehicleColourCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/vehicles/stats/colors`);
+            const response = await fetch(`${config.apiUrl}/vehicles/colors`);
+
             setData(await response.json());
-            setState("loaded");
+            setLoaded(true);
         } catch (e: any) {
-            setState("failed");
+            setState(ChartState.Failed);
+            setLoaded(false);
         }
     }
 
@@ -69,7 +72,7 @@ export default function VehicleColourCharts() {
             <p>Vehicle colours sorted by popularity.</p>
 
             <div className={styles.pageWidth}>
-                <BarChartDisplay data={data} state={state} onRetry={loadData} />
+                <BarChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
                 {/* <PieChartDisplay data={data} state={state} onRetry={loadData} /> */}
             </div>
         </ChartsPageLayout>
@@ -78,12 +81,11 @@ export default function VehicleColourCharts() {
 
 function BarChartDisplay(props: ChartDisplayProps) {
     const [chartData, setChartData] = useState<any>({});
-    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (props.state === "loaded") {
-            const labels = Object.keys(props.data.results);
-            const values = Object.values(props.data.results);
+        if (props.loaded) {
+            const labels = Object.keys(props.data);
+            const values = Object.values(props.data);
 
             const colors = labels.map(label => colorHexCodes[label]);
 
@@ -99,13 +101,13 @@ function BarChartDisplay(props: ChartDisplayProps) {
                     }
                 ]
             });
-            setLoaded(true);
+            props.setState(ChartState.Loaded);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     return (
         <ChartWrapper
-            loaded={loaded}
+            state={props.state}
             onRetry={props.onRetry}
         >
             <Bar
@@ -126,7 +128,7 @@ function PieChartDisplay(props: ChartDisplayProps) {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (props.state === "loaded") {
+        if (props.loaded) {
             const labels = Object.keys(props.data.results);
             const values = Object.values(props.data.results);
 
@@ -142,13 +144,13 @@ function PieChartDisplay(props: ChartDisplayProps) {
                     }
                 ]
             });
-            setLoaded(true);
+            props.setState(ChartState.Loaded);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     return (
         <ChartWrapper
-            loaded={loaded}
+            state={props.state}
             onRetry={props.onRetry}
         >
             <Pie

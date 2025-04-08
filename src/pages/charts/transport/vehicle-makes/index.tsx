@@ -1,5 +1,5 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import Heading from "@theme/Heading";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -13,17 +13,18 @@ import styles from "./styles.module.css";
 
 interface ChartDisplayProps {
     data: any;
-    state: FetchState;
+    state: ChartState;
+    setState: (state: ChartState) => void;
+    loaded: boolean;
     onRetry: () => void;
 }
-
-type FetchState = "loading" | "loaded" | "failed";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
 
 export default function VehicleMakeCharts() {
     const [data, setData] = useState({});
-    const [state, setState] = useState<FetchState>("loading");
+    const [state, setState] = useState(ChartState.Loading);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -31,11 +32,13 @@ export default function VehicleMakeCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/vehicles/stats/makes`);
+            const response = await fetch(`${config.apiUrl}/vehicles/makes`);
+            
             setData(await response.json());
-            setState("loaded");
+            setLoaded(true);
         } catch (e: any) {
-            setState("failed");
+            setState(ChartState.Failed);
+            setLoaded(false);
         }
     }
 
@@ -49,10 +52,10 @@ export default function VehicleMakeCharts() {
             <div className={styles.pageWidth}>
                 <Tabs>
                     <TabItem value="top-15" label="Top 15">
-                        <BarChartDisplay data={data} state={state} onRetry={loadData} />
+                        <BarChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
                     </TabItem>
                     <TabItem value="view-all" label="View all">
-                        <ViewAllDisplay data={data} state={state} onRetry={loadData} />
+                        <ViewAllDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
                     </TabItem>
                 </Tabs>
             </div>
@@ -62,12 +65,11 @@ export default function VehicleMakeCharts() {
 
 function BarChartDisplay(props: ChartDisplayProps) {
     const [chartData, setChartData] = useState<any>({});
-    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (props.state === "loaded") {
-            const labels = Object.keys(props.data.results);
-            const values = Object.values(props.data.results);
+        if (props.loaded) {
+            const labels = Object.keys(props.data);
+            const values = Object.values(props.data);
 
             const data = labels.map((label, index) => ({
                 make: label,
@@ -94,13 +96,13 @@ function BarChartDisplay(props: ChartDisplayProps) {
                     }
                 ]
             });
-            setLoaded(true);
+            props.setState(ChartState.Loaded);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     return (
         <ChartWrapper
-            loaded={loaded}
+            state={props.state}
             onRetry={props.onRetry}
         >
             <Bar
@@ -122,16 +124,16 @@ function ViewAllDisplay(props: ChartDisplayProps) {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        if (props.state === "loaded") {
+        if (props.loaded) {
             const array = [];
 
-            for (const make in props.data.results) {
-                array.push({ make, count: props.data.results[make] });
+            for (const make in props.data) {
+                array.push({ make, count: props.data[make] });
             }
             setArrayData(array);
             setFilteredData(array);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     useEffect(() => {
         if (searchTerm === "") {
@@ -165,7 +167,7 @@ function ViewAllDisplay(props: ChartDisplayProps) {
                 <tbody>
                     {filteredData.map(entry => {
                         return (
-                            <tr>
+                            <tr key={entry.make} className={styles.tableRow}>
                                 <td>{entry.make}</td>
                                 <td>{entry.count}</td>
                             </tr>

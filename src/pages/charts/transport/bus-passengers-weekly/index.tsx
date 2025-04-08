@@ -1,5 +1,5 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import { useColorMode } from "@docusaurus/theme-common";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
@@ -12,17 +12,18 @@ import styles from "./styles.module.css";
 
 interface ChartDisplayProps {
     data: any;
-    state: FetchState;
+    state: ChartState;
+    setState: (state: ChartState) => void;
+    loaded: boolean;
     onRetry: () => void;
 }
-
-type FetchState = "loading" | "loaded" | "failed";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default function BusPassengersWeeklyCharts() {
     const [data, setData] = useState({});
-    const [state, setState] = useState<FetchState>("loading");
+    const [state, setState] = useState(ChartState.Loading);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -33,9 +34,10 @@ export default function BusPassengersWeeklyCharts() {
             const response = await fetch(`${config.apiUrl}/charts/bus-passengers`);
 
             setData(await response.json());
-            setState("loaded");
+            setLoaded(true);
         } catch (e: any) {
-            setState("failed");
+            setState(ChartState.Failed);
+            setLoaded(false);
         }
     }
 
@@ -48,7 +50,7 @@ export default function BusPassengersWeeklyCharts() {
             <p>Bus passengers updated weekly.</p>
 
             <div className={styles.pageWidth}>
-                <LineChartDisplay data={data} state={state} onRetry={loadData} />
+                <LineChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
             </div>
         </ChartsPageLayout>
     )
@@ -58,7 +60,6 @@ type ViewMode = "all" | "monthly" | "yearly";
 
 function LineChartDisplay(props: ChartDisplayProps) {
     const [chartData, setChartData] = useState<any>({});
-    const [loaded, setLoaded] = useState(false);
     const [data, setData] = useState(props.data);
 
     const [viewMode, setViewMode] = useState<ViewMode>("all");
@@ -69,7 +70,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
     const { colorMode } = useColorMode();
 
     useEffect(() => {
-        if (props.state === "loaded") {
+        if (props.loaded) {
             const dates = Object.keys(props.data);
             const values = Object.values(props.data);
 
@@ -99,9 +100,9 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
             updateChartData(dates, values);
 
-            setLoaded(true);
+            props.setState(ChartState.Loaded);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     function updateChartData(labels, values) {
         setChartData({
@@ -188,7 +189,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
-            loaded={loaded}
+            state={props.state}
             onRetry={props.onRetry}
         >
             <div className={styles.chartOptionsWrapper}>

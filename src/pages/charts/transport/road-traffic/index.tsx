@@ -1,5 +1,5 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
@@ -11,17 +11,18 @@ import styles from "./styles.module.css";
 
 interface ChartDisplayProps {
     data: any;
-    state: FetchState;
+    state: ChartState;
+    setState: (state: ChartState) => void;
+    loaded: boolean;
     onRetry: () => void;
 }
-
-type FetchState = "loading" | "loaded" | "failed";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default function RoadTrafficCharts() {
     const [data, setData] = useState({});
-    const [state, setState] = useState<FetchState>("loading");
+    const [state, setState] = useState(ChartState.Loading);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -32,9 +33,10 @@ export default function RoadTrafficCharts() {
             const response = await fetch(`${config.apiUrl}/charts/road-traffic`);
 
             setData(await response.json());
-            setState("loaded");
+            setLoaded(true);
         } catch (e: any) {
-            setState("failed");
+            setState(ChartState.Failed);
+            setLoaded(false);
         }
     }
 
@@ -47,7 +49,7 @@ export default function RoadTrafficCharts() {
             <p>Road traffic on the underpass and tunnel between 2019 and 2022.</p>
 
             <div className={styles.pageWidth}>
-                <LineChartDisplay data={data} state={state} onRetry={loadData} />
+                <LineChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
             </div>
         </ChartsPageLayout>
     )
@@ -55,10 +57,9 @@ export default function RoadTrafficCharts() {
 
 function LineChartDisplay(props: ChartDisplayProps) {
     const [chartData, setChartData] = useState<any>({});
-    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (props.state === "loaded") {
+        if (props.loaded) {
             const labels = props.data.map(item => item.date);
             const tunnelMovements = props.data.map(item => item.tunnelMovements ? parseInt(item.tunnelMovements) : null); 
             const overpassMovements = props.data.map(item => parseInt(item.overpassMovements));
@@ -84,13 +85,13 @@ function LineChartDisplay(props: ChartDisplayProps) {
                     }
                 ]
             });
-            setLoaded(true);
+            props.setState(ChartState.Loaded);
         }
-    }, [props.state]);
+    }, [props.loaded]);
 
     return (
         <ChartWrapper
-            loaded={loaded}
+            state={props.state}
             onRetry={props.onRetry}
         >
             <Line

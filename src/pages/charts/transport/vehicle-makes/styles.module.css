@@ -8,6 +8,10 @@
     overflow-y: scroll;
 }
 
+.tableRow td {
+    padding: 3px 15px;
+}
+
 .viewAllSearch {
     margin-bottom: 10px;
     border: 1px solid #ececec;

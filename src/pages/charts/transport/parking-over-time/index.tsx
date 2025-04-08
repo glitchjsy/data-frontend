@@ -2,7 +2,7 @@ import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
-import ChartWrapper from "@site/src/components/ChartWrapper";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import { useColorMode } from "@docusaurus/theme-common";
 import {
     CategoryScale,
@@ -20,8 +20,6 @@ import DatePicker from "react-datepicker";
 import config from "../../../../../config.json";
 import styles from "./styles.module.css";
 import "react-datepicker/dist/react-datepicker.css";
-
-type FetchState = "loading" | "loaded" | "failed";
 
 ChartJS.register(
     CategoryScale,
@@ -59,7 +57,7 @@ function ParkingChartsContent() {
     const [data, setData] = useState([]);
     const [dates, setDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState("");
-    const [state, setState] = useState<FetchState>("loading");
+    const [state, setState] = useState(ChartState.Loading);
     const [selection, setSelection] = useState(0);
 
     const { colorMode } = useColorMode();
@@ -85,22 +83,22 @@ function ParkingChartsContent() {
 
     async function fetchData() {
         try {
-            const response = await fetch(`${config.apiUrl}/carparks/test-spaces?date=${selectedDate}`);
-            setState("loaded");
+            const response = await fetch(`${config.apiUrl}/carparks/spaces?date=${selectedDate}`);
+            setState(ChartState.Loaded);
             setData((await response.json()).reverse());
         } catch (e) {
-            setState("failed");
+            setState(ChartState.Failed);
         }
     }
 
     async function fetchDates() {
         try {
-            const response = await fetch(`${config.apiUrl}/carparks/live-spaces/dates`);
-            setDates((await response.json()).results.reverse());
+            const response = await fetch(`${config.apiUrl}/carparks/spaces/dates`);
+            setDates((await response.json()).reverse());
         } catch (e) {
-            setState("failed");
+            setState(ChartState.Failed);
         }
-    }
+    }   
 
     function formatChartData() {
         const groupedData = data.reduce((acc, item) => {
@@ -162,7 +160,7 @@ function ParkingChartsContent() {
             </p>
 
             <ChartWrapper
-                loaded={state === "loaded"}
+                state={state}
                 onRetry={() => fetchDates()}
             >
                 <div className={styles.chartOptionsWrapper}>
