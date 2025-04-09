@@ -3,6 +3,7 @@
 ## 2025
 ---
 ### Wednesday 9th April
+* Added [Monthly Rainfall](/charts/weather/monthly-rainfall) chart
 * Better Chart loading state handling in the codebase
 * Fix charts API endpoints being out of date
 * Change [vehicle makes](/charts/transport/vehicle-makes) table size on charts page

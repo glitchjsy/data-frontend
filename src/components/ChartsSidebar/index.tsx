@@ -47,17 +47,17 @@ const items = [
             }
         ]
     },
-    // {
-    //     type: "category",
-    //     label: "Other",
-    //     items: [
-    //         {
-    //             type: "link",
-    //             label: "Customer & Local Services Queues Over Time",
-    //             href: "/charts/other/cls-queues-over-time"
-    //         }
-    //     ]
-    // }
+    {
+        type: "category",
+        label: "Weather",
+        items: [
+            {
+                type: "link",
+                label: "Monthly Rainfall between 1894 and 2021",
+                href: "/charts/weather/monthly-rainfall"
+            }
+        ]
+    }
 ] as any[];
 
 export default function ChartsSidebar() {

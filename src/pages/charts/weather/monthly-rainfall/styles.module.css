@@ -1,0 +1,33 @@
+.pageWidth {
+    max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .pageWidth {
+        max-width: 80%;
+    }
+}
+
+.chartOptionsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chartOptionsWrapper button {
+    background-color: #ececec;
+    border: none;
+    padding: 5px 10px;
+}
+
+.chartOptionsWrapper button[data-theme="dark"] {
+    background-color: #3b3b3b;
+}
+
+.chartOptionsWrapper button:not(:last-child) {
+    border-right: 1px solid rgb(192, 184, 184);
+}
+
+.chartOptionsWrapper button:hover {
+    cursor: pointer;
+}
