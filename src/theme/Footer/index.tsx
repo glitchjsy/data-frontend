@@ -1,12 +1,15 @@
 import clsx from "clsx";
 import React from "react";
+import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 
 function Footer() {
+    const { colorMode } = useColorMode();
+
     return (
         <div className={styles.footer}>
-            <div className={styles.author}>
-                <p>Made by <a href="https://github.com/lukeeey">Luke</a> &bull; Source code available <a href="https://github.com/glitchjsy/data-frontend">on GitHub</a>.</p>
+            <div className={styles.author} data-theme={colorMode}>
+                <p>Made by <a href="https://github.com/lukeeey" data-theme={colorMode}>Luke</a> &bull; Source code available <a href="https://github.com/glitchjsy/data-frontend" data-theme={colorMode}>on GitHub</a>.</p>
             </div>
             <div className={styles.footerInner}>
                 <div className={styles.title}>

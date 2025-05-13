@@ -16,8 +16,12 @@
     padding: 5px 32px;
 }
 
+.author[data-theme="dark"] {
+    color: white;
+    background-color: #3b3b3b;
+}
+
 .author p {
-    color: black;
     font-size: 14px;
     margin: 0;
 }
@@ -25,6 +29,10 @@
 .author a {
     color: rgb(7, 107, 107);
     font-size: 14px;
+}
+
+.author a[data-theme="dark"] {
+    color: rgb(13, 223, 223);
 }
 
 .items {

@@ -2,6 +2,12 @@
 
 ## 2025
 ---
+### Tuesday 13th May
+* Fixed API health check endpoints
+* Updated About page
+* Improve Footer display using dark mode
+* Other small improvements
+
 ### Wednesday 9th April
 * Added [Monthly Rainfall](/charts/weather/monthly-rainfall) chart
 * Better Chart loading state handling in the codebase

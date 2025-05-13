@@ -1,6 +1,6 @@
 # About
 
-**Glitch.je Open Data** *(working title - still figuring out the best name!)* is a project dedicated to making open data from Jersey, Channel Islands, easily accessible and developer-friendly. Whether you're a data enthusiast, researcher, or developer, our goal is to provide you with live and comprehensive data in a consistent, predictable format.
+**Jersey Open Data** (still figuring out a name) is a project dedicated to making open data from Jersey, Channel Islands, easily accessible and developer-friendly. Whether you're a data enthusiast, researcher, or developer, our goal is to provide you with live and comprehensive data in a consistent, predictable format.
 
 Check out our [API Documentation](/docs/getting-started) to get started.
 
@@ -15,11 +15,9 @@ We provide data in JSON format, with plans to support XML in the future. The dat
 - **Static Data**: Manually collected, sometimes through FOI (Freedom of Information) requests.
 
 :::info Please note
-- **"Live Data"** means data that is updated frequently. For example, carpark space information may be updated every 5 minutes - this is still considered live.
-- **"Static Data"** means data that is rarely updated and is collected manually.
+- **"Live Data"** refers to data that is updated frequently. For example, carpark space information may be updated every 5 minutes - this is considered live.
+- **"Static Data"** refers to data that is rarely updated and is collected manually.
 :::
-
-In essence, Glitch.je is about bringing together the scattered data from Jersey and making it usable, predictable, and available to everyone.
 
 ## Get Involved
 If you'd like to contribute to the codebase, please see the following GitHub repos:
@@ -37,4 +35,4 @@ If you'd like to donate to sponsor the project to help cover hosting costs and m
 * [Buy Me a Coffee (one-time)](https://buymeacoffee.com/lukeeey)
 
 ## Future Plans
-In the near future I will add a load of charts for most of the data on [opendata.gov.je](https://opendata.gov.je), similar to how [data.gg](https://data.gg/charts) works.
+In the near future I will add a load of charts for most of the data on [opendata.gov.je](https://opendata.gov.je), similar to how [data.gg](https://data.gg/charts) works. Work on this has [already begun](/charts).

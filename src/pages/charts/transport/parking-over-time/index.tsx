@@ -156,7 +156,7 @@ function ParkingChartsContent() {
         <>
             <Heading as="h1">Parking Spaces Over Time</Heading>
             <p>
-                Available parking spaces in multi storey carparks, display over time. The information is updated roughly every 5 minutes.
+                Available parking spaces in multi storey carparks, displayed over time. The information is updated roughly every 5 minutes.
             </p>
 
             <ChartWrapper
