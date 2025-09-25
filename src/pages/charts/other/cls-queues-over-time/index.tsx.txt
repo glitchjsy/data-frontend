@@ -78,7 +78,7 @@ function CLSQueuesChartsContent() {
         try {
             const response = await fetch(`${config.apiUrl}/cls-queues/graph?date=${selectedDate}`);
             setState("loaded");
-            setData((await response.json()).reverse());
+            setData((await response.json()).results.reverse());
         } catch (e) {
             setState("failed");
         }

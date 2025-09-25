@@ -1,0 +1,61 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Driving Test Results
+
+Returns driving test results for certain years between 1975 and 2017.
+
+```
+GET /v1/charts/driving-test-results
+```
+
+:::info NOTE
+This data is only used for [this chart](/charts/transport/driving-test-results) and does not necessarily conform to the same design patterns as the rest of the API.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "results": [
+        {
+          "date": "1975",
+          "totalPassed": "2933",
+          "totalFailed": "833"
+        },
+        {
+          "date": "1980",
+          "totalPassed": "3255",
+          "totalFailed": "1033"
+        }
+    ]
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Array|An array of `DrivingTestResult` records|
+
+#### DrivingTestResult
+| Key | Type | Description |
+|-----|------|-------------|
+|`date`|String|The year of observation|
+|`totalPassed`|String|Number of tests passed in that year|
+|`totalFailed`|String|Number of tests failed in that year|
+
+</TabItem>
+</Tabs>
+
+### Sources
+|Source|
+|------|
+|[opendata.gov.je](https://opendata.gov.je/dataset/practical-driving-test-results)|

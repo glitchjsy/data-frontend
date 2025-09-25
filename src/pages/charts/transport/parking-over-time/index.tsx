@@ -85,7 +85,7 @@ function ParkingChartsContent() {
         try {
             const response = await fetch(`${config.apiUrl}/carparks/spaces?date=${selectedDate}`);
             setState(ChartState.Loaded);
-            setData((await response.json()).reverse());
+            setData((await response.json()).results.reverse());
         } catch (e) {
             setState(ChartState.Failed);
         }
@@ -94,7 +94,7 @@ function ParkingChartsContent() {
     async function fetchDates() {
         try {
             const response = await fetch(`${config.apiUrl}/carparks/spaces/dates`);
-            setDates((await response.json()).reverse());
+            setDates((await response.json()).results.reverse());
         } catch (e) {
             setState(ChartState.Failed);
         }

@@ -32,7 +32,7 @@ export default function DrivingTestResultCharts() {
         try {
             const response = await fetch(`${config.apiUrl}/charts/driving-test-results`);
 
-            setData(await response.json());
+            setData((await response.json()).results);
             setLoaded(true);
         } catch (e: any) {
             setState(ChartState.Failed);

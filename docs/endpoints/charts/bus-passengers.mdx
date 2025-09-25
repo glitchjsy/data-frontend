@@ -1,0 +1,44 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Bus Passengers
+
+Returns total number of bus passengers between 2019 and 2024.
+
+```
+GET /v1/charts/bus-passengers
+```
+
+:::info NOTE
+This data is only used for [this chart](/charts/transport/bus-passengers-weekly) and does not necessarily conform to the same design patterns as the rest of the API.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "results": {
+      "2019-01-13": 73230,
+      "2019-01-20": 74190,
+      "2019-01-27": 75010,
+      "2019-02-03": 74890,
+      "2019-02-10": 75360,
+      "2019-02-17": 80690,
+      "2019-02-24": 73680,
+      "2019-03-03": 82670
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Sources
+|Source|
+|------|
+|[opendata.gov.je](https://opendata.gov.je/dataset/transport-statistics)|

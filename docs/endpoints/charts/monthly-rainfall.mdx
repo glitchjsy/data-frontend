@@ -1,0 +1,67 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Monthly Rainfall
+
+Returns information about monthly rainfall between 1894 and 2020.
+
+```
+GET /v1/charts/monthly-rainfall
+```
+
+:::info NOTE
+This data is only used for [this chart](/charts/weather/monthly-rainfall) and does not necessarily conform to the same design patterns as the rest of the API.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "results": [
+      {
+          "Year": 1894,
+          "Jan": 121.9,
+          "Feb": 44.1,
+          "Mar": 42.1,
+          "Apr": 83.6,
+          "May": 58.4,
+          "Jun": 43.9,
+          "Jul": 156.3,
+          "Aug": 99,
+          "Sep": 63.4,
+          "Oct": 59.6,
+          "Nov": 92.7,
+          "Dec": 48,
+          "YearTotalmm": 913
+        }
+    ]
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Array|An array of `MonthlyRainfall` records|
+
+#### MonthlyRainfall
+| Key | Type | Description |
+|-----|------|-------------|
+|`Year`|Number|The year of observation|
+|`Jan` – `Dec`|Number|Monthly rainfall in millimetres|
+|`YearTotalmm`|Number|Total rainfall for the year in millimetres|
+
+</TabItem>
+</Tabs>
+
+### Sources
+|Source|
+|------|
+|[opendata.gov.je](https://opendata.gov.je/dataset/rainfall)|

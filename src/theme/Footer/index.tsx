@@ -15,11 +15,6 @@ function Footer() {
                 <div className={styles.title}>
                     <a className={styles.glitch} href="https://glitch.je">Glitch.je</a>
                 </div>
-                <ul className={styles.items}>
-                    <li className={clsx(styles.item, styles.active)}><a href="https://data.glitch.je">Open Data</a></li>
-                    <li className={styles.item}><a href="https://qrcode.glitch.je">QR Code Generator</a></li>
-                    <li className={styles.item}><a href="https://clip.glitch.je">Clip</a></li>
-                </ul>
             </div>
         </div>
     );

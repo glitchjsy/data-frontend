@@ -58,7 +58,7 @@ export default function ParkingSpacesOverTime(props: Props) {
         setFailedLoadingSpaces(false);
         try {
             const response = await fetch(`https://data-api.glitch.je/v1/carparks/spaces?date=${selectedDate}`);
-            setData((await response.json()).reverse());
+            setData(((await response.json()).results).reverse());
         } catch (e) {
             console.error("Error fetching carpark spaces:", e);
             setFailedLoadingSpaces(true);
@@ -69,7 +69,7 @@ export default function ParkingSpacesOverTime(props: Props) {
         setFailedLoadingSpaces(false);
         try {
             const response = await fetch("https://data-api.glitch.je/v1/carparks/spaces/dates");
-            setDates((await response.json()).results.reverse());
+            setDates((await response.json()).results);
         } catch (e) {
             console.error("Error fetching carpark spaces:", e);
             setFailedLoadingSpaces(true);

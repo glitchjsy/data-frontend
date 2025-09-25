@@ -60,7 +60,7 @@ const items = [
     }
 ] as any[];
 
-export default function ChartsSidebar() {
+export default function AdminSidebar() {
     return (
         <aside
             className={clsx(

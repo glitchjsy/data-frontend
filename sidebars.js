@@ -49,9 +49,20 @@ const sidebars = {
             "endpoints/buses/stops",
           ]
         },
+        {
+          type: "category",
+          label: "Charts",
+          items: [
+            "endpoints/charts/parking-over-time",
+            "endpoints/charts/bus-passengers",
+            "endpoints/charts/driving-test-results",
+            "endpoints/charts/monthly-rainfall",
+            "endpoints/charts/road-traffic"
+          ]
+        },
         "endpoints/recycling/index",
         "endpoints/defibrillators/index",
-        "endpoints/product-recalls/index",
+        // "endpoints/product-recalls/index",
         "endpoints/toilets/index",
         "endpoints/eatsafe/index"
       ]

@@ -21,24 +21,26 @@ This is a sample response.
 
 ```json title="Status: 200 (OK)"
 {
-    "id": "f5d18a7b-2de4-44e1-8835-2abf233a596c",
-    "createdAt": "2024-06-11T10:02:48.000Z",
-    "name": "Minden Place MS",
-    "payByPhoneCode": "59815",
-    "type": "SHORT_STAY",
-    "surfaceType": "CONCRETE",
-    "multiStorey": true,
-    "latitude": 49.186156,
-    "longitude": -2.102991,
-    "spaces": 242,
-    "disabledSpaces": 5,
-    "parentChildSpaces": 4,
-    "electricChargingSpaces": 2,
-    "liveTrackingCode": "MINDENPL",
-    "notes": null,
-    "owner": {
-        "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
-        "name": "Government of Jersey"
+    "results": {
+        "id": "f5d18a7b-2de4-44e1-8835-2abf233a596c",
+        "createdAt": "2024-06-11T10:02:48.000Z",
+        "name": "Minden Place MS",
+        "payByPhoneCode": "59815",
+        "type": "SHORT_STAY",
+        "surfaceType": "CONCRETE",
+        "multiStorey": true,
+        "latitude": 49.186156,
+        "longitude": -2.102991,
+        "spaces": 242,
+        "disabledSpaces": 5,
+        "parentChildSpaces": 4,
+        "electricChargingSpaces": 2,
+        "liveTrackingCode": "MINDENPL",
+        "notes": null,
+        "owner": {
+            "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
+            "name": "Government of Jersey"
+        }
     }
 }
 ```
@@ -48,6 +50,11 @@ This is a sample response.
 <TabItem value="res-schema" label="Schema">
 
 #### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Object/Carpark|A `Carpark`. See example response below.|
+
+#### Carpark
 | Key | Type | Description |
 |-----|------|-------------|
 |`id`|UUID|A unique ID to represent this carpark|

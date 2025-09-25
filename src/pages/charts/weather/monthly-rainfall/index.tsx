@@ -35,7 +35,7 @@ export default function DrivingTestResultCharts() {
         try {
             const response = await fetch(`${config.apiUrl}/charts/monthly-rainfall`);
 
-            setData(await response.json());
+            setData((await response.json()).results);
             setLoaded(true);
         } catch (e: any) {
             setState(ChartState.Failed);

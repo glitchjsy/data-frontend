@@ -8,17 +8,17 @@ Returns live information about currently available parking spaces in certain mul
 This data is provided by the Government. See a working example: https://www.gov.je/Travel/Motoring/Parking/pages/carparkspaces.aspx
 
 ```
-GET /v1/carparks/live-spaces
+GET /v1/carparks/spaces
 ```
+
+:::info NOTE
+To retrieve parking numbers for a specific day and display in a chart, see [Parking Spaces Over Time](/docs/endpoints/charts/parking-over-time).
+:::
 
 #### Query Params
 |Param|Desription|
 |-----|----------|
 |`includeCarparkInfo`|If set to `true` then full Carpark info will be included with the response (see [Carparks schema](/docs/endpoints/carparks))|
-
-:::info
-The response we provide is slightly different than what the Government endpoint provides. This is done to ensure consistent formatting across our whole API.
-:::
 
 ### Response
 <Tabs>
@@ -43,8 +43,7 @@ This is a sample response.
       "status": "good",
       "open": true
     }
-  ],
-  "timestamp": "2023-08-29T02:57:26.000Z"
+  ]
 }
 ```
 
@@ -81,8 +80,7 @@ This is a sample response. See [Carparks schema](/docs/endpoints/carparks) for `
         "notes": null
       }
     }
-  ],
-  "timestamp": "2023-08-29T02:57:26.000Z"
+  ]
 }
 ```
 
@@ -94,7 +92,6 @@ This is a sample response. See [Carparks schema](/docs/endpoints/carparks) for `
 | Key | Type | Description |
 |-----|------|-------------|
 |`results`|Array|An array of `Carpark`s|
-|`timestamp`|String|ISO 8601 timestamp of when the data was last updated|
 
 #### Carpark
 | Key | Type | Description |
@@ -108,36 +105,6 @@ This is a sample response. See [Carparks schema](/docs/endpoints/carparks) for `
 
 </TabItem>
 </Tabs>
-
-<br/>
-
-### Differences from Government endpoint
-Here is a sample response from the Multi-Storey carpark spaces page on gov.je:
-
-```json title="http://sojpublicdata.blob.core.windows.net/sojpublicdata/carpark-data.json"
-{
-    "carparkData":{
-        "Jersey":{
-            "carpark":[
-                {
-                    "name":"Green Street",
-                    "code":"GREENST",
-                    "spaces":332,
-                    "type":"Long stay",
-                    "status":"good",
-                    "carparkOpen":true,
-                    "carparkInformation":"",
-                    "numberOfUnusableSpaces":0,
-                    "numberOfSpacesConsideredLow":43
-                }
-            ]
-        },
-        "Timestamp":"This information was updated at 03:32:48 on Tuesday 29 August"
-    }
-}
-```
-
-You can compare this response with the response from our API above.
 
 ### Sources
 |Source|

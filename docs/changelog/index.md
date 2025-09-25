@@ -2,6 +2,16 @@
 
 ## 2025
 ---
+### Thursday 25th September
+* Changed all API respones to return data from a root `results` array / object
+* Added documentation for the charts endpoints:
+  * [Parking Spaces Over Time](/docs/endpoints/charts/parking-over-time)
+  * [Bus Passengers](/docs/endpoints/charts/bus-passengers)
+  * [Driving Test Results](/docs/endpoints/charts/driving-test-results)
+  * [Monthly Rainfall](/docs/endpoints/charts/monthly-rainfall)
+  * [Road Traffic](/docs/endpoints/charts/road-traffic)
+* Updated footer to remove the other projects
+
 ### Tuesday 13th May
 * Fixed API health check endpoints
 * Updated About page

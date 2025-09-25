@@ -26,19 +26,21 @@ This is a sample response.
 
 ```json title="Status: 200 (OK)"
 {
-  "make": "Toyota",
-  "model": "RANGE ROVER VOGUE SE SDV8",
-  "type": "Panel Van",
-  "color": "White",
-  "cylinderCapacity": "2446 (cc)",
-  "weight": "Not known",
-  "co2Emissions": "Not known",
-  "fuelType": "HEAVY_OIL",
-  "firstRegisteredAt": "1996-03-22T00:00:00.000Z",
-  "firstRegisteredInJerseyAt": "1996-03-22T00:00:00.000Z",
-  "previousOwners": 6,
-  "previousTraders": 2,
-  "hash": "o2326982cbed5c7051e0171887df2db0d75b650aac9788d4f1628e9eb275db90"
+  "results": {
+    "make": "Toyota",
+    "model": "RANGE ROVER VOGUE SE SDV8",
+    "type": "Panel Van",
+    "color": "White",
+    "cylinderCapacity": "2446 (cc)",
+    "weight": "Not known",
+    "co2Emissions": "Not known",
+    "fuelType": "HEAVY_OIL",
+    "firstRegisteredAt": "1996-03-22T00:00:00.000Z",
+    "firstRegisteredInJerseyAt": "1996-03-22T00:00:00.000Z",
+    "previousOwners": 6,
+    "previousTraders": 2,
+    "hash": "o2326982cbed5c7051e0171887df2db0d75b650aac9788d4f1628e9eb275db90"
+  }
 }
 ```
 
@@ -46,6 +48,12 @@ This is a sample response.
 
 <TabItem value="res-schema" label="Schema">
 
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Object/Vehicle|A `Vehicle`. See example response below.|
+
+#### Vehicle
 | Key | Type | Description |
 |-----|------|-------------|
 |`make`|String|The vehicle make|

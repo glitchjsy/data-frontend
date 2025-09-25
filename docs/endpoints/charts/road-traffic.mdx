@@ -1,0 +1,62 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Road Traffic
+
+Returns information about road traffic on the overpass and tunnel between 2019 and 2022.
+Tunnel movements were only collected until 08/11/2020
+
+```
+GET /v1/charts/road-traffic
+```
+
+:::info NOTE
+This data is only used for [this chart](/charts/transport/road-traffic) and does not necessarily conform to the same design patterns as the rest of the API.
+:::
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "results": [
+        {
+          "date": "2019-01-13",
+          "tunnelMovements": "",
+          "overpassMovements": "221990"
+        },
+        {
+          "date": "2019-01-20",
+          "tunnelMovements": "",
+          "overpassMovements": "228180"
+        }
+    ]
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+| Key | Type | Description |
+|-----|------|-------------|
+|`results`|Array|An array of `RoadTraffic` records|
+
+#### RoadTraffic
+| Key | Type | Description |
+|-----|------|-------------|
+|`date`|String|The week-ending date of the traffic count (ISO 8601 format, e.g. `"2019-01-13"`)|
+|`tunnelMovements`|String|Number of vehicle movements through the tunnel (may be empty if data not collected)|
+|`overpassMovements`|String|Number of vehicle movements over the overpass|
+
+</TabItem>
+</Tabs>
+
+### Sources
+|Source|
+|------|
+|[opendata.gov.je](https://opendata.gov.je/dataset/transport-statistics)|
