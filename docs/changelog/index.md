@@ -2,6 +2,12 @@
 
 ## 2025
 ---
+### Saturday 27th September
+* Added admin dashboard and user / api token management
+* Added authentication
+* Added request tracking on the backend
+* Start cleaning up things under the hood
+
 ### Thursday 25th September
 * Changed all API respones to return data from a root `results` array / object
 * Added documentation for the charts endpoints:

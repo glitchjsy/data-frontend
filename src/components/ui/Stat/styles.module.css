@@ -1,0 +1,23 @@
+:root {
+    --box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+[data-theme="dark"] {
+    --box-shadow: rgba(255, 255, 255, 0.05) 0px 6px 24px 0px, rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+}
+
+.stat {
+    padding: 5px 10px;
+    border-radius: 8px;
+    min-width: 200px;
+    box-shadow: var(--box-shadow);
+}
+
+.name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.value {
+    font-size: 24px;
+}

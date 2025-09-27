@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import DocPageStyles from "@docusaurus/theme-classic/lib/theme/DocPage/Layout/styles.module.css";
 import AdminSidebar from "../AdminSidebar";
 import clsx from "clsx";
@@ -9,6 +9,7 @@ import MainStyles from "@docusaurus/theme-classic/lib/theme/DocPage/Layout/Main/
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
+import AdminNoAccess from "../AdminNoAccess";
 
 interface Props {
     title: string;
@@ -16,6 +17,31 @@ interface Props {
 }
 
 export default function AdminPageLayout({ children, title, subCategory }: PropsWithChildren<Props>) {
+    const [ok, setOk] = useState<boolean | null>(false);
+
+    useEffect(() => {
+        checkSession();
+    }, []);
+
+    const checkSession = async () => {
+        try {
+            const response = await fetch("https://data-api.glitch.je/me/session", { credentials: "include" });
+            const data = await response.json();
+
+            if (data && data.user?.siteAdmin) {
+                setOk(true);
+            } else {
+                setOk(false);
+            }
+        } catch {
+            setOk(false);
+        }
+    }
+
+    if (!ok) {
+        return <AdminNoAccess />
+    }
+
     return (
         <Layout title={title}>
             <div className={styles.adminHeader}>

@@ -8,7 +8,7 @@ import React from "react";
 const items = [
     {
         type: "link",
-        label: "Home",
+        label: "Dashboard",
         href: "/admin"
     },
     {

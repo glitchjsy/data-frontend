@@ -28,3 +28,25 @@
     --ifm-color-primary-lightest: #4fddbf;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.btn {
+    height: 30px;
+    font-size: 15px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--ifm-color-primary);
+    color: white;
+}
+
+.btn-red {
+    background: rgb(221, 30, 30);
+    color: white;
+}

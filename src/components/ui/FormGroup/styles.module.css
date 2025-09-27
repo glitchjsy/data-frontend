@@ -1,0 +1,26 @@
+.formGroup {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.formGroup input[type="email"],
+.formGroup input[type="password"],
+.formGroup input[type="text"],
+.formGroup select {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.formGroup input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+}
