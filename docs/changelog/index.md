@@ -5,6 +5,9 @@
 ### Sunday 28th September
 * Rename Bus Passengers chart page
 * Added links to the documentation on each chart page
+* Add the ability to save charts as an image
+* Add new error type to [Errors](/docs/errors) page
+* Change error response on API to return status code in the response body
 
 ### Saturday 27th September
 * Added admin dashboard and user / api token management
