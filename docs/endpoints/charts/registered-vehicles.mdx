@@ -1,0 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Registered Vehicles
+
+Returns total number of registered vehicles per year.
+
+```
+GET /v1/charts/registered-vehicles
+```
+
+:::info NOTE
+This data is only used for [this chart](/charts/transport/registered-vehicles) and does not necessarily conform to the same design patterns as the rest of the API.
+:::
+
+Figures include all motor vehicles including commercial and private vehicles.
+
+Figures up to 1993 include only taxed vehicles. Figures from 1994 onwards include all vehicles recorded on the DVS register at 31 December of each year.
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+    "results": {
+        "1966": "33809",
+        "1967": "35762",
+        "1968": "37346",
+        "1969": "39645",
+        "1970": "41372",
+        "1971": "42517",
+        "1972": "43894",
+        "1973": "45697",
+        "1974": "46741",
+        "1975": "48137"
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
+<h3><a href="/charts/transport/registered-vehicles">Click here to see it in action</a></h3>
+
+---
+
+### Sources
+|Source|
+|------|
+|[opendata.gov.je](https://opendata.gov.je/dataset/total-number-of-vehicles-registered-in-jersey)|

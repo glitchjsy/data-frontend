@@ -57,7 +57,8 @@ const sidebars = {
             "endpoints/charts/bus-passengers",
             "endpoints/charts/driving-test-results",
             "endpoints/charts/monthly-rainfall",
-            "endpoints/charts/road-traffic"
+            "endpoints/charts/road-traffic",
+            "endpoints/charts/registered-vehicles"
           ]
         },
         "endpoints/recycling/index",

@@ -32,6 +32,11 @@ const items = [
             },
             {
                 type: "link",
+                label: "Registered Vehicles",
+                href: "/charts/transport/registered-vehicles"
+            },
+            {
+                type: "link",
                 label: "Bus Passengers",
                 href: "/charts/transport/bus-passengers"
             },
@@ -44,7 +49,7 @@ const items = [
                 type: "link",
                 label: "Driving Test Results",
                 href: "/charts/transport/driving-test-results"
-            }
+            },
         ]
     },
     {
