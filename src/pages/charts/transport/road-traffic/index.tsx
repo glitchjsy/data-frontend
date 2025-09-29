@@ -47,6 +47,9 @@ export default function RoadTrafficCharts() {
         >
             <Heading as="h1">Road Traffic</Heading>
             <p>Road traffic on the underpass and tunnel between 2019 and 2022.</p>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/charts/road-traffic">documentation</a>.
+            </p>
 
             <div className={styles.pageWidth}>
                 <LineChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />

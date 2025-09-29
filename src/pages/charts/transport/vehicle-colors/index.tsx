@@ -69,7 +69,9 @@ export default function VehicleColourCharts() {
             subCategory="Transport"
         >
             <Heading as="h1">Vehicle Colours</Heading>
-            <p>Vehicle colours sorted by popularity.</p>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/vehicles/colors">documentation</a>.
+            </p>
 
             <div className={styles.pageWidth}>
                 <BarChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />

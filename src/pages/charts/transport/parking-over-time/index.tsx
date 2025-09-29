@@ -158,6 +158,9 @@ function ParkingChartsContent() {
             <p>
                 Available parking spaces in multi storey carparks, displayed over time. The information is updated roughly every 5 minutes.
             </p>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/charts/parking-over-time">documentation</a>.
+            </p>
 
             <ChartWrapper
                 state={state}

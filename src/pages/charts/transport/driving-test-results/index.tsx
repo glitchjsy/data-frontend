@@ -47,6 +47,9 @@ export default function DrivingTestResultCharts() {
         >
             <Heading as="h1">Driving Test Results</Heading>
             <p>Driving test results between 1975 and 2017.</p>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/charts/driving-test-results">documentation</a>.
+            </p>
 
             <div className={styles.pageWidth}>
                 <LineChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />

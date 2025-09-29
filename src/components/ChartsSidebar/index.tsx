@@ -32,8 +32,8 @@ const items = [
             },
             {
                 type: "link",
-                label: "Bus Passengers Weekly",
-                href: "/charts/transport/bus-passengers-weekly"
+                label: "Bus Passengers",
+                href: "/charts/transport/bus-passengers"
             },
             {
                 type: "link",

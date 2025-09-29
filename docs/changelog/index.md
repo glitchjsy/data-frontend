@@ -2,6 +2,10 @@
 
 ## 2025
 ---
+### Sunday 28th September
+* Rename Bus Passengers chart page
+* Added links to the documentation on each chart page
+
 ### Saturday 27th September
 * Added admin dashboard and user / api token management
 * Added authentication

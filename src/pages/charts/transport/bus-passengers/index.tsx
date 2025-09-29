@@ -46,8 +46,11 @@ export default function BusPassengersWeeklyCharts() {
             title="Bus Passengers Weekly"
             subCategory="Transport"
         >
-            <Heading as="h1">Bus Passengers Weekly</Heading>
-            <p>Bus passengers updated weekly.</p>
+            <Heading as="h1">Bus Passengers</Heading>
+            <p>Bus passenger statistics.</p>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/charts/bus-passengers">documentation</a>.
+            </p>
 
             <div className={styles.pageWidth}>
                 <LineChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />

@@ -48,6 +48,9 @@ export default function VehicleMakeCharts() {
             subCategory="Transport"
         >
             <Heading as="h1">Vehicle Makes</Heading>
+            <p>
+                To access this information programmatically, please see the <a href="/docs/endpoints/vehicles/makes">documentation</a>.
+            </p>
 
             <div className={styles.pageWidth}>
                 <Tabs>
