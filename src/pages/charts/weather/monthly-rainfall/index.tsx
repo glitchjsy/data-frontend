@@ -118,6 +118,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Monthly Rainfall"
             state={props.state}
             onRetry={props.onRetry}
         >

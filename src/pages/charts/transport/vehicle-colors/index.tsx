@@ -21,7 +21,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcEle
 
 const colorHexCodes = {
     "Blue": "#0000FF",
-    "White": "#D6D5D2",
+    "White": "#f8f7f5ff",
     "Silver": "#C0C0C0",
     "Red": "#FF0000",
     "Black": "#000000",
@@ -75,7 +75,7 @@ export default function VehicleColourCharts() {
 
             <div className={styles.pageWidth}>
                 <BarChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
-                {/* <PieChartDisplay data={data} state={state} onRetry={loadData} /> */}
+                {/* <PieChartDisplay data={data} state={state} setState={setState} loaded={loaded} onRetry={loadData} /> */}
             </div>
         </ChartsPageLayout>
     )
@@ -109,6 +109,7 @@ function BarChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Vehicle Colours"
             state={props.state}
             onRetry={props.onRetry}
         >
@@ -152,6 +153,7 @@ function PieChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Vehicle Colours"
             state={props.state}
             onRetry={props.onRetry}
         >

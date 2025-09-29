@@ -105,6 +105,7 @@ function BarChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Vehicle Makes"
             state={props.state}
             onRetry={props.onRetry}
         >

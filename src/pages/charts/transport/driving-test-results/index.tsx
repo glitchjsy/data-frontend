@@ -73,18 +73,18 @@ function LineChartDisplay(props: ChartDisplayProps) {
                     {
                         label: "Failed Tests",
                         data: totalFailed,
-                        borderColor: "blue",
-                        backgroundColor: "blue",
+                        borderColor: "#b30505",
+                        backgroundColor: "#b30505",
                         fill: true,
-                        tension: 0.2,
+                        tension: 0.2
                     },
                     {
                         label: "Passed Tests",
                         data: totalPassword,
-                        borderColor: "purple",
-                        backgroundColor: "purple",
+                        borderColor: "green",
+                        backgroundColor: "green",
                         fill: true,
-                        tension: 0.2,
+                        tension: 0.2
                     }
                 ]
             });
@@ -94,6 +94,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Driving Test Results"
             state={props.state}
             onRetry={props.onRetry}
         >
@@ -103,24 +104,24 @@ function LineChartDisplay(props: ChartDisplayProps) {
                     responsive: true,
                     plugins: {
                         legend: {
-                            position: "top",
+                            position: "top"
                         },
                         title: {
                             display: true,
-                            text: "Driving Test Results",
+                            text: "Driving Test Results"
                         }
                     },
                     scales: {
                         x: {
                             title: {
                                 display: true,
-                                text: "Date",
+                                text: "Date"
                             }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: "Results",
+                                text: "Results"
                             },
                             beginAtZero: false
                         }

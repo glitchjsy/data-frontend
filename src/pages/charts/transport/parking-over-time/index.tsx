@@ -163,6 +163,7 @@ function ParkingChartsContent() {
             </p>
 
             <ChartWrapper
+                title="Parking Spaces Over Time"
                 state={state}
                 onRetry={() => fetchDates()}
             >

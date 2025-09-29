@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapperNew";
+import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 // @ts-ignore
 import { Line } from "react-chartjs-2";
 // @ts-ignore

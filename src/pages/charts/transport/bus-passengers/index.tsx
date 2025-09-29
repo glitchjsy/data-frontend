@@ -47,7 +47,6 @@ export default function BusPassengersWeeklyCharts() {
             subCategory="Transport"
         >
             <Heading as="h1">Bus Passengers</Heading>
-            <p>Bus passenger statistics.</p>
             <p>
                 To access this information programmatically, please see the <a href="/docs/endpoints/charts/bus-passengers">documentation</a>.
             </p>
@@ -192,6 +191,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Bus Passengers"
             state={props.state}
             onRetry={props.onRetry}
         >
@@ -232,28 +232,28 @@ function LineChartDisplay(props: ChartDisplayProps) {
                     responsive: true,
                     plugins: {
                         legend: {
-                            position: "top",
+                            position: "top"
                         },
                         title: {
                             display: true,
-                            text: "Passengers Over Time",
-                        },
+                            text: "Passengers Over Time"
+                        }
                     },
                     scales: {
                         x: {
                             title: {
                                 display: true,
-                                text: "Date",
-                            },
+                                text: "Date"
+                            }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: "Passengers",
+                                text: "Passengers"
                             },
-                            beginAtZero: false,
-                        },
-                    },
+                            beginAtZero: false
+                        }
+                    }
                 }}
             />
         </ChartWrapper>

@@ -76,7 +76,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
                         borderColor: "blue",
                         backgroundColor: "blue",
                         fill: false,
-                        tension: 0.4,
+                        tension: 0.4
                     },
                     {
                         label: "Overpass Movements",
@@ -84,7 +84,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
                         borderColor: "purple",
                         backgroundColor: "purple",
                         fill: false,
-                        tension: 0.4,
+                        tension: 0.4
                     }
                 ]
             });
@@ -94,6 +94,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     return (
         <ChartWrapper
+            title="Road Traffic"
             state={props.state}
             onRetry={props.onRetry}
         >
@@ -103,28 +104,28 @@ function LineChartDisplay(props: ChartDisplayProps) {
                     responsive: true,
                     plugins: {
                         legend: {
-                            position: "top",
+                            position: "top"
                         },
                         title: {
                             display: true,
-                            text: "Tunnel vs Overpass Movements",
-                        },
+                            text: "Tunnel vs Overpass Movements"
+                        }
                     },
                     scales: {
                         x: {
                             title: {
                                 display: true,
-                                text: "Date",
-                            },
+                                text: "Date"
+                            }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: "Movements",
+                                text: "Movements"
                             },
-                            beginAtZero: false,
-                        },
-                    },
+                            beginAtZero: false
+                        }
+                    }
                 }}
             />
         </ChartWrapper>
