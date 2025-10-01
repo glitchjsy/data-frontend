@@ -2,6 +2,9 @@
 
 ## 2025
 ---
+### Thursday 2nd October
+* Remove `buildDate` and `tenure` from [Public Toilets](/docs/endpoints/toilets) response as it doesn't really serve a purpose
+
 ### Sunday 28th September
 * Rename Bus Passengers chart page
 * Added links to the documentation on each chart page

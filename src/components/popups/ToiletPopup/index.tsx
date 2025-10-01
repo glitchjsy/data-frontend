@@ -7,7 +7,7 @@ export default function ToiletPopup({ location }) {
     return (
         <div className={styles.popup}>
             <p className={styles.popupName}>{location.name}</p>
-            <p className={styles.popupParish}>{location.parish} {location.buildDate && `| Built in ${location.buildDate}`}</p>
+            <p className={styles.popupParish}>{location.parish}</p>
 
             <div className={styles.facilitiesWrapper}>
                 {location.facilities.map(item => <p className={styles.facility}>{item}</p>)}

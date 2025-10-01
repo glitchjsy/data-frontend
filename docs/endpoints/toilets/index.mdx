@@ -29,12 +29,10 @@ This is a sample response.
       "parish": "Trinity",
       "latitude": 49.23886800,
       "longitude": -2.08166393,
-      "tenure": "FREEHOLD",
       "owner": {
         "id": "6060f60d-17a1-49c8-aa4a-c268721a806a",
         "name": "Government of Jersey"
       },
-      "buildDate": 1958,
       "facilities": [
         "BEACH_SHOWER"
       ],
@@ -79,8 +77,6 @@ This is a sample response.
 |`parish`|String|The parish the toilet is located in|
 |`latitude`|Number|The latitude of the toilet|
 |`longitude`|Number|The longitude of the toilet|
-|`tenure`|String|See `Tenure` below|
-|`buildDate`|Number/null|The year the toilet was built. A few items have a null value as the build date is not currently known|
 |`facilities`|Array|An array of facilities in this toilet. See `Facilities` below for enum values|
 |`female`|Object/null|See `Female` below. Null if there is no female toilets|
 |`male`|Object/null|See `Male` below. Null if there is no male toilets|
@@ -121,13 +117,6 @@ Same as the `Female` object above, but with the added `urinals` property.
 |`BEACH_SHOWER`|Shower facilities are available|
 |`BABY_CHANGING`|Baby changing facilities are available|
 |`DISABLED`|Disabled facilities are available|
-
-#### Tenure
-| Key | Description |
-|-----|-------------|
-|`FREEHOLD`||
-|`LEASEHOLD`||
-|`PARISH`||
 
 #### Period Products
 | Key |
