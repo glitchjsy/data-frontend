@@ -66,7 +66,7 @@ export const mapItems: MapItems = {
 
 async function _fetchData(route: string): Promise<any[]> {
     try {
-        const baseUrl = "http://localhost:8080/v1"//"https://data-api.glitch.je/v1";
+        const baseUrl = "https://data-api.glitch.je/v1";
         const response = await fetch(`${baseUrl}/${route}`);
 
         if (!response.ok) {
