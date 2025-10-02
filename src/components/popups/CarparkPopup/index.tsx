@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
+import { FaChildren, FaSquareParking, FaWheelchairMove } from "react-icons/fa6";
+import { FaChargingStation } from "react-icons/fa";
 
 export default function CarparkPopup({ location }) {
     const formatType = () => {
@@ -10,18 +12,36 @@ export default function CarparkPopup({ location }) {
         }
         return location.type;
     }
+
+    const formatSurfaceType = () => {
+        switch (location.surfaceType) {
+            case "TARMAC": return "Tarmac";
+            case "CONCRETE": return "Concrete";
+            case "GRAVEL": return "Gravel";
+        }
+        return location.surfaceType;
+    }
+
     return (
         <div className={styles.popup}>
-            <p className={styles.popupName}>{location.name}</p>
-            <p className={styles.popupType}>{formatType()}</p>
+            <p className={styles.name}>{location.name}</p>
+            <p className={styles.p}><strong>Type:</strong> {formatType()}</p>
+            <p className={styles.p}><strong>Surface:</strong> {formatSurfaceType()}</p>
+            {location.payByPhoneCode && <p className={styles.p}><strong>PayByPhone Code:</strong> {location.payByPhoneCode}</p>}
 
-            <ul className={styles.popupList}>
-                <li><strong>Surface: </strong>{location.surfaceType}</li>
-                <li><strong>Spaces:</strong> {location.spaces}</li>
-                <li><strong>Disabled Spaces:</strong> {location.disabledSpaces}</li>
-                <li><strong>Parent/Child Spaces:</strong> {location.parentChildSpaces}</li>
-                <li><strong>Electric Charging Spaces:</strong> {location.electricChargingSpaces}</li>
-            </ul>
+            <div className={styles.spacesDivider} />
+
+            <p className={styles.p}><FaSquareParking /> <strong>Spaces:</strong> {location.spaces}</p>
+            <p className={styles.p}><FaWheelchairMove /> <strong>Disabled Spaces:</strong> {location.disabledSpaces}</p>
+            <p className={styles.p}><FaChildren /> <strong>Parent/Child Spaces:</strong> {location.parentChildSpaces}</p>
+            <p className={styles.p}><FaChargingStation /> <strong>EV Spaces:</strong> {location.electricChargingSpaces}</p>
+
+            <div className={styles.spacesDivider} />
+
+            <p className={styles.p}><strong>Multi Storey:</strong> {location.multiStorey ? "Yes" : "No"}</p>
+            <p className={styles.p}><strong>Live Tracking Available:</strong> {location.liveTrackingCode ? "Yes" : "No"}</p>
+
+            <p className={styles.owner}>Owned by {location.owner?.name}</p>
         </div>
     )
 }

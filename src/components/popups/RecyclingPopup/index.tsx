@@ -20,14 +20,16 @@ export default function RecyclingPopup({ location }) {
 
     return (
         <div className={styles.popup}>
-            <p className={styles.popupName}>{location.location}</p>
-            <p className={styles.servicesName}>Services:</p>
+            <p className={styles.location}>{location.location}</p>
+            <p className={styles.parish}><strong>Parish:</strong> {location.parish}</p>
+            <p className={styles.servicesName}>Services available:</p>
 
             <ul className={styles.services}>
                 {location.services.map(loc => (
                     <li>{getServiceName(loc)}</li>
                 ))}
             </ul>
+            {location.notes && <p className={styles.notes}><strong>Notes:</strong> {location.notes}</p>}
         </div>
     )
 }

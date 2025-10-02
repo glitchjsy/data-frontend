@@ -2,24 +2,30 @@
     padding: 0 10px;
 }
 
-.popupName {
+.popup > p {
+    margin: 0;
+}
+
+.name {
     font-size: 20px;
-    margin: 0;
+    font-weight: bold;
+    color: black;
 }
 
-.popupType {
-    margin: 0;
-}
-
-.popupList {
-    margin-top: 6px;
-    padding: 0;
-}
-
-.popupList > li {
+.shelterAvailable {
     font-size: 14px;
-    color: gray;
-    list-style: none;
-    margin: 0 !important;
-    line-height: 18px;
+    background-color: rgb(17, 193, 82);
+    border-radius: 8px;
+    padding: 0 10px;
+    color: white;
+    text-align: center;
+}
+
+.shelterUnavailable {
+    font-size: 14px;
+    background-color: rgb(193, 17, 17);
+    border-radius: 8px;
+    padding: 0 10px;
+    color: white;
+    text-align: center;
 }
