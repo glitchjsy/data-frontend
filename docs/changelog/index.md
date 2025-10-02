@@ -6,6 +6,8 @@
 * Remove `buildDate` and `tenure` from [Public Toilets](/docs/endpoints/toilets) response as it doesn't really serve a purpose
 * Update [Public Access Defibrillators](/docs/endpoints/defibrillators) documentation and backend data to be accurate and change the response
 * Improve display of other map popups
+* Fix map errors when running in development mode
+* Improve [About](/about) page
 
 ### Sunday 28th September
 * Rename Bus Passengers chart page

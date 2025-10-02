@@ -1,8 +1,10 @@
 # About
 
-**Jersey Open Data** (still figuring out a name) is a project dedicated to making open data from Jersey, Channel Islands, easily accessible and developer-friendly. Whether you're a data enthusiast, researcher, or developer, our goal is to provide you with live and comprehensive data in a consistent, predictable format.
+**OpenData.je** is a project dedicated to making open data from Jersey, Channel Islands, easily accessible and developer-friendly. Whether you're a data enthusiast, researcher, or developer, our goal is to provide you with comprehensive data in a consistent, predictable format.
 
-Check out our [API Documentation](/docs/getting-started) to get started.
+If you are a developer, check out our [API Documentation](/docs/getting-started) to get started.
+
+<br/>
 
 ## Why?
 
@@ -19,6 +21,13 @@ We provide data in JSON format, with plans to support XML in the future. The dat
 - **"Static Data"** refers to data that is rarely updated and is collected manually.
 :::
 
+<br/>
+
+## I'm not a developer!
+That's okay, we are building out our features for non-developers. See [Charts](/charts) and the [Map](/map).
+
+<br/>
+
 ## Get Involved
 If you'd like to contribute to the codebase, please see the following GitHub repos:
 
@@ -26,13 +35,12 @@ If you'd like to contribute to the codebase, please see the following GitHub rep
 * [Data Frontend](https://github.com/glitchjsy/data-frontend) - A docusaurus site that hosts API documentation for the Data API
 * [Data Fetcher](https://github.com/glitchjsy/data-fetcher) - A program to periodically fetch data such as available carpark spaces
 
-If you'd like to get in touch about anything else, email [luke@glitch.je](mailto:luke@glitch.je?subject=Glitch.je%20Open%20Data).
+If you'd like to get in touch about anything else (questions, suggestions, etc), email [luke@glitch.je](mailto:luke@glitch.je?subject=Glitch.je%20Open%20Data).  
+  
+<br/>
 
 ## Sponsors & Donations
 If you'd like to donate to sponsor the project to help cover hosting costs and my development time, you can do so with the following links:
 
 * [GitHub Sponsors (monthly)](https://github.com/sponsors/lukeeey)
 * [Buy Me a Coffee (one-time)](https://buymeacoffee.com/lukeeey)
-
-## Future Plans
-In the near future I will add a load of charts for most of the data on [opendata.gov.je](https://opendata.gov.je), similar to how [data.gg](https://data.gg/charts) works. Work on this has [already begun](/charts).
