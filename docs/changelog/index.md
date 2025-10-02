@@ -4,6 +4,7 @@
 ---
 ### Thursday 2nd October
 * Remove `buildDate` and `tenure` from [Public Toilets](/docs/endpoints/toilets) response as it doesn't really serve a purpose
+* Update [Public Access Defibrillators](/docs/endpoints/defibrillators) documentation and backend data to be accurate and change the response
 
 ### Sunday 28th September
 * Rename Bus Passengers chart page

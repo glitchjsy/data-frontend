@@ -2,26 +2,47 @@
     padding: 0 10px;
 }
 
-.popupAddress {
+.popup > p {
     margin: 0;
+}
+
+.address {
     font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
 }
 
-.popupParish {
-    margin: 0;
+.streetName {
+    font-size: 14px;
 }
 
-.popupPadNumber {
-    margin: 0;
+.parish {
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.padNumberTitle {
+    font-size: 14px;
+    border-top: 1px solid #ececec;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.padNumber {
+    height: 30px;
+    width: 30px;
     color: white;
     background-color: purple;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 5px;
     border-radius: 50%;
 }
 
-.popupNotes {
-    margin: 0;
+.notes {
     font-size: 12px;
-    color: gray;
+    border-top: 1px solid #ececec;
+    padding-top: 5px;
+    margin-top: 10px !important;
 }

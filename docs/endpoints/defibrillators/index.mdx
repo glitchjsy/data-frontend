@@ -19,28 +19,30 @@ This is a sample response.
 
 ```json title="Status: 200 (OK)"
 {
-  "results": [
-   {
-      "id": "090deca0-c5c1-41e3-a0cc-b26bcc1568a0",
-      "createdAt": "2024-06-17T07:19:19.000Z",
-      "location": "The Royal Yacht",
-      "parish": "St Helier",
-      "padNumber": 27,
-      "latitude": 49.18289800,
-      "longitude": -2.10869400,
-      "notes": ""
-    },
-    {
-      "id": "0275441a-febc-4503-b4b9-286883bb91a1",
-      "createdAt": "2024-06-17T07:19:19.000Z",
-      "location": "Grande Marche",
-      "parish": "St Peter",
-      "padNumber": 9,
-      "latitude": 49.21240500,
-      "longitude": -2.18229600,
-      "notes": ""
-    }
-  ]
+    "results": [
+        {
+          "id": "3173bc1e-814c-4528-8103-e29524d9f28e",
+          "location": "Mourier House",
+          "streetName": "Halkett Place",
+          "parish": "St Helier",
+          "postCode": "JE2 4GH",
+          "padNumber": 1,
+          "latitude": 49.183754,
+          "longitude": -2.104754,
+          "notes": null
+        },
+        {
+          "id": "eb62b6f0-67fd-4950-a1a4-a7af9ada3949",
+          "location": "COOP Locale Sion",
+          "streetName": "La Grande Route de St Jean",
+          "parish": "St John",
+          "postCode": "JE3 4FL",
+          "padNumber": 10,
+          "latitude": 49.221126,
+          "longitude": -2.114217,
+          "notes": null
+        }
+    ]
 }
 ```
 
@@ -56,11 +58,13 @@ This is a sample response.
 | Key | Type | Description |
 |-----|------|-------------|
 |`id`|UUID|A unique ID to represent this defibrillator|
-|`location`|String|A short description of the location of this defibrillator|
+|`location`|String|A short description of the defibrillator location|
+|`streetName`|String|The name of the street the defibrillator is on|
 |`parish`|String|The parish the defibrillator is located in|
-|`padNumber`|Number/null|The defibrillator number|
-|`latitude`|Number/null|The latitude of the defibrillator|
-|`longitude`|Number/null|The longitude of the defibrillator|
+|`postCode`|String|The post code the defibrillator is located in|
+|`padNumber`|Number|The defibrillator number|
+|`latitude`|Number|The latitude of the defibrillator|
+|`longitude`|Number|The longitude of the defibrillator|
 |`notes`|String/null|Any notes|
 
 </TabItem>
