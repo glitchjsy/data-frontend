@@ -2,6 +2,11 @@
 
 ## 2025
 ---
+### Saturday 4th October
+* Update vehicles data with the latest from June 2025
+* Remove `hash` from vehicles endpoint
+* Change the response data for the Vehicle Lookup endpoint
+
 ### Thursday 2nd October
 * Remove `buildDate` and `tenure` from [Public Toilets](/docs/endpoints/toilets) response as it doesn't really serve a purpose
 * Update [Public Access Defibrillators](/docs/endpoints/defibrillators) documentation and backend data to be accurate and change the response

@@ -6,7 +6,7 @@ import TabItem from "@theme/TabItem";
 Returns live vehicle information from a number plate.
 
 ```jsx
-GET /v1/vehicles/{PLATE}
+GET /v1/vehicles/lookup/{PLATE}
 ```
 
 |Param|Type|Desription|
@@ -28,18 +28,16 @@ This is a sample response.
 {
   "results": {
     "make": "Toyota",
-    "model": "RANGE ROVER VOGUE SE SDV8",
     "type": "Panel Van",
     "color": "White",
-    "cylinderCapacity": "2446 (cc)",
-    "weight": "Not known",
-    "co2Emissions": "Not known",
+    "cylinderCapacity": 2446,
+    "weight": null,
+    "co2Emissions": null,
     "fuelType": "HEAVY_OIL",
-    "firstRegisteredAt": "1996-03-22T00:00:00.000Z",
-    "firstRegisteredInJerseyAt": "1996-03-22T00:00:00.000Z",
+    "firstRegisteredAt": "1996-03-22",
+    "firstRegisteredInJerseyAt": "1996-03-22",
     "previousOwners": 6,
-    "previousTraders": 2,
-    "hash": "o2326982cbed5c7051e0171887df2db0d75b650aac9788d4f1628e9eb275db90"
+    "previousTraders": 2
   }
 }
 ```
@@ -57,7 +55,6 @@ This is a sample response.
 | Key | Type | Description |
 |-----|------|-------------|
 |`make`|String|The vehicle make|
-|`model`|String/null|The vehicle model. This may be null as the vehicle search api doesn't provide this and we need to cross reference it with open data|
 |`type`|String|The vehicle category|
 |`color`|String|The vehicle colour|
 |`cylinderCapacity`|Number/null|The vehicle cylinder capacity|
@@ -68,7 +65,6 @@ This is a sample response.
 |`firstRegisteredInJerseyAt`|String|The date the vehicle was first registered in Jersey|
 |`previousOwners`|Number|The number of previous owners|
 |`previousTraders`|Number|The numbers of previous owners who are traders|
-|`hash`|String|A SHA-256 hash of multiple properties above. This is used to cross reference vehicle information from the Search API and open data|
 
 ---
 #### Enums
@@ -90,11 +86,15 @@ This is a sample response.
 </TabItem>
 </Tabs>
 
+---
+
+### [Click here to see it in action](/tools/vehicle-search)
+
+---
+
 ### Sources
 |Source|
 |------|
 |[Vehicle Search Website][vehiclesearch]|
-|[All Vehicles Registered in Jersey on opendata.gov.je][vehiclesdata] (For retrieving vehicle model)|
 
 [vehiclesearch]: https://vehicle-search.gov.je/
-[vehiclesdata]: https://opendata.gov.je/dataset/registered-vehicles

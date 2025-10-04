@@ -1,5 +1,5 @@
 .formGroup {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     display: flex;
     flex-direction: column;
 }
@@ -14,7 +14,7 @@
 .formGroup input[type="text"],
 .formGroup select {
     padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;

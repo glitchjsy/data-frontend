@@ -161,6 +161,8 @@ function ParkingChartsContent() {
             <p>
                 To access this information programmatically, please see the <a href="/docs/endpoints/charts/parking-over-time">documentation</a>.
             </p>
+            
+            {/* Before 3rd October 2025, there is some spotiness in the data collection due to issues on the backend. This has been resolved. */}
 
             <ChartWrapper
                 title="Parking Spaces Over Time"

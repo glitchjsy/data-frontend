@@ -68,11 +68,6 @@ const config = {
                         position: "left",
                         label: "Documentation",
                     },
-                    // {
-                    //     href: "/examples",
-                    //     position: "left",
-                    //     label: "Examples",
-                    // },
                     {
                         href: "/map",
                         position: "left",
@@ -82,6 +77,16 @@ const config = {
                         href: "/charts",
                         position: "left",
                         label: "Charts",
+                    },
+                    {
+                        type: "dropdown",
+                        label: "Tools",
+                        items: [
+                            {
+                                href: "/tools/vehicle-search",
+                                label: "Vehicle Search"
+                            }
+                        ]
                     },
                     {
                         href: "/about",
