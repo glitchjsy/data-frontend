@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,6 +18,7 @@ interface Props {
     title: string;
     state: ChartState;
     onRetry: () => void;
+    onSave?: () => void;
     enableDateControls?: boolean;
     enableViewMode?: boolean;
     initialViewMode?: ViewMode;
@@ -60,16 +61,6 @@ export default function ChartWrapper(props: PropsWithChildren<Props>) {
             </div>
         );
     }
-
-    const saveChartAsImage = () => {
-        const chart = document.querySelector("canvas");
-        if (chart) {
-            const link = document.createElement("a");
-            link.href = (chart as HTMLCanvasElement).toDataURL("image/png");
-            link.download = "chart.png";
-            link.click();
-        }
-    };
 
     return (
         <div className={!fullscreen ? undefined : styles.fullscreen}>
@@ -127,9 +118,11 @@ export default function ChartWrapper(props: PropsWithChildren<Props>) {
                     {fullscreen ? <><FaX /> Exit Fullscreen</> : <><FaExpand /> Fullscreen</>}
                 </button>
 
-                <button className={styles.toolbarButton} onClick={saveChartAsImage}>
-                    <FaSave /> Save Image
-                </button>
+                {props.onSave && (
+                    <button className={styles.toolbarButton} onClick={props.onSave}>
+                        <FaSave /> Save Image
+                    </button>
+                )}
             </div>
         </div>
     );

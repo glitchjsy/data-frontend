@@ -155,13 +155,19 @@ function LineChartDisplay(props: ChartDisplayProps) {
                 </div>
 
                 {chartData ? (
-                    <Line data={chartData} options={{
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'top' },
-                            title: { display: true, text: 'Monthly Rainfall' }
-                        }
-                    }} />
+                    <div className={styles.chartContainer}>
+                        <Line
+                            data={chartData}
+                            options={{
+                                responsive: true,
+                                plugins: {
+                                    legend: { position: 'top' },
+                                    title: { display: true, text: 'Monthly Rainfall' }
+                                },
+                                maintainAspectRatio: false
+                            }}
+                        />
+                    </div>
                 ) : (
                     <p>Loading chart...</p>
                 )}

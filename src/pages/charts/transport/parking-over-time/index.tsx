@@ -1,6 +1,6 @@
 import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
 import Heading from "@theme/Heading";
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 // @ts-ignore
 import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -98,7 +98,7 @@ function ParkingChartsContent() {
         } catch (e) {
             setState(ChartState.Failed);
         }
-    }   
+    }
 
     function formatChartData() {
         const groupedData = data.reduce((acc, item) => {
@@ -152,6 +152,8 @@ function ParkingChartsContent() {
         }
     }
 
+    const chartRef = useRef<any>();
+
     return (
         <>
             <Heading as="h1">Parking Spaces Over Time</Heading>
@@ -161,13 +163,22 @@ function ParkingChartsContent() {
             <p>
                 To access this information programmatically, please see the <a href="/docs/endpoints/charts/parking-over-time">documentation</a>.
             </p>
-            
+
             {/* Before 3rd October 2025, there is some spotiness in the data collection due to issues on the backend. This has been resolved. */}
 
             <ChartWrapper
                 title="Parking Spaces Over Time"
                 state={state}
                 onRetry={() => fetchDates()}
+                onSave={() => {
+                    if (chartRef.current) {
+                        const base64Image = chartRef.current.toBase64Image();
+                        const link = document.createElement("a");
+                        link.href = base64Image;
+                        link.download = "chart.png";
+                        link.click();
+                    }
+                }}
             >
                 <div className={styles.chartOptionsWrapper}>
                     <div>
@@ -208,25 +219,31 @@ function ParkingChartsContent() {
 
                 {selectedDate ? <p style={{ marginTop: "10px", marginBottom: 0 }}><strong>{new Date(selectedDate).toLocaleDateString("en-GB", { weekday: "long", year: "numeric", month: "long", day: "2-digit" })}</strong></p> : false}
 
-                <Line
-                    data={formatChartData() as any}
-                    options={{
-                        plugins: {
-                            title: {
-                                display: true,
-                                position: "top"
+                <div className={styles.chartContainer}>
+                    <Line
+                        ref={chartRef}
+                        data={formatChartData() as any}
+                        options={{
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    position: "top"
+                                },
+                                legend: {
+                                    display: true,
+                                    position: "top"
+                                },
+                                tooltip: {
+                                    mode: "point",
+                                    intersect: false
+                                }
                             },
-                            legend: {
-                                display: true,
-                                position: "top"
-                            },
-                            tooltip: {
-                                mode: "point",
-                                intersect: false
-                            }
-                        }
-                    }}
-                />
+                            maintainAspectRatio: false
+                        }}
+                        width={3000}
+                        height={1400}
+                    />
+                </div>
             </ChartWrapper>
         </>
     )

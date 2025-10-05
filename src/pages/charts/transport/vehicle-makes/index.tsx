@@ -33,7 +33,7 @@ export default function VehicleMakeCharts() {
     async function loadData() {
         try {
             const response = await fetch(`${config.apiUrl}/vehicles/makes`);
-            
+
             setData((await response.json()).results);
             setLoaded(true);
         } catch (e: any) {
@@ -109,15 +109,19 @@ function BarChartDisplay(props: ChartDisplayProps) {
             state={props.state}
             onRetry={props.onRetry}
         >
-            <Bar
-                data={chartData}
-                options={{
-                    responsive: true,
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }}
-            />
+            <div className={styles.chartContainer}>
+                <Bar
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        scales: {
+                            y: { beginAtZero: true }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                    height={400}
+                />
+            </div>
         </ChartWrapper>
     )
 }

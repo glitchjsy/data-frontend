@@ -21,3 +21,15 @@
 .chartOptionsWrapper button:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .chartContainer {
+        height: 500px;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .chartContainer canvas {
+        min-width: 100%;
+    }
+}

@@ -68,7 +68,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
     useEffect(() => {
         if (props.loaded && props.data) {
-            const labels = Object.keys(props.data); 
+            const labels = Object.keys(props.data);
             const values = Object.values(props.data).map((value: string) => parseInt(value));
 
             setChartData({
@@ -95,36 +95,40 @@ function LineChartDisplay(props: ChartDisplayProps) {
             state={props.state}
             onRetry={props.onRetry}
         >
-            <Line
-                data={chartData}
-                options={{
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: "top"
-                        },
-                        title: {
-                            display: true,
-                            text: "Total Registered Vehicles Per Year"
-                        }
-                    },
-                    scales: {
-                        x: {
+            <div className={styles.chartContainer}>
+                <Line
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
                             title: {
                                 display: true,
-                                text: "Year"
+                                text: "Total Registered Vehicles Per Year"
                             }
                         },
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Vehicles"
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Year"
+                                }
                             },
-                            beginAtZero: false
-                        }
-                    }
-                }}
-            />
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: "Vehicles"
+                                },
+                                beginAtZero: false
+                            }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                    height={500}
+                />
+            </div>
         </ChartWrapper>
     );
 }

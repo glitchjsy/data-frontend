@@ -226,36 +226,40 @@ function LineChartDisplay(props: ChartDisplayProps) {
 
             <p className={styles.selectedDate}>{getDate()}</p>
 
-            <Line
-                data={chartData}
-                options={{
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: "top"
-                        },
-                        title: {
-                            display: true,
-                            text: "Passengers Over Time"
-                        }
-                    },
-                    scales: {
-                        x: {
+            <div className={styles.chartContainer}>
+                <Line
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
                             title: {
                                 display: true,
-                                text: "Date"
+                                text: "Passengers Over Time"
                             }
                         },
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Passengers"
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Date"
+                                }
                             },
-                            beginAtZero: false
-                        }
-                    }
-                }}
-            />
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: "Passengers"
+                                },
+                                beginAtZero: false
+                            }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                    height={600}
+                />
+            </div>
         </ChartWrapper>
     )
 }

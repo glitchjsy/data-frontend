@@ -64,7 +64,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
     useEffect(() => {
         if (props.loaded) {
             const labels = props.data.map(item => item.date);
-            const totalFailed = props.data.map(item => item.totalFailed ? parseInt(item.totalFailed) : null); 
+            const totalFailed = props.data.map(item => item.totalFailed ? parseInt(item.totalFailed) : null);
             const totalPassword = props.data.map(item => parseInt(item.totalPassed));
 
             setChartData({
@@ -98,36 +98,39 @@ function LineChartDisplay(props: ChartDisplayProps) {
             state={props.state}
             onRetry={props.onRetry}
         >
-            <Line
-                data={chartData}
-                options={{
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: "top"
-                        },
-                        title: {
-                            display: true,
-                            text: "Driving Test Results"
-                        }
-                    },
-                    scales: {
-                        x: {
+            <div className={styles.chartContainer}>
+                <Line
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
                             title: {
                                 display: true,
-                                text: "Date"
+                                text: "Driving Test Results"
                             }
                         },
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Results"
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Date"
+                                }
                             },
-                            beginAtZero: false
-                        }
-                    }
-                }}
-            />
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: "Results"
+                                },
+                                beginAtZero: false
+                            }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                />
+            </div>
         </ChartWrapper>
     )
 }

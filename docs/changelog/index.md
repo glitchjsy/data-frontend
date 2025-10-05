@@ -7,6 +7,7 @@
 * Remove `hash` from vehicles endpoint
 * Change the response data for the Vehicle Lookup endpoint
 * Add [Vehicle Search](/tools/vehicle-search) tool
+* Improve display of charts on mobile
 
 ### Thursday 2nd October
 * Remove `buildDate` and `tenure` from [Public Toilets](/docs/endpoints/toilets) response as it doesn't really serve a purpose

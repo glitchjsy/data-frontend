@@ -64,7 +64,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
     useEffect(() => {
         if (props.loaded) {
             const labels = props.data.map(item => item.date);
-            const tunnelMovements = props.data.map(item => item.tunnelMovements ? parseInt(item.tunnelMovements) : null); 
+            const tunnelMovements = props.data.map(item => item.tunnelMovements ? parseInt(item.tunnelMovements) : null);
             const overpassMovements = props.data.map(item => parseInt(item.overpassMovements));
 
             setChartData({
@@ -98,36 +98,40 @@ function LineChartDisplay(props: ChartDisplayProps) {
             state={props.state}
             onRetry={props.onRetry}
         >
-            <Line
-                data={chartData}
-                options={{
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: "top"
-                        },
-                        title: {
-                            display: true,
-                            text: "Tunnel vs Overpass Movements"
-                        }
-                    },
-                    scales: {
-                        x: {
+            <div className={styles.chartContainer}>
+                <Line
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
                             title: {
                                 display: true,
-                                text: "Date"
+                                text: "Tunnel vs Overpass Movements"
                             }
                         },
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Movements"
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Date"
+                                }
                             },
-                            beginAtZero: false
-                        }
-                    }
-                }}
-            />
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: "Movements"
+                                },
+                                beginAtZero: false
+                            }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                    height={550}
+                />
+            </div>
         </ChartWrapper>
     )
 }

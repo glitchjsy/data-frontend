@@ -113,15 +113,19 @@ function BarChartDisplay(props: ChartDisplayProps) {
             state={props.state}
             onRetry={props.onRetry}
         >
-            <Bar
-                data={chartData}
-                options={{
-                    responsive: true,
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }}
-            />
+            <div className={styles.chartContainer}>
+                <Bar
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        scales: {
+                            y: { beginAtZero: true }
+                        },
+                        maintainAspectRatio: false
+                    }}
+                    height={400}
+                />
+            </div>
         </ChartWrapper>
     )
 }
