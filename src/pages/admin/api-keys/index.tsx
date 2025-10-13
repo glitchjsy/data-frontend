@@ -14,7 +14,7 @@ export default function ApiKeysPage(): JSX.Element {
 
     const fetchKeys = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/admin/tokens", { credentials: "include" });
+            const response = await fetch("https://api.opendata.je/admin/tokens", { credentials: "include" });
             setKeys((await response.json()).results);
         } catch (e) {
             console.error("Error fetching API keys:", e);
@@ -26,7 +26,7 @@ export default function ApiKeysPage(): JSX.Element {
             const shouldDelete = confirm("Are you sure you want to delete this API key?");
 
             if (shouldDelete) {
-                const response = await fetch(`https://data-api.glitch.je/admin/tokens/${token.id}`, {
+                const response = await fetch(`https://api.opendata.je/admin/tokens/${token.id}`, {
                     method: "DELETE",
                     credentials: "include"
                 });
@@ -116,7 +116,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/admin/users", { credentials: "include" });
+            const response = await fetch("https://api.opendata.je/admin/users", { credentials: "include" });
             setUsers((await response.json()).results);
         } catch (e) {
             console.error("Error fetching users:", e);
@@ -128,7 +128,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
             if (userId === "" || userId === "null") {
                 return;
             }
-            const response = await fetch(`https://data-api.glitch.je/admin/tokens/new`, {
+            const response = await fetch(`https://api.opendata.je/admin/tokens/new`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ userId, summary })

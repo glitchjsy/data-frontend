@@ -2,6 +2,9 @@
 
 ## 2025
 ---
+### Monday 13th October
+* Update API url to `opendata.je`
+
 ### Saturday 4th October
 * Update vehicles data with the latest from June 2025
 * Remove `hash` from vehicles endpoint

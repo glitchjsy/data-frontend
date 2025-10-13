@@ -17,7 +17,7 @@ export default function UsersPage(): JSX.Element {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/admin/users", { credentials: "include" });
+            const response = await fetch("https://api.opendata.je/admin/users", { credentials: "include" });
             setUsers((await response.json()).results);
         } catch (e) {
             console.error("Error fetching users:", e);
@@ -29,7 +29,7 @@ export default function UsersPage(): JSX.Element {
             const shouldDelete = confirm("Are you sure you want to delete this user?");
 
             if (shouldDelete) {
-                const response = await fetch(`https://data-api.glitch.je/admin/users/${user.id}`, {
+                const response = await fetch(`https://api.opendata.je/admin/users/${user.id}`, {
                     method: "DELETE",
                     credentials: "include" 
                 });
@@ -122,7 +122,7 @@ function EditModal({ isOpen, onClose, user }: EditModalProps) {
 
     const updateUser = async () => {
         try {
-            const response = await fetch(`https://data-api.glitch.je/admin/users/${user?.id}`, {
+            const response = await fetch(`https://api.opendata.je/admin/users/${user?.id}`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ email, siteAdmin })
@@ -181,7 +181,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
 
     const createUser = async () => {
         try {
-            const response = await fetch(`https://data-api.glitch.je/admin/users/new`, {
+            const response = await fetch(`https://api.opendata.je/admin/users/new`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ email, password, siteAdmin })

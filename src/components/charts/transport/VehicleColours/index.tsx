@@ -19,7 +19,7 @@ export default function VehicleColours() {
     const fetchData = async () => {
         setFailedLoading(true);
         try {
-            const response = await fetch(`https://data-api.glitch.je/v1/vehicles/stats/colors`);
+            const response = await fetch(`https://api.opendata.je/v1/vehicles/stats/colors`);
             const data = await response.json();
 
             const labels = Object.keys(data.results);

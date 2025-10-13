@@ -16,7 +16,7 @@ export default function ApiRequestsOverTimeChart() {
     const fetchChartData = async (date?: Date) => {
         try {
             setLoaded(false);
-            let url = "https://data-api.glitch.je/admin/stats/daily-requests";
+            let url = "https://api.opendata.je/admin/stats/daily-requests";
             if (date) {
                 const month = date.getMonth() + 1;
                 const year = date.getFullYear();

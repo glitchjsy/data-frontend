@@ -10,7 +10,7 @@ export default function Login(): JSX.Element {
 
     const login = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/auth/login", {
+            const response = await fetch("https://api.opendata.je/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

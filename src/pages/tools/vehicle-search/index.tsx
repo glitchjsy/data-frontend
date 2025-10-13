@@ -28,7 +28,7 @@ export default function VehicleSearchPage(): JSX.Element {
         try {
             setError("");
 
-            const response = await fetch(`https://data-api.glitch.je/v1/vehicles/lookup/${plate}`);
+            const response = await fetch(`https://api.opendata.je/v1/vehicles/lookup/${plate}`);
             const data = await response.json();
 
             if (response.ok) {

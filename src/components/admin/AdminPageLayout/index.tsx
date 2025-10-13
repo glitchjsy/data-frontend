@@ -25,7 +25,7 @@ export default function AdminPageLayout({ children, title, subCategory }: PropsW
 
     const checkSession = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/me/session", { credentials: "include" });
+            const response = await fetch("https://api.opendata.je/me/session", { credentials: "include" });
             const data = await response.json();
 
             if (data && data.user?.siteAdmin) {

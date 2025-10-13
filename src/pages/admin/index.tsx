@@ -9,7 +9,7 @@ export default function AdminDashboard(): JSX.Element {
 
     const fetchStats = async () => {
         try {
-            const response = await fetch("https://data-api.glitch.je/admin/stats", { credentials: "include" });
+            const response = await fetch("https://api.opendata.je/admin/stats", { credentials: "include" });
             const data = (await response.json()).results;
             setApiUptime(data.apiUptime);
         } catch (e) {
