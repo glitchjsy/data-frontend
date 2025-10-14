@@ -11,7 +11,8 @@ import config from "../../../../../config.json";
 import styles from "./styles.module.css";
 
 interface ChartDisplayProps {
-    data: any;
+    dataLastYear: any;
+    dataThisYear: any;
     state: ChartState;
     setState: (state: ChartState) => void;
     loaded: boolean;
@@ -31,7 +32,7 @@ export default function ParkingStatsCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`http://localhost:8080/v1/charts/parking-stats`);
+            const response = await fetch(`${config.apiUrl}/charts/parking-stats`);
 
             setData((await response.json()).results);
             setLoaded(true);
@@ -49,52 +50,87 @@ export default function ParkingStatsCharts() {
             <Heading as="h1">Parking Statistics</Heading>
 
             <div className={styles.pageWidth}>
-                <CarparkAvailabilityChart data={data?.availabilityThisYear} state={state} setState={setState} loaded={loaded} onRetry={loadData} />
+                <CarparkAvailabilityChart
+                    dataLastYear={data?.availabilityLastYear}
+                    dataThisYear={data?.availabilityThisYear}
+                    state={state}
+                    setState={setState}
+                    loaded={loaded}
+                    onRetry={loadData}
+                />
             </div>
         </ChartsPageLayout>
     )
 }
 
-function CarparkAvailabilityChart({ data, loaded, state, setState, onRetry }: ChartDisplayProps) {
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function CarparkAvailabilityChart({
+    dataThisYear,
+    dataLastYear,
+    loaded,
+    state,
+    setState,
+    onRetry
+}: ChartDisplayProps) {
     const [chartData, setChartData] = useState<any>({});
     const [selectedCarpark, setSelectedCarpark] = useState<string>("");
     const [carparkOptions, setCarparkOptions] = useState<string[]>([]);
 
     useEffect(() => {
-        if (loaded && data?.length) {
-            const options: string[] = Array.from(new Set(data.map(d => d.name)));
+        if (loaded && (dataThisYear?.length || dataLastYear?.length)) {
+            const namesThisYear = dataThisYear?.map(d => d.name) || [];
+            const namesLastYear = dataLastYear?.map(d => d.name) || [];
+            const options: string[] = Array.from(new Set([...namesThisYear, ...namesLastYear]));
             setCarparkOptions(options);
 
             if (!selectedCarpark && options.length > 0) {
                 setSelectedCarpark(options[0]);
             }
         }
-    }, [loaded, data]);
+    }, [loaded, dataThisYear, dataLastYear]);
 
     useEffect(() => {
-        if (loaded && data?.length && selectedCarpark) {
-            const carparkRows = data.filter(d => d.name === selectedCarpark);
+        if (!loaded || !selectedCarpark) return;
 
-            // Sort by year & month
-            carparkRows.sort((a, b) => (a.year - b.year) || (a.month - b.month));
+        const thisYearRows = dataThisYear.filter(d => d.name === selectedCarpark);
+        const lastYearRows = dataLastYear.filter(d => d.name === selectedCarpark);
 
-            const labels = carparkRows.map(r => `${r.month}/${r.year}`);
-            const values = carparkRows.map(r => r.availabilityPercentage);
+        const fullLabels: string[] = [];
+        const thisYearValues: number[] = [];
+        const lastYearValues: number[] = [];
 
-            setChartData({
-                labels,
-                datasets: [
-                    {
-                        label: selectedCarpark,
-                        data: values,
-                        backgroundColor: "rgba(54, 162, 235, 0.7)"
-                    }
-                ]
-            });
+        const currentYear = new Date().getFullYear();
+        const prevYear = currentYear - 1;
 
-            setState(ChartState.Loaded);
+        for (let month = 1; month <= 12; month++) {
+            fullLabels.push(monthNames[month - 1]);
+
+            const thisRow = thisYearRows.find(d => d.year === currentYear && d.month === month);
+            const lastRow = lastYearRows.find(d => d.year === prevYear && d.month === month);
+
+            thisYearValues.push(thisRow ? thisRow.availabilityPercentage : 0);
+            lastYearValues.push(lastRow ? lastRow.availabilityPercentage : 0);
         }
-    }, [loaded, data, selectedCarpark]);
+
+        setChartData({
+            labels: fullLabels,
+            datasets: [
+                {
+                    label: "Last Year",
+                    data: lastYearValues,
+                    backgroundColor: "rgba(255, 99, 132, 0.4)"
+                },
+                {
+                    label: "This Year",
+                    data: thisYearValues,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+            ]
+        });
+
+        setState(ChartState.Loaded);
+    }, [loaded, selectedCarpark, dataThisYear, dataLastYear]);
 
     return (
         <div>
@@ -106,14 +142,14 @@ function CarparkAvailabilityChart({ data, loaded, state, setState, onRetry }: Ch
                     onChange={e => setSelectedCarpark(e.target.value)}
                 >
                     <option value="">-- Select --</option>
-                    {carparkOptions.map((code: string) => (
+                    {carparkOptions.map(code => (
                         <option key={code} value={code}>{code}</option>
                     ))}
                 </select>
             </div>
 
             <ChartWrapper
-                title="Carpark Availability"
+                title="Carpark Availability - This Year vs Last Year"
                 state={state}
                 onRetry={onRetry}
             >
@@ -124,24 +160,21 @@ function CarparkAvailabilityChart({ data, loaded, state, setState, onRetry }: Ch
                         plugins: {
                             legend: { position: "top" },
                             title: { display: true, text: "Carpark Availability (%)" },
-                            // @ts-ignore
                             datalabels: {
                                 anchor: "center",
                                 align: "center",
                                 color: "black",
-                                font: {
-                                    weight: "bold"
-                                },
-                                formatter: (value: any) => `${value}%`
+                                font: { weight: "bold" },
+                                formatter: (value: any) => `${value}%`,
+                                rotation: -90 
                             }
                         },
                         scales: {
-                            x: { title: { display: true, text: "Month/Year" } },
+                            x: { title: { display: true, text: "Month" }, stacked: false },
                             y: { title: { display: true, text: "Availability %" }, beginAtZero: true, max: 100 }
                         }
                     }}
                 />
-
             </ChartWrapper>
         </div>
     );

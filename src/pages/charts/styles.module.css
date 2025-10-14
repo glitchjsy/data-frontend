@@ -1,0 +1,67 @@
+:root {
+    --card-color: black;
+    --card-border-color: #ececec;
+    --card-muted-color: #555454;
+    --card-hover-bg-color: #f2f0f0;
+}
+
+[data-theme='dark'] {
+    --card-color: white;
+    --card-border-color: #616060;
+    --card-muted-color: #aeabab;
+    --card-hover-bg-color: #292929;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.sectionTitle {
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid #d8d6d6;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.sectionContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    text-decoration: none;
+    color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    width: fit-content;
+    transition: transform 100ms ease-in-out;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card:hover {
+    text-decoration: none;
+    color: var(--card-color);
+    transform: scale(1.02);
+    background-color: var(--card-hover-bg-color);
+}
+
+.cardColor {
+    width: 5px;
+    background-color: green;
+}
+
+.cardContent {
+    padding: 10px 20px;
+}
+
+.cardTitle {
+    font-weight: bold;
+}
+
+.cardSummary {
+    color: var(--card-muted-color);
+    font-size: 14px;
+}

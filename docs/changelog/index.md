@@ -8,6 +8,7 @@
 * Added [FOI Search](/tools/foi-search) tool
 * Add [FOI Stats](/charts/other/foi-stats) charts page
 * Fix multiple chart display on desktop
+* Add [Parking Stats](/charts/transport/parking-stats) chart page with 1 chart to start off with
 
 ### Saturday 4th October
 * Update vehicles data with the latest from June 2025

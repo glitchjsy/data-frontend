@@ -44,6 +44,10 @@
     gap: 10px;
 }
 
+.resultsCompact {
+    gap: 5px;
+}
+
 .request {
     padding-bottom: 10px;
     cursor: pointer;
@@ -53,8 +57,16 @@
     background-color: #f9f7f7;
 }
 
+.requestCompact {
+    padding-bottom: 5px;
+}
+
 .reqTitle {
     font-weight: bold;
+}
+
+.reqTitleCompact {
+    font-weight: 600;
 }
 
 .reqAuthor {
@@ -74,6 +86,11 @@
 .reqDate>span {
     font-weight: 600;
     color: var(--ifm-color-primary);
+}
+
+.reqDateCompact {
+    font-size: 13px;
+    margin-top: -5px;
 }
 
 .request:not(:last-child) {

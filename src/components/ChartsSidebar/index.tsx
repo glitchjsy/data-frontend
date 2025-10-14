@@ -1,9 +1,10 @@
-import { PropSidebarItem, PropSidebarItemCategory } from "@docusaurus/plugin-content-docs";
 import SidebarStyles from "@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/styles.module.css";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import DocSidebar from "@theme/DocSidebar";
 import clsx from "clsx";
 import React from "react";
+import styles from "./styles.module.css";
+import { useLocation } from "@docusaurus/router";
 
 const items = [
     {
@@ -19,6 +20,11 @@ const items = [
                 type: "link",
                 label: "Parking Spaces Over Time",
                 href: "/charts/transport/parking-over-time"
+            },
+            {
+                type: "link",
+                label: "Parking Statistics",
+                href: "/charts/transport/parking-stats"
             },
             {
                 type: "link",
@@ -76,17 +82,21 @@ const items = [
     }
 ] as any[];
 
-export default function AdminSidebar() {
+export default function ChartsSidebar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return (
         <aside
             className={clsx(
                 ThemeClassNames.docs.docSidebarContainer,
-                SidebarStyles.docSidebarContainer
+                SidebarStyles.docSidebarContainer,
+                styles.sidebar
             )}
         >
             <DocSidebar
                 sidebar={items}
-                path="/charts"
+                path={currentPath}
                 onCollapse={function (): void {
                     throw new Error("Function not implemented.");
                 }}

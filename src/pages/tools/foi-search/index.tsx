@@ -1,9 +1,10 @@
 import FormGroup from "@site/src/components/ui/FormGroup";
 import Layout from "@theme/Layout";
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
 import { FaX } from "react-icons/fa6";
+import clsx from "clsx";
 
 export default function FoiSearchPage(): JSX.Element {
     const [error, setError] = useState("");
@@ -32,12 +33,50 @@ export default function FoiSearchPage(): JSX.Element {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
+    const [compactView, setCompactView] = useState(false);
+
+    const firstRun = useRef(true);
 
     useEffect(() => {
+        if (firstRun.current) {
+            firstRun.current = false;
+            return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+
+        if (requestModalOpen && selectedRequestId !== null) {
+            params.set("id", String(selectedRequestId));
+        } else {
+            params.delete("id");
+        }
+
+        const newQuery = params.toString();
+        const newUrl = window.location.pathname + (newQuery ? `?${newQuery}` : "");
+        history.replaceState(null, "", newUrl);
+    }, [requestModalOpen, selectedRequestId]);
+
+    useEffect(() => {
+        setRequestModalOpen(false);
+
+        const params = new URLSearchParams(window.location.search);
+        const value = params.get("id");
+
+        if (value) {
+            if (!isNaN(Number(value))) {
+                setSelectedRequestId(value);
+                setRequestModalOpen(true);
+            } else {
+                params.delete("id");
+                const newQuery = params.toString();
+                const newUrl = window.location.pathname + (newQuery ? `?${newQuery}` : "");
+                history.replaceState(null, "", newUrl);
+            }
+        }
+
         fetchAuthors();
         fetchProducers();
         fetchTotalsPerYear();
-        setRequestModalOpen(false);
     }, []);
 
     useEffect(() => {
@@ -276,19 +315,19 @@ export default function FoiSearchPage(): JSX.Element {
                                 <p>Showing {results.length} of {totalResults} results</p>
                             )}
 
-                            <div className={styles.results}>
+                            <div className={clsx(styles.results, compactView ? styles.resultsCompact : undefined)}>
                                 {results.map(request => (
                                     <div
                                         key={request.id}
-                                        className={styles.request}
+                                        className={clsx(styles.request, compactView ? styles.requestCompact : undefined )}
                                         onClick={(e) => {
                                             setSelectedRequestId(request.id);
                                             setRequestModalOpen(true);
                                         }}
                                     >
-                                        <div className={styles.reqTitle}>{request.title}</div>
-                                        <div className={styles.reqAuthor}>Authored by {request.author} &bull; Produced by {request.producer}</div>
-                                        <div className={styles.reqDate}>
+                                        <div className={compactView ? styles.reqTitleCompact : styles.reqTitle}>{request.title}</div>
+                                        {!compactView && <div className={styles.reqAuthor}>Authored by {request.author} &bull; Produced by {request.producer}</div>}
+                                        <div className={compactView ? styles.reqDateCompact : styles.reqDate}>
                                             Published on <span>{new Date(request.publishDate).toLocaleDateString("en-GB", {
                                                 weekday: "long",
                                                 day: "numeric",
@@ -441,7 +480,7 @@ function RequestModal({ open, onClose, requestId }: any) {
                                 year: "numeric",
                             })}</span>
                         </div>
-                        <br/>
+                        <br />
                         <div className={styles.requestHeadingModal}>Request</div>
                         <div dangerouslySetInnerHTML={{ __html: request.requestText }}></div>
 
