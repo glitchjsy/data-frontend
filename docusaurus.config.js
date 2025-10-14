@@ -83,6 +83,10 @@ const config = {
                         label: "Tools",
                         items: [
                             {
+                                href: "/tools/foi-search",
+                                label: "FOI Seach"
+                            },
+                            {
                                 href: "/tools/vehicle-search",
                                 label: "Vehicle Search"
                             }

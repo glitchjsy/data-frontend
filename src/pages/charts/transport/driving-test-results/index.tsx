@@ -110,7 +110,8 @@ function LineChartDisplay(props: ChartDisplayProps) {
                             title: {
                                 display: true,
                                 text: "Driving Test Results"
-                            }
+                            },
+                            datalabels: null
                         },
                         scales: {
                             x: {
@@ -129,6 +130,7 @@ function LineChartDisplay(props: ChartDisplayProps) {
                         },
                         maintainAspectRatio: false
                     }}
+                    height={400}
                 />
             </div>
         </ChartWrapper>

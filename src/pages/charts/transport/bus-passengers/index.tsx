@@ -238,7 +238,8 @@ function LineChartDisplay(props: ChartDisplayProps) {
                             title: {
                                 display: true,
                                 text: "Passengers Over Time"
-                            }
+                            },
+                            datalabels: null
                         },
                         scales: {
                             x: {

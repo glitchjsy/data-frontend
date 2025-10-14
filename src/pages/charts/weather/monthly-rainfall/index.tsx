@@ -162,10 +162,12 @@ function LineChartDisplay(props: ChartDisplayProps) {
                                 responsive: true,
                                 plugins: {
                                     legend: { position: 'top' },
-                                    title: { display: true, text: 'Monthly Rainfall' }
+                                    title: { display: true, text: 'Monthly Rainfall' },
+                                    datalabels: null
                                 },
                                 maintainAspectRatio: false
                             }}
+                            height={400}
                         />
                     </div>
                 ) : (

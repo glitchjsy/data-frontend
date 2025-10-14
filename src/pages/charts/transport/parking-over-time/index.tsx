@@ -236,12 +236,12 @@ function ParkingChartsContent() {
                                 tooltip: {
                                     mode: "point",
                                     intersect: false
-                                }
+                                },
+                                datalabels: null
                             },
                             maintainAspectRatio: false
                         }}
-                        width={3000}
-                        height={1400}
+                        height={600}
                     />
                 </div>
             </ChartWrapper>

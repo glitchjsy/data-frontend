@@ -10,6 +10,7 @@
     padding: 5px 10px;
     border-radius: 8px;
     min-width: 200px;
+    width: fit-content;
     box-shadow: var(--box-shadow);
 }
 

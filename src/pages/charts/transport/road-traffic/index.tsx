@@ -110,7 +110,8 @@ function LineChartDisplay(props: ChartDisplayProps) {
                             title: {
                                 display: true,
                                 text: "Tunnel vs Overpass Movements"
-                            }
+                            },
+                            datalabels: null
                         },
                         scales: {
                             x: {

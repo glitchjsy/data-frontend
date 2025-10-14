@@ -3,7 +3,11 @@
 ## 2025
 ---
 ### Monday 13th October
-* Update API url to `opendata.je`
+* Update base url to `opendata.je` and API url to `api.opendata.je`
+* Add FOI requests fetching and API endpoints (documentation coming soon)
+* Added [FOI Search](/tools/foi-search) tool
+* Add [FOI Stats](/charts/other/foi-stats) charts page
+* Fix multiple chart display on desktop
 
 ### Saturday 4th October
 * Update vehicles data with the latest from June 2025

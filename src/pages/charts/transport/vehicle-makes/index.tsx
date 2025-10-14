@@ -4,6 +4,7 @@ import Heading from "@theme/Heading";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import React, { useEffect, useState } from "react";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 // @ts-ignore
 import { Bar, Pie } from "react-chartjs-2";
 // @ts-ignore
@@ -19,7 +20,7 @@ interface ChartDisplayProps {
     onRetry: () => void;
 }
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement, ChartDataLabels);
 
 export default function VehicleMakeCharts() {
     const [data, setData] = useState({});
@@ -117,7 +118,18 @@ function BarChartDisplay(props: ChartDisplayProps) {
                         scales: {
                             y: { beginAtZero: true }
                         },
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        plugins: {
+                             datalabels: {
+                                anchor: "end",
+                                align: "top",
+                                color: "black",
+                                font: {
+                                    weight: "bold"
+                                },
+                                formatter: (value: any) => value
+                            }
+                        }
                     }}
                     height={400}
                 />

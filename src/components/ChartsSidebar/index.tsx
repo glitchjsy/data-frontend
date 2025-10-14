@@ -62,6 +62,17 @@ const items = [
                 href: "/charts/weather/monthly-rainfall"
             }
         ]
+    },
+    {
+        type: "category",
+        label: "Other",
+        items: [
+            {
+                type: "link",
+                label: "Freedom of Information Statistics",
+                href: "/charts/other/foi-stats"
+            }
+        ]
     }
 ] as any[];
 

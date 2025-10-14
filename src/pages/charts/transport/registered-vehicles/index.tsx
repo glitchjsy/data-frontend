@@ -107,7 +107,8 @@ function LineChartDisplay(props: ChartDisplayProps) {
                             title: {
                                 display: true,
                                 text: "Total Registered Vehicles Per Year"
-                            }
+                            },
+                            datalabels: null
                         },
                         scales: {
                             x: {

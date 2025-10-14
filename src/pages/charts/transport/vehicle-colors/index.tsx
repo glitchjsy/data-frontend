@@ -2,6 +2,7 @@ import ChartsPageLayout from "@site/src/components/ChartsPageLayout";
 import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 // @ts-ignore
 import { Bar, Pie } from "react-chartjs-2";
 // @ts-ignore
@@ -17,7 +18,7 @@ interface ChartDisplayProps {
     onRetry: () => void;
 }
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement, ChartDataLabels);
 
 const colorHexCodes = {
     "Blue": "#0000FF",
@@ -121,7 +122,18 @@ function BarChartDisplay(props: ChartDisplayProps) {
                         scales: {
                             y: { beginAtZero: true }
                         },
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        plugins: {
+                             datalabels: {
+                                anchor: "end",
+                                align: "top",
+                                color: "black",
+                                font: {
+                                    weight: "bold"
+                                },
+                                formatter: (value: any) => value
+                            }
+                        }
                     }}
                     height={400}
                 />
