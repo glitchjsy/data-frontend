@@ -1,10 +1,9 @@
+import { useLocation } from "@docusaurus/router";
 import SidebarStyles from "@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/styles.module.css";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import DocSidebar from "@theme/DocSidebar";
 import clsx from "clsx";
 import React from "react";
-import styles from "./styles.module.css";
-import { useLocation } from "@docusaurus/router";
 
 const items = [
     {
@@ -15,6 +14,7 @@ const items = [
     {
         type: "category",
         label: "Transport",
+        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",
@@ -61,6 +61,7 @@ const items = [
     {
         type: "category",
         label: "Weather",
+        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",
@@ -72,6 +73,7 @@ const items = [
     {
         type: "category",
         label: "Other",
+        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",
@@ -90,8 +92,7 @@ export default function ChartsSidebar() {
         <aside
             className={clsx(
                 ThemeClassNames.docs.docSidebarContainer,
-                SidebarStyles.docSidebarContainer,
-                styles.sidebar
+                SidebarStyles.docSidebarContainer
             )}
         >
             <DocSidebar

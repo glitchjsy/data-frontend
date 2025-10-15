@@ -50,3 +50,18 @@
     background: rgb(221, 30, 30);
     color: white;
 }
+
+/* Charts sidebar things */
+.charts-sidebar-category > div:hover {
+    background: none;
+}
+
+.charts-sidebar-category > div > a {
+    border-bottom: 1px solid #ececec;
+    font-weight: bold;
+    color: black;
+}
+
+.charts-sidebar-category > div > a:hover {
+    color: black;
+}

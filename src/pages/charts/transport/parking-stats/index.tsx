@@ -153,28 +153,32 @@ function CarparkAvailabilityChart({
                 state={state}
                 onRetry={onRetry}
             >
-                <Bar
-                    data={chartData}
-                    options={{
-                        responsive: true,
-                        plugins: {
-                            legend: { position: "top" },
-                            title: { display: true, text: "Carpark Availability (%)" },
-                            datalabels: {
-                                anchor: "center",
-                                align: "center",
-                                color: "black",
-                                font: { weight: "bold" },
-                                formatter: (value: any) => `${value}%`,
-                                rotation: -90 
-                            }
-                        },
-                        scales: {
-                            x: { title: { display: true, text: "Month" }, stacked: false },
-                            y: { title: { display: true, text: "Availability %" }, beginAtZero: true, max: 100 }
-                        }
-                    }}
-                />
+                <div className={styles.chartContainer}>
+                    <Bar
+                        data={chartData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: { position: "top" },
+                                title: { display: true, text: "Carpark Availability (%)" },
+                                datalabels: {
+                                    anchor: "center",
+                                    align: "center",
+                                    color: "black",
+                                    font: { weight: "bold" },
+                                    formatter: (value: any) => `${value}%`,
+                                    rotation: -90
+                                }
+                            },
+                            scales: {
+                                x: { title: { display: true, text: "Month" }, stacked: false },
+                                y: { title: { display: true, text: "Availability %" }, beginAtZero: true, max: 100 }
+                            },
+                            maintainAspectRatio: false
+                        }}
+                        height={400}
+                    />
+                </div>
             </ChartWrapper>
         </div>
     );

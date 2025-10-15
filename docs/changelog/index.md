@@ -2,6 +2,11 @@
 
 ## 2025
 ---
+### Wednesday 15th October
+* Add court data fetching in the background (not yet available via the API until further data is received)
+* Fix charts page sidebar new styles on mobile
+* Completely rewrite the `data-fetcher` tool
+
 ### Monday 13th October
 * Update base url to `opendata.je` and API url to `api.opendata.je`
 * Add FOI requests fetching and API endpoints (documentation coming soon)
