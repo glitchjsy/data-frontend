@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import ChartWrapper, { ChartState } from "@site/src/components/ChartWrapper";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 // @ts-ignore
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 // @ts-ignore
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement } from "chart.js";
 import styles from "./styles.module.css";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, ChartDataLabels, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, BarElement, Title, Tooltip, ChartDataLabels, Legend);
 
-export default function ApiRequestsOverTimeChart() {
+export default function TopApiEndpointsChart() {
     const [chartData, setChartData] = useState<any>({});
     const [selectedMonth, setSelectedMonth] = useState(new Date());
     const [loaded, setLoaded] = useState(false);
@@ -18,7 +18,7 @@ export default function ApiRequestsOverTimeChart() {
     const fetchChartData = async (date?: Date) => {
         try {
             setLoaded(false);
-            let url = "https://api.opendata.je/admin/stats/daily-requests";
+            let url = "https://api.opendata.je/admin/stats/top-endpoints";
             if (date) {
                 const month = date.getMonth() + 1;
                 const year = date.getFullYear();
@@ -40,14 +40,14 @@ export default function ApiRequestsOverTimeChart() {
 
     useEffect(() => {
         if (loaded) {
-            const labels = chartData.map((item: any) => item.day);
+            const labels = chartData.map((item: any) => item.path);
             const totals = chartData.map((item: any) => parseInt(item.total));
 
             setChartData({
                 labels,
                 datasets: [
                     {
-                        label: "API Requests",
+                        label: "Requests",
                         data: totals,
                         borderColor: "green",
                         backgroundColor: "green",
@@ -77,7 +77,7 @@ export default function ApiRequestsOverTimeChart() {
 
     return (
         <ChartWrapper
-            title="API Requests"
+            title="Top 20 API Endpoints"
             state={chartState}
             onRetry={() => fetchChartData(selectedMonth)}
             enableDateControls
@@ -93,17 +93,22 @@ export default function ApiRequestsOverTimeChart() {
             onNext={handleNextMonth}
         >
             <div className={styles.chartContainer}>
-                <Line
+                <Bar
                     data={chartData}
                     options={{
                         responsive: true,
                         plugins: {
                             legend: { position: "top" },
-                            title: { display: true, text: "API Requests per Day" },
-                            datalabels: null
+                            title: { display: true, text: "Top 20 API Endpoints" },
+                            datalabels: {
+                                anchor: "end",
+                                align: "top",
+                                color: "black",
+                                font: { weight: "bold" }
+                            }
                         },
                         scales: {
-                            x: { title: { display: true, text: "Date" } },
+                            x: { title: { display: true, text: "Path" } },
                             y: { title: { display: true, text: "Requests" }, beginAtZero: true }
                         },
                         maintainAspectRatio: false

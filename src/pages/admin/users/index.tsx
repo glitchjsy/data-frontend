@@ -1,9 +1,17 @@
 import AdminPageLayout from "@site/src/components/admin/AdminPageLayout";
+import Flex from "@site/src/components/helper/Flex";
+import Button from "@site/src/components/ui/Button";
+import { DataTable } from "@site/src/components/ui/DataTable";
 import FormGroup from "@site/src/components/ui/FormGroup";
 import Modal from "@site/src/components/ui/Modal";
+import Switch from "@site/src/components/ui/Switch";
 import { User } from "@site/src/models/User";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import { FaPlus, FaTrashCan } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UsersPage(): JSX.Element {
     const [users, setUsers] = useState([]);
@@ -12,13 +20,17 @@ export default function UsersPage(): JSX.Element {
     const [createModalOpen, setCreateModalOpen] = useState(false);
 
     useEffect(() => {
-        fetchUsers();
+        fetchUsers(true);
     }, []);
 
-    const fetchUsers = async () => {
+    const fetchUsers = async (firstRun?: boolean) => {
         try {
             const response = await fetch("https://api.opendata.je/admin/users", { credentials: "include" });
             setUsers((await response.json()).results);
+
+            if (!firstRun) {
+                toast("Fetched users", { type: "success" });
+            }
         } catch (e) {
             console.error("Error fetching users:", e);
         }
@@ -31,7 +43,7 @@ export default function UsersPage(): JSX.Element {
             if (shouldDelete) {
                 const response = await fetch(`https://api.opendata.je/admin/users/${user.id}`, {
                     method: "DELETE",
-                    credentials: "include" 
+                    credentials: "include"
                 });
                 window.location.reload();
             }
@@ -44,53 +56,50 @@ export default function UsersPage(): JSX.Element {
         <AdminPageLayout title="Users">
             <Heading as="h1">Users</Heading>
 
-            <button
-                className="btn btn-primary"
+            <Button
+                variant="primary"
                 style={{ marginBottom: "20px" }}
                 onClick={() => setCreateModalOpen(true)}
             >
-                Create User
-            </button>
+                <FaPlus style={{ marginRight: "8px" }} /> Create User
+            </Button>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Email</th>
-                        <th>Joined</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users?.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.email}</td>
-                            <td>{new Date(user.createdAt).toLocaleDateString("en-GB", {
+            <DataTable
+                data={users}
+                onReload={() => fetchUsers()}
+                columns={[
+                    { key: "email", header: "Email" },
+                    {
+                        key: "createdAt",
+                        header: "Joined",
+                        render: (user: any) =>
+                            new Date(user.createdAt).toLocaleDateString("en-GB", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric"
-                            })}</td>
-                            <td>
-                                <button
-                                    className="btn btn-primary"
-                                    style={{ marginRight: "10px" }}
-                                    onClick={() => {
-                                        setSelectedUser(user);
-                                        setEditModalOpen(true);
-                                    }}
-                                >
-                                    Edit
-                                </button>
-                                <button
-                                    className="btn btn-red"
-                                    onClick={() => deleteUser(user)}
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                            })
+                    },
+                    {
+                        key: "id",
+                        header: "ID",
+                        render: (user: any) => user.id
+                    },
+                    {
+                        key: "actions",
+                        header: "",
+                        render: (user: any) => (
+                            <Flex gap="6px">
+                                <Button useSmallerPadding variant="secondary" onClick={() => { setSelectedUser(user); setEditModalOpen(true); }}>
+                                    <FaEdit />
+                                </Button>
+                                <Button useSmallerPadding variant="danger" onClick={() => deleteUser(user)}>
+                                    <FaTrashCan />
+                                </Button>
+                            </Flex>
+                        )
+                    }
+                ]}
+            />
 
             <EditModal
                 isOpen={editModalOpen}
@@ -142,23 +151,26 @@ function EditModal({ isOpen, onClose, user }: EditModalProps) {
         >
             <p>{user?.id}</p>
 
-            <FormGroup label="Email">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </FormGroup>
+            <Flex direction="column" gap="5px" style={{ marginBottom: "20px" }}>
+                <FormGroup label="Email">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </FormGroup>
 
-            <FormGroup label="Site Admin">
-                <input
-                    type="checkbox"
-                    checked={siteAdmin}
-                    onChange={(e) => setSiteAdmin(e.target.checked)}
-                />
-            </FormGroup>
+                <FormGroup label="Site Admin">
+                    <Switch
+                        checked={siteAdmin}
+                        onChange={(checked) => setSiteAdmin(checked)}
+                    />
+                </FormGroup>
+            </Flex>
 
-            <button className="btn" onClick={() => updateUser()}>Update</button>
+            <Button variant="secondary" onClick={() => updateUser()}>
+                Update
+            </Button>
         </Modal>
     )
 }
@@ -199,31 +211,34 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
             onClose={onClose}
             title="Create User"
         >
-            <FormGroup label="Email">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </FormGroup>
+            <Flex direction="column" gap="6px" style={{ marginBottom: "15px" }}>
+                <FormGroup label="Email">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </FormGroup>
 
-             <FormGroup label="Password">
-                <input
-                    value={password}
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </FormGroup>
+                <FormGroup label="Password">
+                    <input
+                        value={password}
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </FormGroup>
 
-            <FormGroup label="Site Admin">
-                <input
-                    type="checkbox"
-                    checked={siteAdmin}
-                    onChange={(e) => setSiteAdmin(e.target.checked)}
-                />
-            </FormGroup>
+                <FormGroup label="Site Admin">
+                    <Switch
+                        checked={siteAdmin}
+                        onChange={(checked) => setSiteAdmin(checked)}
+                    />
+                </FormGroup>
+            </Flex>
 
-            <button className="btn" onClick={() => createUser()}>Create</button>
+            <Button variant="secondary" onClick={() => createUser()}>
+                Create
+            </Button>
         </Modal>
     )
 }

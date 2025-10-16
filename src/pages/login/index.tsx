@@ -20,6 +20,8 @@ export default function Login(): JSX.Element {
             });
 
             if (!response.ok) {
+                const data = await response.json();
+                alert("ERROR:" + data?.message);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 

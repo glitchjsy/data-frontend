@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Stat from "@site/src/components/ui/Stat";
 import ApiRequestsOverTimeChart from "@site/src/components/charts/admin/ApiRequestsChart";
+import TopApiEndpointsChart from "@site/src/components/charts/admin/TopApiEndpointsChart";
 
 export default function AdminDashboard(): JSX.Element {
     const [apiUptime, setApiUptime] = useState("");
@@ -33,6 +34,9 @@ export default function AdminDashboard(): JSX.Element {
 
             <div style={{ marginTop: "20px" }}>
                 <ApiRequestsOverTimeChart />
+                <br />
+                <br />
+                <TopApiEndpointsChart />
             </div>
         </AdminPageLayout>
     );

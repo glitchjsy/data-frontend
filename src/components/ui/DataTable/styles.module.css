@@ -1,0 +1,37 @@
+:root {
+    --table-row-hover-bg: #f1f5f9;
+}
+
+[data-theme="dark"] {
+    --table-row-hover-bg: #3b3b4b;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.table th,
+.table td {
+    padding: 3px 15px;
+    text-align: left;
+}
+
+.table td {
+    padding: 5px 15px;
+    font-size: 15px;
+}
+
+.table th {
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background-color: var(--table-row-hover-bg);
+}

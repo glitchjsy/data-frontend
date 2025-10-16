@@ -10,6 +10,7 @@ import { ThemeClassNames } from "@docusaurus/theme-common";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
 import AdminNoAccess from "../AdminNoAccess";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
     title: string;
@@ -75,6 +76,7 @@ export default function AdminPageLayout({ children, title, subCategory }: PropsW
                     </div>
                 </main>
             </div>
+            <ToastContainer />
         </Layout>
     )
 }

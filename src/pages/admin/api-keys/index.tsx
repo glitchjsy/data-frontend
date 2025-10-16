@@ -1,8 +1,12 @@
 import AdminPageLayout from "@site/src/components/admin/AdminPageLayout";
+import Flex from "@site/src/components/helper/Flex";
+import Button from "@site/src/components/ui/Button";
+import { DataTable } from "@site/src/components/ui/DataTable";
 import FormGroup from "@site/src/components/ui/FormGroup";
 import Modal from "@site/src/components/ui/Modal";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
+import { FaInfo, FaTrashCan } from "react-icons/fa6";
 
 export default function ApiKeysPage(): JSX.Element {
     const [keys, setKeys] = useState([]);
@@ -41,55 +45,48 @@ export default function ApiKeysPage(): JSX.Element {
         <AdminPageLayout title="API Keys">
             <Heading as="h1">API Keys</Heading>
 
-            <button
-                className="btn btn-primary"
+            <Button
+                variant="primary"
                 style={{ marginBottom: "20px" }}
                 onClick={() => setCreateModalOpen(true)}
             >
                 Create API Key
-            </button>
+            </Button>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Created</th>
-                        <th>User</th>
-                        <th>Key</th>
-                        <th>Summary</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {keys?.map(key => (
-                        <tr key={key.id}>
-                            <td>{new Date(key.createdAt).toLocaleDateString("en-GB", {
+            <DataTable
+                data={keys}
+                onReload={() => fetchKeys()}
+                columns={[
+                    { key: "userEmail", header: "User" },
+                    {
+                        key: "createdAt",
+                        header: "Joined",
+                        render: (user: any) =>
+                            new Date(user.createdAt).toLocaleDateString("en-GB", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric"
-                            })}</td>
-                            <td>{key.userEmail}</td>
-                            <td>{key.token}</td>
-                            <td>{key.summary}</td>
-                            <td>
-                                <button
-                                    className="btn btn-primary"
-                                    style={{ marginRight: "5px" }}
-                                    onClick={() => alert(key.id)}
-                                >
-                                    ID
-                                </button>
-                                <button
-                                    className="btn btn-red"
-                                    onClick={() => deleteToken(key)}
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
+                            })
+                    },
+                    { key: "token", header: "Key" },
+                    { key: "summary", header: "Summary" },
+                    {
+                        key: "actions",
+                        header: "",
+                        render: (token: any) => (
+                            <Flex gap="6px">
+                                <Button useSmallerPadding variant="secondary" onClick={() => alert(token.id)}>
+                                    <FaInfo />
+                                </Button>
+                                <Button useSmallerPadding variant="danger" onClick={() => deleteToken(token)}>
+                                    <FaTrashCan />
+                                </Button>
+                            </Flex>
+                        )
+                    }
+                ]}
+            />
+            
             <CreateModal
                 isOpen={createModalOpen}
                 onClose={() => setCreateModalOpen(false)}
@@ -155,9 +152,9 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                 />
             </FormGroup>
 
-             <FormGroup label="Password">
-                <select 
-                    value={userId} 
+            <FormGroup label="User">
+                <select
+                    value={userId}
                     onChange={(e) => setUserId(e.target.value)}
                 >
                     <option value="null">Please select a user</option>
@@ -167,7 +164,9 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                 </select>
             </FormGroup>
 
-            <button className="btn" onClick={() => createToken()}>Create</button>
+            <Button variant="secondary" onClick={() => createToken()}>
+                Create
+            </Button>
         </Modal>
     )
 }
