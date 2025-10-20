@@ -3,23 +3,23 @@
     flex-direction: column;
 }
 
-.formGroup label {
+.formGroup > label {
     margin-bottom: 5px;
     font-weight: 500;
 }
 
-.formGroup input[type="email"],
-.formGroup input[type="password"],
-.formGroup input[type="text"],
-.formGroup select {
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
+.formGroup > input[type="email"],
+.formGroup > input[type="password"],
+.formGroup > input[type="text"],
+.formGroup > select {
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 0.6rem !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
 }
 
-.formGroup select {
+.formGroup > select {
     width: 100%;
     box-sizing: border-box;
 }
