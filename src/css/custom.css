@@ -17,8 +17,8 @@
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
     --purple: rgb(169, 42, 219);
+    --blue: #31356e;
     --ifm-color-primary: var(--purple);
-    --page-header-bg: var(--purple);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -55,6 +55,22 @@
 .btn-red {
     background: rgb(221, 30, 30);
     color: white;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select {
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 0.6rem !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+}
+
+select {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Charts sidebar things */
