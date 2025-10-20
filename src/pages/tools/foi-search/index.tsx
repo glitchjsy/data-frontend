@@ -138,6 +138,7 @@ export default function FoiSearchPage(): JSX.Element {
         try {
             setError("");
             setLoading(true);
+            setPage(1);
 
             const query = buildQueryParams();
             const url = `https://api.opendata.je/v1/foi-requests${query ? `?${query}` : ""}`;

@@ -11,8 +11,6 @@ Returns a list of all public toilets on the island.
 GET /v1/toilets
 ```
 
-Some toilets may have period products in the females but not the males.
-
 ### Response
 <Tabs>
 <TabItem value="res-sample-200" label="200 (OK)">
@@ -35,26 +33,7 @@ This is a sample response.
       },
       "facilities": [
         "BEACH_SHOWER"
-      ],
-      "female": {
-        "cubicles": 3,
-        "handDryers": null,
-        "sinks": 2,
-        "periodProducts": [
-          "TAMPONS",
-          "PADS"
-        ]
-      },
-      "male": {
-        "cubicles": 2,
-        "urinals": 3,
-        "handDryers": null,
-        "sinks": 2,
-        "periodProducts": [
-          "TAMPONS",
-          "PADS"
-        ]
-      }
+      ]
     }
   ]
 }
@@ -78,33 +57,12 @@ This is a sample response.
 |`latitude`|Number|The latitude of the toilet|
 |`longitude`|Number|The longitude of the toilet|
 |`facilities`|Array|An array of facilities in this toilet. See `Facilities` below for enum values|
-|`female`|Object/null|See `Female` below. Null if there is no female toilets|
-|`male`|Object/null|See `Male` below. Null if there is no male toilets|
 
 #### Owner
 | Key | Type | Description |
 |-----|------|-------------|
 |`id`|UUID|A unique ID to represent the company|
 |`name`|String|The name of the toilet owner|
-
-#### Female
-| Key | Type | Description |
-|-----|------|-------------|
-|`cubicles`|Number/null|The number of cubicles in this toilet, null if the number is not currently known|
-|`handDryers`|Number/null|The number of hand dryers in this toilet, null if the number is not currently known|
-|`sinks`|Number/null|The number of sinks in this toilet, null if the number is not currently known. This includes uni-wash sinks and automatic sinks for now|
-|`periodProducts`|Array|An array of period products offered in this toilet. See `Period Products` below for enum values|
-
-#### Male
-Same as the `Female` object above, but with the added `urinals` property.
-
-| Key | Type | Description |
-|-----|------|-------------|
-|`cubicles`|Number/null|The number of cubicles in this toilet, null if the number is not currently known|
-|`urinals`|Number/null|The number of urinals in this toilet, null if the number is not currently known|
-|`handDryers`|Number/null|The number of hand dryers in this toilet, null if the number is not currently known|
-|`sinks`|Number/null|The number of sinks in this toilet, null if the number is not currently known. This includes uni-wash sinks and automatic sinks for now|
-|`periodProducts`|Array|An array of period products offered in this toilet. See `Period Products` below for enum values|
 
 ---
 #### Enums
@@ -117,12 +75,6 @@ Same as the `Female` object above, but with the added `urinals` property.
 |`BEACH_SHOWER`|Shower facilities are available|
 |`BABY_CHANGING`|Baby changing facilities are available|
 |`DISABLED`|Disabled facilities are available|
-
-#### Period Products
-| Key |
-|-----|
-|`PADS`|
-|`TAMPONS`|
 
 </TabItem>
 </Tabs>

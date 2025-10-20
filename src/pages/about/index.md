@@ -12,14 +12,11 @@ The inspiration for this project comes from the challenges I’ve faced when wor
 
 We provide data in JSON format, with plans to support XML in the future. The data we offer comes from various sources:
 
-- **Government APIs**: Live data directly remapped from Government API endpoints
-- **Government Websites**: Live data that is scraped from Government websites when an API is not available
-- **Static Data**: Manually collected, sometimes through FOI (Freedom of Information) requests.
-
-:::info Please note
-- **"Live Data"** refers to data that is updated frequently. For example, carpark space information may be updated every 5 minutes - this is considered live.
-- **"Static Data"** refers to data that is rarely updated and is collected manually.
-:::
+|||
+|-----------|---|
+|**Government APIs**|Live data directly remapped from Government API endpoints|
+|**Government Websites**|Live data that is scraped from Government websites when an API is not available|
+|**Static Data**|Manually collected, sometimes through FOI (Freedom of Information) requests.|
 
 <br/>
 

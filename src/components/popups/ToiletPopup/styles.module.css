@@ -5,6 +5,7 @@
 
 .popupName {
     font-size: 20px;
+    font-weight: bold;
     margin: 0;
 }
 
@@ -25,33 +26,47 @@
     line-height: 18px;
 }
 
+.divider {
+    height: 1px;
+    background-color: #ececec;
+}
+
 .facilitiesWrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.facilitiesTitle {
+    font-weight: bold;
+    font-size: 15px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
 .facility {
-    background-color: green;
-    color: white;
-    font-size: 12px;
-    padding: 0 8px;
+    font-size: 14px;
     border-radius: 16px;
-    margin: 0;
+}
+
+.noFacilities {
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .popupParish {
-    color: gray;
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     padding: 0;
+    margin-bottom: 10px;
 }
 
 .toiletGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+}
+
+.toiletGrid strong {
+    font-size: 15px;
 }
 
 .toiletItem {

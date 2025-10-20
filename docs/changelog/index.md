@@ -2,6 +2,9 @@
 
 ## 2025
 ---
+### Monday 20th October
+* Update public toilet data
+
 ### Wednesday 15th October
 * Add court data fetching in the background (not yet available via the API until further data is received)
 * Fix charts page sidebar new styles on mobile
