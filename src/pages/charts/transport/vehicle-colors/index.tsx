@@ -54,7 +54,7 @@ export default function VehicleColourCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/vehicles/colors`);
+            const response = await fetch(`${config.apiUrl}/v1/vehicles/colors`);
 
             setData((await response.json()).results);
             setLoaded(true);

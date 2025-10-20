@@ -33,7 +33,7 @@ export default function VehicleMakeCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/vehicles/makes`);
+            const response = await fetch(`${config.apiUrl}/v1/vehicles/makes`);
 
             setData((await response.json()).results);
             setLoaded(true);

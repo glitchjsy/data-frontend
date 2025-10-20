@@ -5,6 +5,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
 import { FaX } from "react-icons/fa6";
 import clsx from "clsx";
+import config from "../../../../config.json";
 
 export default function FoiSearchPage(): JSX.Element {
     const [error, setError] = useState("");
@@ -86,7 +87,7 @@ export default function FoiSearchPage(): JSX.Element {
     async function fetchAuthors() {
         try {
             setError("");
-            const response = await fetch(`https://api.opendata.je/v1/foi-requests/authors`);
+            const response = await fetch(`${config.apiUrl}/v1/foi-requests/authors`);
             const data = await response.json();
 
             if (response.ok) {
@@ -103,7 +104,7 @@ export default function FoiSearchPage(): JSX.Element {
     async function fetchProducers() {
         try {
             setError("");
-            const response = await fetch(`https://api.opendata.je/v1/foi-requests/producers`);
+            const response = await fetch(`${config.apiUrl}/v1/foi-requests/producers`);
             const data = await response.json();
 
             if (response.ok) {
@@ -120,7 +121,7 @@ export default function FoiSearchPage(): JSX.Element {
     async function fetchTotalsPerYear() {
         try {
             setError("");
-            const response = await fetch(`https://api.opendata.je/v1/foi-requests/stats`);
+            const response = await fetch(`${config.apiUrl}/v1/foi-requests/stats`);
             const data = await response.json();
 
             if (response.ok) {
@@ -141,7 +142,7 @@ export default function FoiSearchPage(): JSX.Element {
             setPage(1);
 
             const query = buildQueryParams();
-            const url = `https://api.opendata.je/v1/foi-requests${query ? `?${query}` : ""}`;
+            const url = `${config.apiUrl}/v1/foi-requests${query ? `?${query}` : ""}`;
 
             const response = await fetch(url);
             const data = await response.json();
@@ -436,7 +437,7 @@ function RequestModal({ open, onClose, requestId }: any) {
             setError("");
             setState("loading");
 
-            const response = await fetch(`https://api.opendata.je/v1/foi-requests/${requestId}`);
+            const response = await fetch(`${config.apiUrl}/v1/foi-requests/${requestId}`);
             const data = await response.json();
 
             if (response.ok) {

@@ -3,6 +3,7 @@ import { Bar, Pie } from "react-chartjs-2";
 import styles from "./styles.module.css";
 // @ts-ignore
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement } from "chart.js";
+import config from "../../../../../config.json";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
 
@@ -19,7 +20,7 @@ export default function VehicleColours() {
     const fetchData = async () => {
         setFailedLoading(true);
         try {
-            const response = await fetch(`https://api.opendata.je/v1/vehicles/stats/colors`);
+            const response = await fetch(`${config.apiUrl}/v1/vehicles/stats/colors`);
             const data = await response.json();
 
             const labels = Object.keys(data.results);

@@ -11,6 +11,7 @@ import BusStopMarker from "./components/markers/BusStopMarker";
 import BusStopPopup from "./components/popups/BusStopPopup";
 import CarparkMarker from "./components/markers/CarparkMarker";
 import CarparkPopup from "./components/popups/CarparkPopup";
+import config from "../config.json";
 
 type MapItems = {
     [type in MapItemType]: MapItem;
@@ -66,8 +67,7 @@ export const mapItems: MapItems = {
 
 async function _fetchData(route: string): Promise<any[]> {
     try {
-        const baseUrl = "https://api.opendata.je/v1";
-        const response = await fetch(`${baseUrl}/${route}`);
+        const response = await fetch(`${config.apiUrl}/v1/${route}`);
 
         if (!response.ok) {
             throw new Error("Response was not ok");

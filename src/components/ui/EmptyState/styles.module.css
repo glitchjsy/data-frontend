@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 20px 0;
+}
+
+.icon {
+    font-size: 26px;
+    color: #52525b;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.description {
+    color: #52525b;
+}
+
+.children {
+    margin-top: 15px;
+}

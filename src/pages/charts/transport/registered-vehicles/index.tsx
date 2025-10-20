@@ -30,7 +30,7 @@ export default function RegisteredVehiclesCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts/registered-vehicles`);
+            const response = await fetch(`${config.apiUrl}/v1/charts/registered-vehicles`);
 
             setData((await response.json()).results);
             setLoaded(true);

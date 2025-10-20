@@ -16,7 +16,11 @@ interface Props<T> {
     onReload: () => void;
 }
 
-export function DataTable<T extends { id: string | number }>({ columns, data, onReload }: Props<T>) {
+export function DataTable<T extends { id: string | number }>({ 
+    columns, 
+    data, 
+    onReload 
+}: Props<T>) {
     const { colorMode } = useColorMode();
     
     return (
@@ -30,7 +34,7 @@ export function DataTable<T extends { id: string | number }>({ columns, data, on
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(item => (
+                    {data?.map(item => (
                         <tr key={item.id}>
                             {columns.map(col => (
                                 <td key={col.key as string}>

@@ -1,0 +1,32 @@
+.header {
+    background-color: var(--purple);
+    color: white;
+}
+
+.header h1 {
+    font-size: 36px;
+}
+
+.section:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.sectionTitle {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 5px;
+}
+
+.sectionContent {
+
+}
+
+.profileSettingsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+@media screen and (max-width: 768px) {
+    .profileSettingsGrid {
+        grid-template-columns: 1fr;
+    }
+}

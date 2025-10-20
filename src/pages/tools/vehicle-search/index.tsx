@@ -3,6 +3,7 @@ import Layout from "@theme/Layout";
 import React, { PropsWithChildren, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
+import config from "../../../../config.json";
 
 export default function VehicleSearchPage(): JSX.Element {
     const [plate, setPlate] = useState("");
@@ -28,7 +29,7 @@ export default function VehicleSearchPage(): JSX.Element {
         try {
             setError("");
 
-            const response = await fetch(`https://api.opendata.je/v1/vehicles/lookup/${plate}`);
+            const response = await fetch(`${config.apiUrl}/v1/vehicles/lookup/${plate}`);
             const data = await response.json();
 
             if (response.ok) {

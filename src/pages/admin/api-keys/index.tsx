@@ -7,20 +7,32 @@ import Modal from "@site/src/components/ui/Modal";
 import Heading from "@theme/Heading";
 import React, { useEffect, useState } from "react";
 import { FaInfo, FaTrashCan } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import config from "../../../../config.json";
 
 export default function ApiKeysPage(): JSX.Element {
     const [keys, setKeys] = useState([]);
     const [createModalOpen, setCreateModalOpen] = useState(false);
 
     useEffect(() => {
-        fetchKeys();
+        fetchKeys(true);
     }, []);
 
-    const fetchKeys = async () => {
+    const fetchKeys = async (firstRun?: boolean) => {
         try {
-            const response = await fetch("https://api.opendata.je/admin/tokens", { credentials: "include" });
-            setKeys((await response.json()).results);
+            const response = await fetch(`${config.apiUrl}/admin/api-keys`, { credentials: "include" });
+
+            if (response.ok) {
+                setKeys((await response.json()).results);
+
+                if (!firstRun) {
+                    toast("Fetched API keys", { type: "success" });
+                }
+            } else {
+                toast("Failed to fetch API keys", { type: "error" });
+            }
         } catch (e) {
+            toast(e.message, { type: "error" });
             console.error("Error fetching API keys:", e);
         }
     }
@@ -30,7 +42,7 @@ export default function ApiKeysPage(): JSX.Element {
             const shouldDelete = confirm("Are you sure you want to delete this API key?");
 
             if (shouldDelete) {
-                const response = await fetch(`https://api.opendata.je/admin/tokens/${token.id}`, {
+                const response = await fetch(`${config.apiUrl}/admin/api-keys/${token.id}`, {
                     method: "DELETE",
                     credentials: "include"
                 });
@@ -60,7 +72,7 @@ export default function ApiKeysPage(): JSX.Element {
                     { key: "userEmail", header: "User" },
                     {
                         key: "createdAt",
-                        header: "Joined",
+                        header: "Created",
                         render: (user: any) =>
                             new Date(user.createdAt).toLocaleDateString("en-GB", {
                                 year: "numeric",
@@ -70,6 +82,7 @@ export default function ApiKeysPage(): JSX.Element {
                     },
                     { key: "token", header: "Key" },
                     { key: "summary", header: "Summary" },
+                    { key: "totalUses", header: "Uses" },
                     {
                         key: "actions",
                         header: "",
@@ -86,7 +99,7 @@ export default function ApiKeysPage(): JSX.Element {
                     }
                 ]}
             />
-            
+
             <CreateModal
                 isOpen={createModalOpen}
                 onClose={() => setCreateModalOpen(false)}
@@ -113,8 +126,8 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch("https://api.opendata.je/admin/users", { credentials: "include" });
-            setUsers((await response.json()).results);
+            const response = await fetch(`${config.apiUrl}/admin/users`, { credentials: "include" });
+            setUsers((await response.json())?.results);
         } catch (e) {
             console.error("Error fetching users:", e);
         }
@@ -125,7 +138,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
             if (userId === "" || userId === "null") {
                 return;
             }
-            const response = await fetch(`https://api.opendata.je/admin/tokens/new`, {
+            const response = await fetch(`${config.apiUrl}/admin/api-keys/new`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ userId, summary })
@@ -158,7 +171,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                     onChange={(e) => setUserId(e.target.value)}
                 >
                     <option value="null">Please select a user</option>
-                    {users.map(user => (
+                    {users?.map(user => (
                         <option key={user.id} value={user.id}>{user.email}</option>
                     ))}
                 </select>

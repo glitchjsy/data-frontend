@@ -32,7 +32,7 @@ export default function ParkingStatsCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts/parking-stats`);
+            const response = await fetch(`${config.apiUrl}/v1/charts/parking-stats`);
 
             setData((await response.json()).results);
             setLoaded(true);

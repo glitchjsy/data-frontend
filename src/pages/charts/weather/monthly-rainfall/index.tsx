@@ -33,7 +33,7 @@ export default function DrivingTestResultCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/charts/monthly-rainfall`);
+            const response = await fetch(`${config.apiUrl}/v1/charts/monthly-rainfall`);
 
             setData((await response.json()).results);
             setLoaded(true);

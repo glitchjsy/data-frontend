@@ -12,6 +12,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaPlus, FaTrashCan } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import config from "../../../../config.json";
 
 export default function UsersPage(): JSX.Element {
     const [users, setUsers] = useState([]);
@@ -25,13 +26,19 @@ export default function UsersPage(): JSX.Element {
 
     const fetchUsers = async (firstRun?: boolean) => {
         try {
-            const response = await fetch("https://api.opendata.je/admin/users", { credentials: "include" });
-            setUsers((await response.json()).results);
+            const response = await fetch(`${config.apiUrl}/admin/users`, { credentials: "include" });
 
-            if (!firstRun) {
-                toast("Fetched users", { type: "success" });
+            if (response.ok) {
+                setUsers((await response.json()).results);
+
+                if (!firstRun) {
+                    toast("Fetched users", { type: "success" });
+                }
+            } else {
+                toast("Failed to fetch users", { type: "error" });
             }
         } catch (e) {
+            toast(e.message, { type: "error" });
             console.error("Error fetching users:", e);
         }
     }
@@ -41,13 +48,14 @@ export default function UsersPage(): JSX.Element {
             const shouldDelete = confirm("Are you sure you want to delete this user?");
 
             if (shouldDelete) {
-                const response = await fetch(`https://api.opendata.je/admin/users/${user.id}`, {
+                const response = await fetch(`${config.apiUrl}/admin/users/${user.id}`, {
                     method: "DELETE",
                     credentials: "include"
                 });
                 window.location.reload();
             }
         } catch (e) {
+            toast(e.message, { type: "error" });
             console.error("Error deleting user:", e);
         }
     }
@@ -131,7 +139,7 @@ function EditModal({ isOpen, onClose, user }: EditModalProps) {
 
     const updateUser = async () => {
         try {
-            const response = await fetch(`https://api.opendata.je/admin/users/${user?.id}`, {
+            const response = await fetch(`${config.apiUrl}/admin/users/${user?.id}`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ email, siteAdmin })
@@ -139,6 +147,7 @@ function EditModal({ isOpen, onClose, user }: EditModalProps) {
             onClose();
             window.location.reload();
         } catch (e) {
+            toast(e.message, { type: "error" });
             console.error("Error updating user:", e);
         }
     }
@@ -193,7 +202,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
 
     const createUser = async () => {
         try {
-            const response = await fetch(`https://api.opendata.je/admin/users/new`, {
+            const response = await fetch(`${config.apiUrl}/admin/users/new`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({ email, password, siteAdmin })

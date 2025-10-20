@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import FormGroup from "@site/src/components/ui/FormGroup";
 import clsx from "clsx";
+import config from "../../../config.json";
 
 export default function Login(): JSX.Element {
     const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ export default function Login(): JSX.Element {
 
     const login = async () => {
         try {
-            const response = await fetch("https://api.opendata.je/auth/login", {
+            const response = await fetch(`${config.apiUrl}/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

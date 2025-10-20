@@ -6,6 +6,8 @@ import { Bar, Line } from "react-chartjs-2";
 // @ts-ignore
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement } from "chart.js";
 import styles from "./styles.module.css";
+import config from "../../../../config.json";
+import { toast } from "react-toastify";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, BarElement, Title, Tooltip, ChartDataLabels, Legend);
 
@@ -18,7 +20,7 @@ export default function TopApiEndpointsChart() {
     const fetchChartData = async (date?: Date) => {
         try {
             setLoaded(false);
-            let url = "https://api.opendata.je/admin/stats/top-endpoints";
+            let url = `${config.apiUrl}/admin/stats/top-endpoints`;
             if (date) {
                 const month = date.getMonth() + 1;
                 const year = date.getFullYear();
@@ -26,11 +28,16 @@ export default function TopApiEndpointsChart() {
             }
             const response = await fetch(url, { credentials: "include" });
             const data = (await response.json()).results;
-            setChartData(data);
-            setLoaded(true);
+
+            if (response.ok) {
+                setChartData(data);
+                setLoaded(true);
+            } else {
+                setChartState(ChartState.Failed);
+            }
         } catch (e) {
             console.error("Error fetching chart data:", e);
-            setLoaded(false);
+            setChartState(ChartState.Failed);
         }
     };
 

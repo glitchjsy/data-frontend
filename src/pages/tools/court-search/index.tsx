@@ -5,6 +5,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
 import { FaX } from "react-icons/fa6";
 import clsx from "clsx";
+import config from "../../../../config.json";
 
 export default function CourtSearchPage() {
     const [searchType, setSearchType] = useState("magistrates-hearings");
@@ -99,7 +100,7 @@ export function CourtSearchPageOld(): JSX.Element {
     async function fetchAuthors() {
         try {
             setError("");
-            const response = await fetch(`https://api.opendata.je/v1/foi-requests/authors`);
+            const response = await fetch(`${config.apiUrl}v1/foi-requests/authors`);
             const data = await response.json();
 
             if (response.ok) {
@@ -120,7 +121,7 @@ export function CourtSearchPageOld(): JSX.Element {
             setPage(1);
 
             const query = buildQueryParams();
-            const url = `https://api.opendata.je/v1/courts/magistrates/hearings${query ? `?${query}` : ""}`;
+            const url = `${config.apiUrl}/v1/courts/magistrates/hearings${query ? `?${query}` : ""}`;
 
             const response = await fetch(url);
             const data = await response.json();

@@ -11,6 +11,7 @@ import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
 import AdminNoAccess from "../AdminNoAccess";
 import { ToastContainer } from "react-toastify";
+import config from "../../../../config.json";
 
 interface Props {
     title: string;
@@ -26,7 +27,7 @@ export default function AdminPageLayout({ children, title, subCategory }: PropsW
 
     const checkSession = async () => {
         try {
-            const response = await fetch("https://api.opendata.je/me/session", { credentials: "include" });
+            const response = await fetch(`${config.apiUrl}/me/session`, { credentials: "include" });
             const data = await response.json();
 
             if (data && data.user?.siteAdmin) {

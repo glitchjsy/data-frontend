@@ -4,6 +4,10 @@
 ---
 ### Monday 20th October
 * Update public toilet data
+* Add authenticated vs unauthenticated request status to admin page
+* Allow API keys to be passed via query parameter
+* Begin work on "My Account" page 
+* Change primary colour across the website
 
 ### Wednesday 15th October
 * Add court data fetching in the background (not yet available via the API until further data is received)

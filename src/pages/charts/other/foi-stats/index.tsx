@@ -32,7 +32,7 @@ export default function FoiStatsCharts() {
 
     async function loadData() {
         try {
-            const response = await fetch(`${config.apiUrl}/foi-requests/stats`);
+            const response = await fetch(`${config.apiUrl}/v1/foi-requests/stats`);
 
             setData((await response.json()).results);
             setLoaded(true);

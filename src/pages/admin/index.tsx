@@ -4,15 +4,20 @@ import styles from "./styles.module.css";
 import Stat from "@site/src/components/ui/Stat";
 import ApiRequestsOverTimeChart from "@site/src/components/charts/admin/ApiRequestsChart";
 import TopApiEndpointsChart from "@site/src/components/charts/admin/TopApiEndpointsChart";
+import config from "../../../config.json";
+import { toast } from "react-toastify";
 
 export default function AdminDashboard(): JSX.Element {
     const [apiUptime, setApiUptime] = useState("");
 
     const fetchStats = async () => {
         try {
-            const response = await fetch("https://api.opendata.je/admin/stats", { credentials: "include" });
+            const response = await fetch(`${config.apiUrl}/admin/stats`, { credentials: "include" });
             const data = (await response.json()).results;
-            setApiUptime(data.apiUptime);
+
+            if (response.ok) {  
+                setApiUptime(data?.apiUptime);
+            } 
         } catch (e) {
             console.error("Error fetching stats:", e);
         }
