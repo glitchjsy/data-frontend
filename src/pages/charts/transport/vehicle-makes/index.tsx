@@ -11,6 +11,7 @@ import { Bar, Pie } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement } from "chart.js";
 import config from "../../../../../config.json";
 import styles from "./styles.module.css";
+import Input from "@site/src/components/ui/Input";
 
 interface ChartDisplayProps {
     data: any;
@@ -171,7 +172,7 @@ function ViewAllDisplay(props: ChartDisplayProps) {
 
     return (
         <>
-            <input
+            <Input
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search..."

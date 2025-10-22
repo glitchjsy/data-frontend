@@ -6,6 +6,9 @@ import styles from "./styles.module.css";
 import { FaX } from "react-icons/fa6";
 import clsx from "clsx";
 import config from "../../../../config.json";
+import Input from "@site/src/components/ui/Input";
+import Select from "@site/src/components/ui/Select";
+import Button from "@site/src/components/ui/Button";
 
 export default function FoiSearchPage(): JSX.Element {
     const [error, setError] = useState("");
@@ -139,7 +142,6 @@ export default function FoiSearchPage(): JSX.Element {
         try {
             setError("");
             setLoading(true);
-            setPage(1);
 
             const query = buildQueryParams();
             const url = `${config.apiUrl}/v1/foi-requests${query ? `?${query}` : ""}`;
@@ -229,7 +231,7 @@ export default function FoiSearchPage(): JSX.Element {
                             )}
 
                             <FormGroup label="Title">
-                                <input
+                                <Input
                                     type="text"
                                     value={title}
                                     placeholder=""
@@ -238,27 +240,27 @@ export default function FoiSearchPage(): JSX.Element {
                             </FormGroup>
 
                             <FormGroup label="Author">
-                                <select
+                                <Select
                                     value={author}
                                     onChange={(e) => setAuthor(e.target.value)}
                                 >
                                     <option value="">-- none --</option>
                                     {allAuthors.map(author => <option key={author} value={author}>{author}</option>)}
-                                </select>
+                                </Select>
                             </FormGroup>
 
                             <FormGroup label="Producer">
-                                <select
+                                <Select
                                     value={producer}
                                     onChange={(e) => setProducer(e.target.value)}
                                 >
                                     <option value="">-- none --</option>
                                     {allProducers.map(producer => <option key={producer} value={producer}>{producer}</option>)}
-                                </select>
+                                </Select>
                             </FormGroup>
 
                             <FormGroup label="Request Text">
-                                <input
+                                <Input
                                     type="text"
                                     value={requestText}
                                     placeholder=""
@@ -267,7 +269,7 @@ export default function FoiSearchPage(): JSX.Element {
                             </FormGroup>
 
                             <FormGroup label="Response Text">
-                                <input
+                                <Input
                                     type="text"
                                     value={responseText}
                                     placeholder=""
@@ -303,12 +305,11 @@ export default function FoiSearchPage(): JSX.Element {
 
                             <br />
 
-                            <button
-                                className="btn btn-primary"
+                            <Button
                                 onClick={() => searchRequests()}
                             >
                                 Search
-                            </button>
+                            </Button>
                         </div>
                         <div className={styles.outputColumn}>
                             <h2>Search Results</h2>

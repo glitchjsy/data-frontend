@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import FormGroup from "@site/src/components/ui/FormGroup";
 import clsx from "clsx";
 import config from "../../../config.json";
+import Input from "@site/src/components/ui/Input";
 
 export default function Login(): JSX.Element {
     const [email, setEmail] = useState("");
@@ -41,7 +42,7 @@ export default function Login(): JSX.Element {
                     <h2 className={styles.title}>Login</h2>
 
                     <FormGroup label="Email">
-                        <input
+                        <Input
                             type="email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
@@ -50,7 +51,7 @@ export default function Login(): JSX.Element {
                     </FormGroup>
 
                     <FormGroup label="Password">
-                        <input
+                        <Input
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}

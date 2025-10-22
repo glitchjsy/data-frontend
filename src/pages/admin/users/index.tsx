@@ -13,6 +13,7 @@ import { FaPlus, FaTrashCan } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import config from "../../../../config.json";
+import Input from "@site/src/components/ui/Input";
 
 export default function UsersPage(): JSX.Element {
     const [users, setUsers] = useState([]);
@@ -162,7 +163,7 @@ function EditModal({ isOpen, onClose, user }: EditModalProps) {
 
             <Flex direction="column" gap="5px" style={{ marginBottom: "20px" }}>
                 <FormGroup label="Email">
-                    <input
+                    <Input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -222,7 +223,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
         >
             <Flex direction="column" gap="6px" style={{ marginBottom: "15px" }}>
                 <FormGroup label="Email">
-                    <input
+                    <Input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -230,7 +231,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                 </FormGroup>
 
                 <FormGroup label="Password">
-                    <input
+                    <Input
                         value={password}
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}

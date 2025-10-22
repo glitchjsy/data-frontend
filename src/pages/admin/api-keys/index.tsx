@@ -9,6 +9,8 @@ import React, { useEffect, useState } from "react";
 import { FaInfo, FaTrashCan } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import config from "../../../../config.json";
+import Select from "@site/src/components/ui/Select";
+import Input from "@site/src/components/ui/Input";
 
 export default function ApiKeysPage(): JSX.Element {
     const [keys, setKeys] = useState([]);
@@ -157,7 +159,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
             title="Create API Key"
         >
             <FormGroup label="Summary">
-                <input
+                <Input
                     type="text"
                     value={summary}
                     maxLength={200}
@@ -166,7 +168,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
             </FormGroup>
 
             <FormGroup label="User">
-                <select
+                <Select
                     value={userId}
                     onChange={(e) => setUserId(e.target.value)}
                 >
@@ -174,7 +176,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                     {users?.map(user => (
                         <option key={user.id} value={user.id}>{user.email}</option>
                     ))}
-                </select>
+                </Select>
             </FormGroup>
 
             <Button variant="secondary" onClick={() => createToken()}>

@@ -10,6 +10,7 @@ import FormGroup from "@site/src/components/ui/FormGroup";
 import { toast } from "react-toastify";
 import Flex from "@site/src/components/helper/Flex";
 import { DataTable } from "@site/src/components/ui/DataTable";
+import Input from "@site/src/components/ui/Input";
 
 export default function Account() {
     const [email, setEmail] = useState("");
@@ -95,7 +96,7 @@ export default function Account() {
                             label="Email"
                             helpText="Email editing is currently being worked on"
                         >
-                            <input
+                            <Input
                                 type="email"
                                 value={email}
                                 disabled
@@ -226,7 +227,7 @@ function CreateModal({ isOpen, onClose }: CreateModalProps) {
                 label="Label"
                 helpText="A short description of this API key to help you identify it in the future"
             >
-                <input
+                <Input
                     type="text"
                     value={summary}
                     maxLength={200}

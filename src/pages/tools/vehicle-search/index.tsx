@@ -4,6 +4,7 @@ import React, { PropsWithChildren, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
 import config from "../../../../config.json";
+import Input from "@site/src/components/ui/Input";
 
 export default function VehicleSearchPage(): JSX.Element {
     const [plate, setPlate] = useState("");
@@ -64,7 +65,7 @@ export default function VehicleSearchPage(): JSX.Element {
                             )}
 
                             <FormGroup label="Vehicle Registration Number">
-                                <input
+                                <Input
                                     type="text"
                                     value={plate}
                                     placeholder="J129286"

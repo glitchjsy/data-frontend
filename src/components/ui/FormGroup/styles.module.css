@@ -8,22 +8,6 @@
     font-weight: 500;
 }
 
-.formGroup > input[type="email"],
-.formGroup > input[type="password"],
-.formGroup > input[type="text"],
-.formGroup > select {
-    padding: 0.5rem 1rem !important;
-    margin-bottom: 0.6rem !important;
-    border: 1px solid #ccc !important;
-    border-radius: 8px !important;
-    font-size: 1rem !important;
-}
-
-.formGroup > select {
-    width: 100%;
-    box-sizing: border-box;
-}
-
 .helpText {
     font-size: 14px;
     color: #52525b;
