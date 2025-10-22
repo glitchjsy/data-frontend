@@ -14,7 +14,6 @@ const items = [
     {
         type: "category",
         label: "Transport",
-        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",
@@ -61,7 +60,6 @@ const items = [
     {
         type: "category",
         label: "Weather",
-        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",
@@ -73,7 +71,6 @@ const items = [
     {
         type: "category",
         label: "Other",
-        className: "charts-sidebar-category",
         items: [
             {
                 type: "link",

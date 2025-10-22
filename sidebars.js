@@ -14,12 +14,21 @@
 /** @type {import("@docusaurus/plugin-content-docs").SidebarsConfig} */
 const sidebars = {
   mainSidebar: [
-    "getting-started/index",
-    "changelog/index",
-    "errors/index",
+    {
+      type: "category",
+      label: "Information",
+      collapsible: false,
+      collapsed: false,
+      items: [
+        "getting-started/index",
+        "changelog/index",
+        "errors/index",
+      ]
+    },
     {
       type: "category",
       label: "Endpoints",
+      collapsible: false,
       collapsed: false,
       items: [
         {

@@ -32,7 +32,7 @@
     --ifm-color-primary-lightest: #4fddbf;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
-     --ifm-color-primary: rgb(210, 131, 241);
+    --ifm-color-primary: rgb(210, 131, 241);
 }
 
 .btn {
@@ -57,17 +57,18 @@
     color: white;
 }
 
-/* Charts sidebar things */
-.charts-sidebar-category > div:hover {
+
+/* Sidebar category stuff */
+.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category:not(:first-child) > div {
+    margin-top: 10px;
+}
+
+.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category > div:hover {
     background: none;
 }
 
-.charts-sidebar-category > div > a {
+.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category > div > a {
     border-bottom: 1px solid #ececec;
     font-weight: bold;
-    color: black;
-}
-
-.charts-sidebar-category > div > a:hover {
     color: black;
 }
