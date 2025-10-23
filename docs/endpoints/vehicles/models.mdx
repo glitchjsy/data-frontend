@@ -9,14 +9,13 @@ Returns a list of all distinct vehicle models and the total amount of cars with 
 GET /v1/vehicles/models
 ```
 
-#### Query Params
-|Param|Desription|
-|-----|----------|
-|`page`|The page to show|
-|`limit`|The amount of entries per page|
-|`startDate`|Retrieve results after the given date|
-|`endDate`|Retrieve results before the given date|
-|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
+### Query Parameters (optional)
+| Param | Description |
+|-------|-------------
+| `firstRegisteredAfter` | Return vehicles first registered **after** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) |
+| `firstRegisteredBefore` | Return vehicles first registered **before** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) |
+| `firstRegisteredInJerseyAfter` | Return vehicles first registered **in Jersey after** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) |
+| `firstRegisteredInJerseyBefore` | Return vehicles first registered **in Jersey before** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) |
 
 ### Response
 <Tabs>

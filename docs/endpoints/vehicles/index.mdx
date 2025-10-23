@@ -9,24 +9,19 @@ Returns a list of all registered vehicles in Jersey.
 GET /v1/vehicles
 ```
 
-#### Query Params
-|Param|Desription|
-|-----|----------|
-|`page`|The page to show|
-|`limit`|The amount of entries per page|
-|`startDate`|Retrieve results after the given date|
-|`endDate`|Retrieve results before the given date|
-|`dateType`|- `regInJersey` - startDate and endDate checks the date the car was registered in Jersey<br/>- Anything else - startDate and endDate checks the date the car was first ever registered|
-|`make`|Search by the make of the car|
-|`model`|Search by the model of car|
-|`fuelType`|Search by the fuel type of the car. See `Fuel Types` below for enum values.|
-|`color`|Search by the color of the car|
-
-Example: `https://api.opendata.je/v1/vehicles?page=10&limit=500`
-
-* Cache: **1 day**
-* Rate Limit:
-  * Maximum of 600 requests per hour
+### Query Parameters (optional)
+| Param | Description | Default |
+|-------|-------------|---------|
+| `page` | The page number to display | `1` |
+| `limit` | The number of entries per page | `30` |
+| `firstRegisteredAfter` | Return vehicles first registered **after** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `firstRegisteredBefore` | Return vehicles first registered **before** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `firstRegisteredInJerseyAfter` | Return vehicles first registered **in Jersey after** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `firstRegisteredInJerseyBefore` | Return vehicles first registered **in Jersey before** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `make` | Filter by vehicle make (e.g., `Ford`) [View available makes](/docs/endpoints/vehicles/makes) | — |
+| `model` | Filter by vehicle model (e.g., `Honda Jazz`) [View available models](/docs/endpoints/vehicles/models) | — |
+| `fuelType` | Filter by fuel type. See `Fuel Types` below for valid enum values. | — |
+| `color` | Filter by color (e.g., `Red`). [View available colours](/docs/endpoints/vehicles/colors) | — |
 
 ### Response
 <Tabs>
@@ -48,17 +43,6 @@ This is a sample response.
         "model": "aprilia",
         "color": "Grey",
         "cylinderCapacity": 1418,
-        "weight": null,
-        "co2Emissions": null,
-        "fuelType": "PETROL",
-        "firstRegisteredAt": "1969-12-31",
-        "firstRegisteredInJerseyAt": "1969-12-31"
-    },
-    {
-        "make": "Jaguar",
-        "model": "XK8 COUPE",
-        "color": "Green",
-        "cylinderCapacity": 3996,
         "weight": null,
         "co2Emissions": null,
         "fuelType": "PETROL",

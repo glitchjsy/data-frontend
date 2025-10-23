@@ -59,16 +59,24 @@
 
 
 /* Sidebar category stuff */
-.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category:not(:first-child) > div {
+.theme-doc-sidebar-menu>.theme-doc-sidebar-item-category:not(:first-child)>div {
     margin-top: 10px;
 }
 
-.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category > div:hover {
+.theme-doc-sidebar-menu>.theme-doc-sidebar-item-category>div:hover {
     background: none;
 }
 
-.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category > div > a {
-    border-bottom: 1px solid #ececec;
+.theme-doc-sidebar-menu>.theme-doc-sidebar-item-category>div>a {
+    border-bottom: 1px solid #d6d6d6;
+    border-radius: 0;
     font-weight: bold;
     color: black;
+}
+
+[data-theme="dark"] {
+    .theme-doc-sidebar-menu>.theme-doc-sidebar-item-category>div>a {
+        color: white;
+        border-bottom-color: #9a9a9a;
+    }
 }

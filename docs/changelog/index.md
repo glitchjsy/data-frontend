@@ -2,6 +2,16 @@
 
 ## 2025
 ---
+### Thursday 23rd October
+* Improve date searching for vehicle endpoints:
+  * Removed `startDate`, `endDate` and `dateType` fields
+  * Added `firstRegisteredAfter`, `firstRegisteredBefore`, `firstRegisteredInJerseyAfter`, `firstRegisteredInJerseyBefore`
+  * Improve query parameter documentation
+
+### Wednesday 22nd October
+* Change styling of docs sidebar
+* Fix FOI search pagination
+
 ### Monday 20th October
 * Update public toilet data
 * Add authenticated vs unauthenticated request status to admin page
