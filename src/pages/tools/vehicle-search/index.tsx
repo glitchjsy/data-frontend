@@ -5,6 +5,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
 import config from "../../../../config.json";
 import Input from "@site/src/components/ui/Input";
+import Button from "@site/src/components/ui/Button";
 
 export default function VehicleSearchPage(): JSX.Element {
     const [plate, setPlate] = useState("");
@@ -73,12 +74,9 @@ export default function VehicleSearchPage(): JSX.Element {
                                 />
                             </FormGroup>
 
-                            <button
-                                className="btn btn-primary"
-                                onClick={() => lookupVehicle()}
-                            >
+                            <Button onClick={() => lookupVehicle()}>
                                 Search
-                            </button>
+                            </Button>
                         </div>
                         <div className={styles.outputColumn}>
                             <h2>Vehicle Information</h2>

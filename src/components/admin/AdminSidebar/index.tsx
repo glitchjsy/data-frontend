@@ -7,19 +7,28 @@ import React from "react";
 
 const items = [
     {
-        type: "link",
-        label: "Dashboard",
-        href: "/admin"
-    },
-    {
-        type: "link",
-        label: "Users",
-        href: "/admin/users"
-    },
-    {
-        type: "link",
-        label: "API Keys",
-        href: "/admin/api-keys"
+        type: "category",
+        label: "General",
+        collapsible: false,
+        collapsed: false,
+        items: [
+
+            {
+                type: "link",
+                label: "Dashboard",
+                href: "/admin"
+            },
+            {
+                type: "link",
+                label: "Users",
+                href: "/admin/users"
+            },
+            {
+                type: "link",
+                label: "API Keys",
+                href: "/admin/api-keys"
+            },
+        ]
     }
 ] as any[];
 

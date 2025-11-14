@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./styles.module.css";
+import clsx from "clsx";
 
-export default function Modal({ isOpen, onClose, title, children }) {
+export default function Modal({ isOpen, onClose, title, larger, children }: any) {
     return (
         <ReactModal
             isOpen={isOpen}
             onRequestClose={onClose}
             overlayClassName={styles.overlay}
-            className={styles.content}
+            className={clsx(styles.content, larger ? styles.larger : "")}
         >
             <button className={styles.close} onClick={onClose}>
                 &times;

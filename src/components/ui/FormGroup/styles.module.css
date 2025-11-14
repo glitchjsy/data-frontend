@@ -1,3 +1,11 @@
+:root {
+    --fg-help-text-color: #52525b;
+}
+
+[data-theme="dark"] {
+    --fg-help-text-color: #b0b0c8;
+}
+
 .formGroup {
     display: flex;
     flex-direction: column;
@@ -10,7 +18,7 @@
 
 .helpText {
     font-size: 14px;
-    color: #52525b;
+    color: var(--fg-help-text-color);
     line-height: 18px;
     margin-bottom: 12px;
 }

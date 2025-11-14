@@ -1,9 +1,19 @@
+:root {
+    --empty-state-bg-color: #f5f5f5;
+    --empty-state-desc-color: #52525b;
+}
+
+[data-theme="dark"] {
+    --empty-state-bg-color: #282828;
+    --empty-state-desc-color: #a5a5ba;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f5f5f5;
+    background: var(--empty-state-bg-color);
     padding: 20px 0;
 }
 
@@ -18,7 +28,7 @@
 }
 
 .description {
-    color: #52525b;
+    color: var(--empty-state-desc-color);
 }
 
 .children {

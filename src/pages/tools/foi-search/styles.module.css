@@ -1,3 +1,19 @@
+:root {
+    --req-bg-color: #f9f7f7;
+    --req-author-color: #4e4e4e;
+    --req-date-bg-color: #ececec;
+    --req-border-bottom-color: #ececec;
+    --modal-bg-color: white;
+}
+
+[data-theme="dark"] {
+    --req-bg-color: #323232;
+    --req-author-color: #aeabab;
+    --req-date-bg-color: #434343;
+    --req-border-bottom-color: #898787;
+    --modal-bg-color: rgb(45, 43, 43);
+}
+
 .header {
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -54,7 +70,7 @@
 }
 
 .request:hover {
-    background-color: #f9f7f7;
+    background-color: var(--req-bg-color);
 }
 
 .requestCompact {
@@ -71,11 +87,11 @@
 
 .reqAuthor {
     font-size: 14px;
-    color: #4e4e4e;
+    color: var(--req-author-color);
 }
 
 .reqDate {
-    background-color: #ececec;
+    background-color: var(--req-date-bg-color);
     padding: 1px 10px;
     font-size: 14px;
     border-radius: 8px;
@@ -94,7 +110,7 @@
 }
 
 .request:not(:last-child) {
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--req-border-bottom-color);
 }
 
 .pagination {
@@ -177,7 +193,7 @@
 }
 
 .modalContent {
-    background: white;
+    background: var(--modal-bg-color);
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;

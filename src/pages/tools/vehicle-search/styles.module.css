@@ -1,3 +1,13 @@
+:root {
+    --null-bg-color: #efefef;
+    --row-separator-color: #dcdcdc
+}
+
+[data-theme="dark"] {
+    --null-bg-color: #363636;
+    --row-separator-color: #7e7e7e;
+}
+
 .header {
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -40,7 +50,7 @@
 
 .vehicleInfoRow {
     display: flex;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid var(--row-separator-color);
     padding: 2px 10px;
 }
 
@@ -53,7 +63,7 @@
 }
 
 .nullVehicle {
-    background-color: #efefef;
+    background-color: var(--null-bg-color);
     padding: 10px 30px;
     width: fit-content;
 }

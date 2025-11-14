@@ -2,6 +2,10 @@
 
 ## 2025
 ---
+### Friday 14th November
+* Fix CORS issues on the API
+* Improve dark mode styles
+
 ### Thursday 23rd October
 * Improve date searching for vehicle endpoints:
   * Removed `startDate`, `endDate` and `dateType` fields
