@@ -1,0 +1,97 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# All FOI Requests
+
+Returns a list of all Freedom of Information (FOI) requests made towards the Government of Jersey. This does not include the parish FOI requests.
+
+```jsx
+GET /v1/foi-requests
+```
+
+### Query Parameters (optional)
+| Param | Description | Default |
+|-------|-------------|---------|
+| `page` | The page number to display | `1` |
+| `limit` | The number of entries per page | `30` |
+| `startDate` | Return requests created **after** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `endDate` | Return requests created **before** the given date (supports `YYYY/MM/DD` or `YYYY-MM-DD`) | — |
+| `title` | Filter by request title | — |
+| `producer` | Filter by the producer of the request [View available producers](/docs/endpoints/foi-requests/producers) | — |
+| `author` | Filter by the author of the request [View available authors](/docs/endpoints/foi-requests/authors) | — |
+| `requestText` | Filter by the text of the request | — |
+| `responseText` | Filter by the response text (from the Government) | — |
+| `includeText` | If present, the request and response text is included. This may result in a lower rate limit | — |
+
+### Response
+<Tabs>
+<TabItem value="res-sample-200" label="200 (OK)">
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "pagination": {
+    "totalPages": 149,
+    "page": 1,
+    "totalItems": 8896,
+    "limit": 60
+  },
+  "results": [
+    {
+      "author": "Health and Care Jersey",
+      "publishDate": "2025-11-03",
+      "producer": "the Freedom of Information office",
+      "id": 8985,
+      "title": "Breakdown of Operation Crocus funding"
+    },
+    {
+      "author": "Government of Jersey",
+      "publishDate": "2025-11-03",
+      "producer": "the Freedom of Information office",
+      "id": 8983,
+      "title": "Prosecutions for noisy vehicles"
+    }
+  ]
+}
+```
+
+</TabItem>
+
+<TabItem value="res-schema" label="Schema">
+
+#### Root
+See example JSON response.
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `pagination` | Object | See `Pagination Data` below |
+| `results` | Array | Array of `FOI Request` objects |
+
+#### Pagination Data
+| Key | Type | Description |
+|-----|------|-------------|
+| `page` | Number | The current page of results |
+| `limit` | Number | The number of results per page |
+| `totalPages` | Number | The total amount of pages |
+| `totalItems` | Number | The total amount of results |
+
+#### FOI Request
+| Key | Type | Description |
+|-----|------|-------------|
+| `id` | Number | The unique ID of the FOI request |
+| `title` | String | Title of the request |
+| `author` | String | The author of the request |
+| `producer` | String | The producer of the request |
+| `publishDate` | String | Publish date in `YYYY-MM-DD` |
+| `requestText` | String/null | The text of the request *(included only if `includeText` is present)*. This returns HTML. |
+| `responseText` | String/null | The response text *(included only if `includeText` is present)*. This returns HTML. |
+
+</TabItem>
+</Tabs>
+
+
+### Sources
+|Source|
+|------|
+|[FOI Disclosure Log](https://www.gov.je/Government/FreedomOfInformation/Pages/FOIDisclosureLog.aspx)|

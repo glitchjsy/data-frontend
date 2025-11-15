@@ -1,0 +1,31 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# FOI Producers
+
+Returns a list of all distinct *producers* of Freedom of Information requests.
+
+```jsx
+GET /v1/foi-requests/producers
+```
+
+### Response
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "results": [
+    "the Freedom of Information office",
+    "the Children, Young People, Education and Skills",
+    "the Statistics Jersey",
+    "the Climate Emergency",
+    "the Bailiff's Chamber"
+  ]
+}
+```
+
+### Sources
+|Source|
+|------|
+|[FOI Disclosure Log](https://www.gov.je/Government/FreedomOfInformation/Pages/FOIDisclosureLog.aspx)|

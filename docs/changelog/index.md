@@ -9,6 +9,7 @@
 * Design improvements to the [Map](/map)
 * Add [Account](/account) page to the navigation bar, along with redirects to [Login](/login) if not logged in
 * Actually enforce User Agent requirement on the API
+* Add [FOI Requests](/docs/endpoints/foi-requests) API documentation
 
 ### Friday 14th November
 * Fix CORS issues on the API

@@ -1,0 +1,36 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# FOI Authors
+
+Returns a list of all distinct *authors* of Freedom of Information requests.
+
+```jsx
+GET /v1/foi-requests/authors
+```
+
+### Response
+
+This is a sample response.
+
+```json title="Status: 200 (OK)"
+{
+  "results": [
+    "States of Jersey",
+    "Government of Jersey on behalf of the States Greffe",
+    "Government of Jersey",
+    "Stateas of Jersey",
+    "States od Jersey",
+    "Staes of Jersey",
+    "Government of Jersey (on behalf of States of Jersey Police)",
+    "Government of Jersey on behalf of the States of Jersey Police",
+    "Government of Jersey on behalf of the Judicial Greffe",
+    "Governmenty of Jersey"
+  ]
+}
+```
+
+### Sources
+|Source|
+|------|
+|[FOI Disclosure Log](https://www.gov.je/Government/FreedomOfInformation/Pages/FOIDisclosureLog.aspx)|

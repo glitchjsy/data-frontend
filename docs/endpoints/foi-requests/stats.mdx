@@ -1,0 +1,53 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# FOI Stats
+
+Returns various statistics regarding Freedom of Information requests.
+This is used on [Freedom of Information Statistics](/charts/other/foi-stats) chart page.
+
+```jsx
+GET /v1/foi-requests/stats
+```
+
+### Response
+
+```json title="Status: 200 (OK)"
+{
+  "results": {
+    "topAuthors": {
+      "Government of Jersey": 5127,
+      "States of Jersey": 2610,
+      "Health and Care Jersey": 168,
+      "Government of Jersey on behalf of the States Greffe": 157,
+      "Infrastructure and Environment": 156,
+      "Children, Young People, Education and Skills": 106,
+      "Treasury and Exchequer": 83,
+      "States of Jersey Police": 76,
+      "Justice and Home Affairs": 75,
+      "Department for the Economy": 66
+    },
+    "totalsPerYear": {
+      "2016": 617,
+      "2017": 684,
+      "2018": 665,
+      "2019": 892,
+      "2020": 766,
+      "2021": 1049,
+      "2022": 827,
+      "2023": 921,
+      "2024": 1040,
+      "2025": 895,
+      "2015": 551
+    },
+    "totalRequests": 8907,
+    "distinctAuthors": 45,
+    "distinctProducers": 5
+  }
+}
+```
+
+### Sources
+|Source|
+|------|
+|[FOI Disclosure Log](https://www.gov.je/Government/FreedomOfInformation/Pages/FOIDisclosureLog.aspx)|

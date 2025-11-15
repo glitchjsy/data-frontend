@@ -70,6 +70,16 @@ const sidebars = {
             "endpoints/charts/registered-vehicles"
           ]
         },
+        {
+          type: "category",
+          label: "Freedom of Information",
+          items: [
+            "endpoints/foi-requests/index",
+            "endpoints/foi-requests/authors",
+            "endpoints/foi-requests/producers",
+            "endpoints/foi-requests/stats",
+          ]
+        },
         "endpoints/recycling/index",
         "endpoints/defibrillators/index",
         // "endpoints/product-recalls/index",
