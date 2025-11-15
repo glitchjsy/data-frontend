@@ -1,3 +1,13 @@
+:root {
+    --checkmark-bg-color: #eee;
+    --checkmark-bg-hover-color: #ccc;
+}
+
+[data-theme="dark"] {
+    --checkmark-bg-color: #737171;
+    --checkmark-bg-hover-color: rgb(148, 147, 147);
+}
+
 .subOptions {
     padding-left: 20px;
     margin-bottom: 10px;
@@ -62,15 +72,15 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: var(--checkmark-bg-color);
 }
 
 .checkboxGroup:hover input~.checkmark {
-    background-color: #ccc;
+    background-color: var(--checkmark-bg-hover-color);
 }
 
 .checkboxGroup input:checked~.checkmark {
-    background-color: #2196F3;
+    background-color: var(--purple);
 }
 
 .checkmark:after {

@@ -16,6 +16,7 @@ export default function Account() {
     const [email, setEmail] = useState("");
     const [apiKeys, setApiKeys] = useState<any[]>([]);
     const [siteAdmin, setSiteAdmin] = useState(false);
+    const [ok, setOk] = useState(false);
 
     const [createModalOpen, setCreateModalOpen] = useState(false);
 
@@ -31,7 +32,8 @@ export default function Account() {
             if (response.ok) {
                 const data = await response.json();
 
-                if (data) {
+                if (data && Object.keys(data).length !== 0) {
+                    setOk(true);
                     setEmail(data?.user?.email);
                     setSiteAdmin(Boolean(data?.user?.siteAdmin));
                 } else {
@@ -44,6 +46,7 @@ export default function Account() {
         } catch (e: any) {
             toast(e.message, { type: "error" });
             console.error("Error fetching session", e);
+            window.location.href = "/login";
         }
     }
 
@@ -77,6 +80,10 @@ export default function Account() {
         } catch (e) {
             console.error("Error deleting API key:", e);
         }
+    }
+
+    if (!ok) {
+        return <div>Loading...</div>
     }
 
     return (
@@ -135,7 +142,6 @@ export default function Account() {
 
                             <DataTable
                                 data={apiKeys}
-                                onReload={() => fetchApiKeys()}
                                 columns={[
                                     { key: "summary", header: "Label" },
                                     {

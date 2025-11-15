@@ -2,6 +2,14 @@
 
 ## 2025
 ---
+### Saturday 15th November
+* Add caching to Bus Stops API endpoint
+* Add rate limiting to Bus Stops API endpoint
+* API refactoring under the hood
+* Design improvements to the [Map](/map)
+* Add [Account](/account) page to the navigation bar, along with redirects to [Login](/login) if not logged in
+* Actually enforce User Agent requirement on the API
+
 ### Friday 14th November
 * Fix CORS issues on the API
 * Improve dark mode styles

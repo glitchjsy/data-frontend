@@ -30,7 +30,7 @@ export default function AdminPageLayout({ children, title, subCategory }: PropsW
             const response = await fetch(`${config.apiUrl}/me/session`, { credentials: "include" });
             const data = await response.json();
 
-            if (data && data.user?.siteAdmin) {
+             if (data && Object.keys(data).length !== 0 && data.user?.siteAdmin) {
                 setOk(true);
             } else {
                 setOk(false);

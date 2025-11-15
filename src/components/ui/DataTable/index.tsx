@@ -13,16 +13,16 @@ interface Column<T> {
 interface Props<T> {
     columns: Column<T>[];
     data: T[];
-    onReload: () => void;
+    onReload?: () => void;
 }
 
-export function DataTable<T extends { id: string | number }>({ 
-    columns, 
-    data, 
-    onReload 
+export function DataTable<T extends { id: string | number }>({
+    columns,
+    data,
+    onReload
 }: Props<T>) {
     const { colorMode } = useColorMode();
-    
+
     return (
         <div className={styles.tableWrapper} data-theme={colorMode}>
             <table className={styles.table}>
@@ -46,13 +46,15 @@ export function DataTable<T extends { id: string | number }>({
                 </tbody>
             </table>
 
-            <Button
-                variant="secondary"
-                useSmallerPadding
-                onClick={() => onReload()}
-            >
-                <FaRotate style={{ marginRight: "6px" }} /> Reload
-            </Button>
+            {onReload && (
+                <Button
+                    variant="secondary"
+                    useSmallerPadding
+                    onClick={() => onReload()}
+                >
+                    <FaRotate style={{ marginRight: "6px" }} /> Reload
+                </Button>
+            )}
         </div>
     )
 }

@@ -11,6 +11,12 @@ Returns a list of all bus stops on the island.
 GET /v1/bus/stops
 ```
 
+### Cache & Rate Limit
+||Cache|Rate Limit|
+|-----------|-----|----------|
+|**Unauthenticated**|30 minutes|60 requests / hr|
+|**Authenticated**|30 minutes|150 requests / hr|
+
 ### Response
 <Tabs>
 <TabItem value="res-sample-200" label="200 (OK)">

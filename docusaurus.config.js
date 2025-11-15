@@ -19,7 +19,7 @@ const config = {
     // GitHub pages deployment config.
     // If you aren"t using GitHub pages, you don"t need these.
     organizationName: "glitchjsy", // Usually your GitHub org/user name.
-    projectName: "data-frontend", // Usually your repo name.
+    projectName: "opendata-frontend", // Usually your repo name.
 
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
@@ -29,7 +29,7 @@ const config = {
     // to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: "en",
-        locales: ["en"],
+        locales: ["en"]
     },
 
     presets: [
@@ -39,16 +39,16 @@ const config = {
             ({
                 docs: {
                     sidebarPath: require.resolve("./sidebars.js"),
-                    editUrl: "https://github.com/glitchjsy/data-frontend/tree/master/",
+                    editUrl: "https://github.com/glitchjsy/opendata-frontend/tree/master/"
                 },
                 theme: {
-                    customCss: require.resolve("./src/css/custom.css"),
+                    customCss: require.resolve("./src/css/custom.css")
                 },
                 gtag: {
                     trackingID: "G-WT81BC84V7"
                 }
-            }),
-        ],
+            })
+        ]
     ],
 
     themeConfig:
@@ -59,24 +59,24 @@ const config = {
                 title: "Open Data",
                 logo: {
                     alt: "Logo",
-                    src: "img/logo.png",
+                    src: "img/logo.png"
                 },
                 items: [
                     {
                         type: "docSidebar",
                         sidebarId: "mainSidebar",
                         position: "left",
-                        label: "Documentation",
+                        label: "Documentation"
                     },
                     {
                         href: "/map",
                         position: "left",
-                        label: "Map",
+                        label: "Map"
                     },
                     {
                         href: "/charts",
                         position: "left",
-                        label: "Charts",
+                        label: "Charts"
                     },
                     {
                         type: "dropdown",
@@ -95,19 +95,25 @@ const config = {
                     {
                         href: "/about",
                         position: "left",
-                        label: "About",
+                        label: "About"
+                    },
+                    {
+                        href: "/account",
+                        position: "right",
+                        id: "account-navbar-item",
+                        label: "Account"
                     }
                 ]
             },
             footer: {
                 style: "dark",
-                copyright: `Copyright © ${new Date().getFullYear()} Luke Wyatt`,
+                copyright: `Copyright © ${new Date().getFullYear()} Luke Wyatt`
             },
             prism: {
                 theme: lightCodeTheme,
-                darkTheme: darkCodeTheme,
-            },
-        }),
+                darkTheme: darkCodeTheme
+            }
+        })
 };
 
 module.exports = config;
